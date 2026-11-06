@@ -1,0 +1,56 @@
+name: oaiq.min.js prüfen
+
+on:
+  schedule:
+    - cron: "17 * * * *" # stündlich
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Skript laden und vergleichen
+        run: npm run check
+
+      - name: Änderungen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f .commit-msg ]; then
+            git add data
+            git commit -F .commit-msg
+            git push
+          else
+            echo "Nichts zu committen."
+          fi
+
+      # GitHub schaltet Zeitpläne nach 60 Tagen ohne Aktivität im Repo ab.
+      # Wenn sich das Skript lange nicht ändert, sorgt dieser Schritt alle
+      # 50 Tage für einen kleinen Commit, damit die Prüfung weiterläuft.
+      - name: Keepalive
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          if [ $(( (now - last) / 86400 )) -ge 50 ]; then
+            date -u +%FT%TZ > .keepalive
+            git add .keepalive
+            git commit -m "Keepalive"
+            git push
+          fi

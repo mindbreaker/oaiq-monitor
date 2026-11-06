@@ -1,0 +1,420 @@
+ is not a documented field.
+ is present.
+ should be 
+ should be a 3-letter ISO 4217 currency code.
+ should be a non-empty string.
+ should be an integer.
+ should be an object.
+".
+$1 $2
++0
+.amount
+.amount is present and eventProps.currency is absent.
+.content_type
+.currency
+.currency is required when 
+.id
+.json
+.name
+.quantity
+/gtm.js
+/pixel-config/v1/
+0.1.100
+00
+:denied
+:disabled
+; Domain=
+; SameSite=Lax
+; SameSite=None; Secure
+; Secure
+=; Path=/; Max-Age=0
+=; Path=/; Max-Age=0; Domain=
+Automatic matching config request timed out
+Domain=
+Enter
+GET
+Max-Age=
+Max-Age=60
+POST
+Path=/
+SDK config telemetry queued
+SHA-256
+Shopify
+Unsupported automatic matching identity: 
+Web Crypto SHA-256 is unavailable
+Web Crypto SHA-256 timed out
+[aria-label*="account" i]
+[aria-label*="customer" i]
+[aria-label*="order confirmation" i]
+[aria-label*="profile" i]
+[class*="account" i]
+[class*="customer" i]
+[class*="order-confirmation" i]
+[class*="order_confirmation" i]
+[class*="profile" i]
+[data-account]
+[data-profile]
+[id*="account" i]
+[id*="customer" i]
+[id*="order-confirmation" i]
+[id*="order_confirmation" i]
+[id*="profile" i]
+[id], [class], [name], [aria-label], [aria-labelledby], [itemprop], [data-bind]
+[oaiq]
+[role="region"][aria-labelledby]
+__oaiq_consent
+__oaiq_domain_probe
+__obref
+__oppref
+_klOnsite
+_learnq
+a non-empty string
+a string
+about:
+about:blank
+address-level1
+address-level2
+address-level3
+adobeDataLayer
+ae
+after_init
+amount
+analytics
+android
+appointment_scheduled
+aria-disabled
+aria-label
+aria-labelledby
+article[aria-labelledby]
+au
+autocomplete
+automatic_advanced_matching
+beacon
+before_init
+beforeunload
+billing
+blank
+body
+boolean
+br
+browser_ref_random_unavailable
+button
+button, input[type="submit"], input[type="image"], [role="button"]
+ca
+captured click id from query param
+cc-
+cc-additional-name
+cc-csc
+cc-exp
+cc-exp-month
+cc-exp-year
+cc-family-name
+cc-given-name
+cc-name
+cc-number
+cc-type
+ch
+change
+checkout
+city
+class
+click
+co
+config
+consent
+consent revoked from persisted storage
+consent updated
+consent_denied
+consent_local_storage_read_failed
+consent_local_storage_unavailable
+consent_local_storage_write_failed
+consent_session_storage_invalid_value
+consent_session_storage_key_failed
+consent_session_storage_read_failed
+consent_session_storage_unavailable
+consent_session_storage_write_failed
+consent_storage_denied
+contains
+content:
+content://
+content_type
+contentinfo
+contents
+cookie_decode_failed
+cookie_read_failed
+cookie_write_failed
+cors
+country
+country-name
+credentialless queue flush started
+ct
+currency
+current-password
+custom
+custom_event_name
+custom_event_name_required
+customer_action
+data
+data-account
+data-bind
+data-profile
+data.amount
+data.contents
+data.contents[].amount
+data.contents[].content_type
+data.contents[].currency
+data.contents[].quantity
+data.currency
+data.type
+data:
+dataLayer
+de
+debug
+diagnostic
+disabled
+dropped_event_details_schema_version
+dropped_event_name_counts
+dropped_event_phase_counts
+dropped_event_reason_counts
+dt, th, label, span, p
+ec
+eid
+elements
+em
+email
+email_sha256
+enabled
+es
+event
+event dropped because consent is not granted
+event queued
+eventId
+eventName is not a documented measurement event.
+eventName should be a non-empty string.
+eventOptions
+eventOptions should be an object when provided.
+eventOptions.custom_event_name
+eventOptions.custom_event_name is only supported for custom events.
+eventOptions.custom_event_name is required for custom events.
+eventOptions.custom_event_name must be 1-64 characters of letters, numbers, underscores, or dashes, and must start and end with a letter or number.
+eventOptions.custom_event_name must not overlap with reserved event names.
+eventOptions.eventId
+eventOptions.event_id
+eventOptions.opt_out should be a boolean.
+eventProps
+eventProps should be an object when provided.
+eventProps.amount
+eventProps.contents should be an array.
+eventProps.contents[
+eventProps.plan_id
+eventProps.type should be "
+eventProps.type should be a documented data object type.
+event_id
+externalId
+external_id_sha256
+false
+family-name
+familyname
+fax
+fetch
+fetch_failed
+file:
+file://
+firstName
+first_name_sha256
+firstname
+fm
+fn
+fname
+footer
+footer, [role="contentinfo"]
+forename
+form
+fr
+fullVersionList
+function
+gb
+get
+getUserTraits
+given-name
+givenname
+h1, h2, h3, h4, h5, h6, [role="heading"]
+heading
+hidden
+home
+ht
+html
+http:
+https:
+https://bzr.openai.com/v1/sdk/events
+https://bzrcdn.openai.com
+id
+identify
+ie
+image
+in
+include
+init
+init config should be an object.
+init.debug should be a boolean.
+init.oppref should be a non-empty, well-formed string.
+init.pixelId
+init.pixelId is required on the first init call.
+init.user
+init.user should be an object.
+init.user.
+init.user.phone_number_with_plus_sha256
+init.user.phone_number_with_plus_sha256 requires init.user.phone_number_sha256 to be a 64-character hexadecimal SHA-256 digest.
+init.user.phone_number_with_plus_sha256 should be a 64-character hexadecimal SHA-256 digest.
+init_invalid_config
+init_invalid_pixel_id
+initialize
+input
+input, select, textarea
+inputmode
+invalid
+invalid_amount
+invalid_custom_event_name
+invalid_endpoint_url
+invalid_event_options
+invalid_event_props
+invalid_field_type
+is_first_consent_grant_in_session
+is_first_visit_in_session
+it
+itemprop
+jp
+js
+keydown
+klaviyo
+kr
+lastName
+last_name_sha256
+lastname
+lead_created
+lifecycle flush requested
+ln
+lname
+localhost
+main[aria-labelledby]
+measure
+measureSingle
+measureSingle.pixelId must identify an initialized pixel.
+measureSingle.pixelId should be a non-empty string.
+message
+missing_currency
+missing_event_props
+missing_required_field
+mobile
+model
+mx
+name
+native
+native delivery unavailable; using web transport
+new-password
+no-cors
+no-referrer
+none
+not_found
+number
+nz
+oai::diagnostic
+oaiq
+oaiq-web
+oaiq_
+oaiq_consent
+oaiq_cs:
+oaiq_test_pixel_id
+oaiq_test_session
+oaiq_test_session_id
+object
+off
+omit
+on
+one-time-code
+openai::sdk_init
+oppref
+opt_out
+order_created
+pagehide
+pager
+pageshow
+pc
+ph
+phone
+phone_number_sha256
+phone_number_with_plus_sha256
+pid
+pixelId
+placeholder
+plan_enrollment
+plan_id
+platformVersion
+postal-code
+postalCode
+postal_code
+push
+quantity
+querySelectorAll
+queue flush failed
+queue flush started
+queue flushed
+region
+registration_completed
+request_failed
+rg
+role
+scheduler
+script
+sdk_lifecycle
+section, article, main, [role="region"]
+section-
+section[aria-labelledby]
+select
+send_beacon_failed
+sg
+shipping
+src
+st
+state
+storage
+street-address
+string
+submit
+subscription_created
+surname
+sv
+tel
+tel-local
+tel-national
+text
+text/plain
+textarea
+track
+traits
+transaction-amount
+transaction-currency
+trial_started
+true
+type
+undefined
+unknown
+unknown_event_type
+unref
+unsupported_event_name
+us
+use strict
+user
+user_identifier_hash_failed
+username
+using stored click id from cookie
+validation failed; event dropped
+validation warning
+value
+visibilitychange
+visibilitychange_hidden
+webauthn
+webkit
+work
+www.googletagmanager.com
+zip_code

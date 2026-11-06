@@ -1,0 +1,13 @@
+{
+  "name": "oaiq-monitor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "acorn": "^8.14.0",
+    "acorn-walk": "^8.3.4",
+    "prettier": "^3.4.2"
+  }
+}
