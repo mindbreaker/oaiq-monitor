@@ -31,8 +31,8 @@ jobs:
 
       - name: Änderungen committen
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "mindbreaker"
+          git config user.email "225204+mindbreaker@users.noreply.github.com"
           if [ -f .commit-msg ]; then
             git add data
             git commit -F .commit-msg
