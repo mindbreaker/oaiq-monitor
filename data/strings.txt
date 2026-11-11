@@ -19,7 +19,7 @@ $1 $2
 .quantity
 /gtm.js
 /pixel-config/v1/
-0.1.100
+0.1.103
 00
 :denied
 :disabled
@@ -72,6 +72,7 @@ a non-empty string
 a string
 about:
 about:blank
+accepted
 address-level1
 address-level2
 address-level3
@@ -81,6 +82,7 @@ after_init
 amount
 analytics
 android
+android-app://chatgpt.com
 appointment_scheduled
 aria-disabled
 aria-label
@@ -96,6 +98,7 @@ billing
 blank
 body
 boolean
+bound
 br
 browser_ref_random_unavailable
 button
@@ -128,6 +131,7 @@ consent_denied
 consent_local_storage_read_failed
 consent_local_storage_unavailable
 consent_local_storage_write_failed
+consent_revoked
 consent_session_storage_invalid_value
 consent_session_storage_key_failed
 consent_session_storage_read_failed
@@ -140,6 +144,7 @@ content://
 content_type
 contentinfo
 contents
+conversion
 cookie_decode_failed
 cookie_read_failed
 cookie_write_failed
@@ -240,6 +245,8 @@ given-name
 givenname
 h1, h2, h3, h4, h5, h6, [role="heading"]
 heading
+hello
+hello_ack
 hidden
 home
 ht
