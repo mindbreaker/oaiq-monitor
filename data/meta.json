@@ -1,9 +1,9 @@
 {
   "url": "https://bzrcdn.openai.com/sdk/oaiq.min.js",
-  "checked_at": "2026-11-11T09:32:43.949Z",
-  "last_modified": "Wed, 11 Nov 2026 04:53:52 GMT",
+  "checked_at": "2026-11-12T23:41:53.108Z",
+  "last_modified": "Thu, 12 Nov 2026 21:15:27 GMT",
   "etag": null,
-  "bytes": 117778,
-  "sha256": "f82c9f86d0433137092953c8226a5dd778031f3d74987ad59f4e3d9e7d6c1aed",
+  "bytes": 117944,
+  "sha256": "d53f89c9c18e766acab03f45ec46b957c99190e525ef9803da52052e3c902fd3",
   "string_count": 427
 }

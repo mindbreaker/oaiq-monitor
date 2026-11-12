@@ -19,7 +19,7 @@ $1 $2
 .quantity
 /gtm.js
 /pixel-config/v1/
-0.1.103
+0.1.104
 00
 :denied
 :disabled

@@ -1,18 +1,18 @@
 "use strict";
 (() => {
-  var Os = Object.defineProperty;
-  var uo = Object.getOwnPropertySymbols;
-  var Rs = Object.prototype.hasOwnProperty,
-    Ds = Object.prototype.propertyIsEnumerable;
-  var lo = Math.pow,
-    fo = (e, n, t) =>
-      n in e ? Os(e, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (e[n] = t),
-    fe = (e, n) => {
-      for (var t in n || (n = {})) Rs.call(n, t) && fo(e, t, n[t]);
-      if (uo) for (var t of uo(n)) Ds.call(n, t) && fo(e, t, n[t]);
+  var Rs = Object.defineProperty;
+  var fo = Object.getOwnPropertySymbols;
+  var Ds = Object.prototype.hasOwnProperty,
+    Fs = Object.prototype.propertyIsEnumerable;
+  var go = Math.pow,
+    lo = (e, n, t) =>
+      n in e ? Rs(e, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (e[n] = t),
+    le = (e, n) => {
+      for (var t in n || (n = {})) Ds.call(n, t) && lo(e, t, n[t]);
+      if (fo) for (var t of fo(n)) Fs.call(n, t) && lo(e, t, n[t]);
       return e;
     };
-  var Ge = (e, n, t) =>
+  var je = (e, n, t) =>
     new Promise((i, o) => {
       var r = (d) => {
           try {
@@ -32,38 +32,38 @@
       a((t = t.apply(e, n)).next());
     });
   var ot = "https://bzr.openai.com/v1/sdk/events",
-    go = "https://bzrcdn.openai.com";
-  var Vt = "oppref",
-    ce = "__oppref",
+    mo = "https://bzrcdn.openai.com";
+  var zt = "oppref",
+    ue = "__oppref",
     Pn = "oaiq_consent",
-    zt = "__oaiq_consent",
-    dn = "__obref";
-  var mo = "oaiq-web",
-    Ie = "0.1.103",
-    po = "oaiq_test_session_id",
-    ho = "oaiq_test_pixel_id",
-    Kt = "oaiq_test_session";
-  var cn = Object.freeze({
+    Kt = "__oaiq_consent",
+    an = "__obref";
+  var po = "oaiq-web",
+    Ie = "0.1.104",
+    ho = "oaiq_test_session_id",
+    _o = "oaiq_test_pixel_id",
+    jt = "oaiq_test_session";
+  var dn = Object.freeze({
     PixelId: "pid",
     SdkType: "st",
     SdkVersion: "sv",
     Timestamp: "t",
     EventCount: "ec",
   });
-  var Ls = ["country", "city", "region", "postal_code", "zip_code"],
-    vo = /^[0-9a-f]{64}$/i,
-    Hs =
+  var Hs = ["country", "city", "region", "postal_code", "zip_code"],
+    Eo = /^[0-9a-f]{64}$/i,
+    xs =
       /^[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i,
-    xs = 254,
-    Wt = 1024,
-    Us = 3,
-    Bs = 2,
-    qs = /^[1-9][0-9]{7,14}$/,
-    Vs = /^\+?[0-9]+$/,
-    zs = /[\s().-]+/g,
-    Ks = /[!"#$%&'()*+,\-./:;<=>?@ \[\\\]^_`{|}~\s]+/g,
-    js = /^(?=[a-z0-9 -]*\d)[a-z0-9][a-z0-9 -]{0,31}$/i,
-    _o = {
+    Us = 254,
+    Yt = 1024,
+    Bs = 3,
+    qs = 2,
+    Vs = /^[1-9][0-9]{7,14}$/,
+    zs = /^\+?[0-9]+$/,
+    Ks = /[\s().-]+/g,
+    js = /[!"#$%&'()*+,\-./:;<=>?@ \[\\\]^_`{|}~\s]+/g,
+    Gs = /^(?=[a-z0-9 -]*\d)[a-z0-9][a-z0-9 -]{0,31}$/i,
+    yo = {
       australia: "au",
       brazil: "br",
       canada: "ca",
@@ -90,53 +90,53 @@
       "united states of america": "us",
       usa: "us",
     };
-  function Gs(e) {
-    let n = e.trim().toLowerCase();
-    return n.length <= xs && Hs.test(n) ? n : void 0;
-  }
   function $s(e) {
-    let n = e.trim().replace(zs, "");
-    if (!Vs.test(n) || n.startsWith("+0")) return;
+    let n = e.trim().toLowerCase();
+    return n.length <= Us && xs.test(n) ? n : void 0;
+  }
+  function Ws(e) {
+    let n = e.trim().replace(Ks, "");
+    if (!zs.test(n) || n.startsWith("+0")) return;
     let t = n.startsWith("+") || n.startsWith("00"),
       i = n.replace(/^\+?0*/, "");
-    if (!(t && i.startsWith("1") && i.length !== 11)) return qs.test(i) ? i : void 0;
+    if (!(t && i.startsWith("1") && i.length !== 11)) return Vs.test(i) ? i : void 0;
   }
-  function yo(e) {
-    if (e.length > Wt) return;
-    let n = e.replace(Ks, "").toLowerCase();
+  function vo(e) {
+    if (e.length > Yt) return;
+    let n = e.replace(js, "").toLowerCase();
     return /\D/.test(n) ? n : void 0;
   }
   function rt(e) {
     let n = e.trim().toLowerCase().replace(/\s+/g, " ");
     return n.length > 0 && n.length <= 128 ? n : void 0;
   }
-  function Ws(e) {
+  function Ys(e) {
     let n = rt(e);
     if (!n) return;
-    let t = Object.prototype.hasOwnProperty.call(_o, n) ? _o[n] : void 0;
+    let t = Object.prototype.hasOwnProperty.call(yo, n) ? yo[n] : void 0;
     if (t) return t;
     if (/^[a-z]{2}$/.test(n)) return n;
   }
-  function Ys(e) {
+  function Qs(e) {
     let n = rt(e);
-    return n && js.test(n) ? n : void 0;
+    return n && Gs.test(n) ? n : void 0;
   }
   var kn = [
       {
         kind: "email",
         field: "email_sha256",
         wire: "em",
-        maximum: Us,
+        maximum: Bs,
         automatic: !0,
-        normalize: Gs,
+        normalize: $s,
       },
       {
         kind: "phone",
         field: "phone_number_sha256",
         wire: "ph",
-        maximum: Bs,
+        maximum: qs,
         automatic: !0,
-        normalize: $s,
+        normalize: Ws,
       },
       {
         kind: "externalId",
@@ -152,7 +152,7 @@
         wire: "fn",
         maximum: 1,
         automatic: !0,
-        normalize: yo,
+        normalize: vo,
       },
       {
         kind: "lastName",
@@ -160,58 +160,58 @@
         wire: "ln",
         maximum: 1,
         automatic: !0,
-        normalize: yo,
+        normalize: vo,
       },
     ],
-    Qs = [
-      { kind: "country", field: "country", wire: "co", maximum: 1, normalize: Ws },
+    Xs = [
+      { kind: "country", field: "country", wire: "co", maximum: 1, normalize: Ys },
       { kind: "city", field: "city", wire: "ct", maximum: 1, normalize: rt },
       { kind: "region", field: "region", wire: "rg", maximum: 1, normalize: rt },
-      { kind: "postalCode", field: "postal_code", wire: "pc", maximum: 1, normalize: Ys },
+      { kind: "postalCode", field: "postal_code", wire: "pc", maximum: 1, normalize: Qs },
     ],
-    st = [...kn.filter((e) => e.automatic), ...Qs];
-  function Xs(e, n) {
-    if (typeof e != "string" || e.length > Wt) return {};
+    st = [...kn.filter((e) => e.automatic), ...Xs];
+  function Js(e, n) {
+    if (typeof e != "string" || e.length > Yt) return {};
     let t = e.trim();
     if (t.length === 0) return {};
-    if (vo.test(t)) return { hash: t.toLowerCase() };
+    if (Eo.test(t)) return { hash: t.toLowerCase() };
     let i = n(t);
     return i ? { raw: i } : {};
   }
-  function Js(e) {
-    if (typeof e != "string" || e.length > Wt) return;
+  function Zs(e) {
+    if (typeof e != "string" || e.length > Yt) return;
     let n = e.trim();
-    return vo.test(n) ? n.toLowerCase() : void 0;
+    return Eo.test(n) ? n.toLowerCase() : void 0;
   }
-  function Eo(e) {
+  function So(e) {
     if (!e || typeof e != "object" || Array.isArray(e)) return null;
     let n = e,
       t = {};
-    for (let r of Ls) {
+    for (let r of Hs) {
       let s = n[r];
       typeof s == "string" && s.length > 0 && (t[r] = s);
     }
-    let i = kn.map((r) => ({ definition: r, value: Xs(n[r.field], r.normalize) })),
+    let i = kn.map((r) => ({ definition: r, value: Js(n[r.field], r.normalize) })),
       o = i.find(({ definition: r }) => r.kind === "phone");
     return {
       identifiers: i,
       phoneNumberWithPlusHash:
-        o != null && o.value.hash ? Js(n.phone_number_with_plus_sha256) : void 0,
+        o != null && o.value.hash ? Zs(n.phone_number_with_plus_sha256) : void 0,
       passthrough: t,
     };
   }
-  function Zs(e) {
+  function ea(e) {
     return Object.keys(e).length > 0 ? e : void 0;
   }
-  function jt(e, n, t) {
+  function Gt(e, n, t) {
     let i = Object.assign({}, n);
     t && (i.phone_number_with_plus_sha256 = t);
     for (let { field: o, hash: r, phoneNumberWithPlusHash: s } of e)
       (r && (i[o] = r), s && (i.phone_number_with_plus_sha256 = s));
-    return Zs(i);
+    return ea(i);
   }
-  function Gt(e) {
-    return Ge(this, null, function* () {
+  function $t(e) {
+    return je(this, null, function* () {
       let n = typeof window != "undefined" ? window.crypto : globalThis.crypto;
       if (!(n != null && n.subtle) || typeof TextEncoder == "undefined")
         throw new Error("Web Crypto SHA-256 is unavailable");
@@ -219,7 +219,7 @@
       return Array.from(new Uint8Array(t), (i) => i.toString(16).padStart(2, "0")).join("");
     });
   }
-  function $t(e) {
+  function Wt(e) {
     return new Promise((n, t) => {
       let i = setTimeout(() => {
         t(new Error("Web Crypto SHA-256 timed out"));
@@ -234,10 +234,10 @@
       );
     });
   }
-  function ea(e, n) {
-    return Ge(this, null, function* () {
-      let t = $t(Gt(e)),
-        i = $t(Gt(`+${e}`)).catch(() => {}),
+  function na(e, n) {
+    return je(this, null, function* () {
+      let t = Wt($t(e)),
+        i = Wt($t(`+${e}`)).catch(() => {}),
         o = yield t;
       n == null || n(o);
       let r = yield i;
@@ -245,9 +245,9 @@
     });
   }
   function at(e, n) {
-    let t = Eo(e);
+    let t = So(e);
     if (!t) return {};
-    let i = jt(
+    let i = Gt(
         t.identifiers.map(({ definition: d, value: c }) => ({ field: d.field, hash: c.hash })),
         t.passthrough,
         t.phoneNumberWithPlusHash,
@@ -262,10 +262,10 @@
           if (!c.raw) return Promise.resolve({ field: d.field, hash: c.hash });
           let u = (
             d.kind === "phone"
-              ? ea(c.raw, (p) => {
+              ? na(c.raw, (p) => {
                   n == null || n(d.kind, { field: d.field, hash: p });
                 })
-              : $t(Gt(c.raw)).then((p) => ({ hash: p, phoneNumberWithPlusHash: void 0 }))
+              : Wt($t(c.raw)).then((p) => ({ hash: p, phoneNumberWithPlusHash: void 0 }))
           ).then(
             ({ hash: p, phoneNumberWithPlusHash: f }) => {
               let y = { field: d.field, hash: p, phoneNumberWithPlusHash: f };
@@ -279,7 +279,7 @@
           return ((s[d.kind] = u), u);
         }),
       ).then((d) => {
-        let c = jt(d, t.passthrough, t.phoneNumberWithPlusHash);
+        let c = Gt(d, t.passthrough, t.phoneNumberWithPlusHash);
         if (!d.some(({ hash: l }) => l) && !t.phoneNumberWithPlusHash) {
           let l = d.find(({ error: u }) => u !== void 0);
           if (l) throw l.error;
@@ -289,9 +289,9 @@
     return { user: i, pending: a, pendingHashCounts: r, pendingHashPromises: s };
   }
   function dt(e) {
-    let n = Eo(e);
+    let n = So(e);
     if (n)
-      return jt(
+      return Gt(
         n.identifiers.map(({ definition: t, value: i }) => ({ field: t.field, hash: i.hash })),
         n.passthrough,
         n.phoneNumberWithPlusHash,
@@ -306,11 +306,12 @@
       config: {},
       clickId: void 0,
       explicitClickId: void 0,
+      nativeClickId: void 0,
       browserRef: void 0,
     },
-    le = [],
-    $e = new Map();
-  function na() {
+    ge = [],
+    Ge = new Map();
+  function ta() {
     return {
       flushSchedulerInterval: null,
       firstPendingEventAtMs: null,
@@ -322,28 +323,28 @@
     };
   }
   function q(e) {
-    return e !== void 0 ? $e.get(e) : $e.values().next().value;
+    return e !== void 0 ? Ge.get(e) : Ge.values().next().value;
   }
   function j() {
-    return Array.from($e.values());
+    return Array.from(Ge.values());
   }
-  function So(e) {
-    let n = $e.get(e);
+  function Co(e) {
+    let n = Ge.get(e);
     if (n) return n;
-    let t = $e.size === 0,
+    let t = Ge.size === 0,
       i = {
         pixelId: e,
         sdkInitQueued: !1,
         config: t ? m.config : { pixelId: e },
-        pendingEvents: t ? le : [],
+        pendingEvents: t ? ge : [],
         userConfigHashingPending: !1,
         userHashingPendingCounts: {},
         userConfigUpdateRevision: 0,
-        transport: na(),
+        transport: ta(),
       };
     i.config.pixelId = e;
     for (let o of i.pendingEvents) An(o, e);
-    return ($e.set(e, i), i);
+    return (Ge.set(e, i), i);
   }
   function An(e, n) {
     var t;
@@ -354,13 +355,13 @@
           : null),
       delete e.testSessionContext);
   }
-  function Co() {
-    $e.clear();
+  function bo() {
+    Ge.clear();
   }
   function w() {
     return m.consent !== !1;
   }
-  function Mo() {
+  function Po() {
     return typeof globalThis != "undefined"
       ? globalThis
       : typeof window != "undefined"
@@ -374,8 +375,8 @@
     var t;
     (t = e.config) != null && t.debug && console.debug("[oaiq]", ...n);
   }
-  var bo = new Set();
-  function Po(e, n) {
+  var Io = new Set();
+  function ko(e, n) {
     if (typeof console == "undefined" || typeof console.warn != "function") return;
     let t = (n == null ? void 0 : n.details) === !0,
       i =
@@ -385,8 +386,8 @@
             ? null
             : `<${typeof e.eventName}>`,
       o = JSON.stringify([e.command, i, e.issues, t]);
-    if (bo.has(o)) return;
-    bo.add(o);
+    if (Io.has(o)) return;
+    Io.add(o);
     let r = e.command === "measure" ? "validation failed; event dropped" : "validation warning";
     if (t) {
       console.warn("[oaiq]", r, e);
@@ -394,13 +395,13 @@
     }
     console.warn("[oaiq]", r);
   }
-  var Io = new Set();
+  var Mo = new Set();
   function x(e, n, t, i) {
     var r;
     if (
       ((r = i == null ? void 0 : i.debug) != null ? r : m.config.debug === !0) &&
-      !Io.has(e) &&
-      (Io.add(e), typeof console != "undefined" && typeof console.warn == "function")
+      !Mo.has(e) &&
+      (Mo.add(e), typeof console != "undefined" && typeof console.warn == "function")
     ) {
       let s = Object.assign({}, t != null ? t : {}, n !== void 0 ? { error: n } : {});
       console.warn("[oaiq]", e, s);
@@ -411,12 +412,12 @@
       ? crypto.randomUUID()
       : `oaiq_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`;
   }
-  function un() {
+  function cn() {
     return typeof performance != "undefined" && typeof performance.now == "function"
       ? performance.now()
       : Date.now();
   }
-  var Yt = new Map();
+  var Qt = new Map();
   function Tn(e) {
     var n;
     try {
@@ -452,10 +453,10 @@
       }
     }
   }
-  function ko(e) {
+  function Ao(e) {
     return e ? (e.includes(":") ? !0 : /^(\d{1,3}\.){3}\d{1,3}$/.test(e)) : !1;
   }
-  function ta() {
+  function ia() {
     var o, r, s;
     if (!W()) return;
     let e =
@@ -465,7 +466,7 @@
           : r.toLowerCase()) != null
         ? s
         : "";
-    if (!e || e === "localhost" || ko(e)) return;
+    if (!e || e === "localhost" || Ao(e)) return;
     let n = e.split(".").filter(Boolean);
     if (n.length < 2) return;
     let t = "__oaiq_domain_probe",
@@ -477,7 +478,7 @@
       if (Oe(t) === i) return (Tn(`${t}=; Path=/; Max-Age=0; Domain=${d}`), d);
     }
   }
-  function ia() {
+  function oa() {
     var t, i, o;
     let e =
       W() &&
@@ -487,20 +488,20 @@
           : i.toLowerCase()) != null
         ? o
         : "";
-    if (Yt.has(e)) return Yt.get(e);
-    let n = ta();
-    return (Yt.set(e, n), n);
+    if (Qt.has(e)) return Qt.get(e);
+    let n = ia();
+    return (Qt.set(e, n), n);
   }
-  function ge(e, n, t) {
+  function me(e, n, t) {
     if (!W()) return !1;
-    let i = ia(),
+    let i = oa(),
       o = i ? `; Domain=${i}` : "",
       r = [`${e}=${encodeURIComponent(n)}`, "Path=/", `Max-Age=${Math.max(0, Math.floor(t))}`].join(
         "; ",
       );
     return Tn(`${r}${o}`);
   }
-  function Qt(e) {
+  function Xt(e) {
     var o, r, s;
     if (!W()) return;
     let n = `${e}=; Path=/; Max-Age=0`;
@@ -512,14 +513,14 @@
           : r.toLowerCase()) != null
         ? s
         : "";
-    if (!t || t === "localhost" || ko(t)) return;
+    if (!t || t === "localhost" || Ao(t)) return;
     let i = t.split(".").filter(Boolean);
     for (let a = 2; a <= i.length; a += 1) {
       let d = i.slice(i.length - a).join(".");
       Tn(`${n}; Domain=${d}`);
     }
   }
-  function me(e) {
+  function ie(e) {
     if (typeof e != "string" || e.trim().length === 0) return !1;
     try {
       return (encodeURIComponent(e), !0);
@@ -527,31 +528,37 @@
       return !1;
     }
   }
-  function Re(e) {
-    var s, a;
+  function un() {
+    var t, i;
     if (m.explicitClickId !== void 0) return m.explicitClickId;
     if (!W()) return;
-    let n = 720 * 60 * 60,
-      t = (a = (s = window.location) == null ? void 0 : s.search) != null ? a : "",
-      o = new URLSearchParams(t).get(Vt);
-    if (o)
+    let e = (i = (t = window.location) == null ? void 0 : t.search) != null ? i : "",
+      n = new URLSearchParams(e).get(zt);
+    return ie(n) ? n : void 0;
+  }
+  function ct(e) {
+    let n = un();
+    if (n !== void 0)
       return (
-        ge(ce, o, n),
-        V(m, "captured click id from query param", { param: Vt, cookieName: ce }),
-        o
+        n !== m.nativeClickId && (m.nativeClickId = void 0),
+        m.explicitClickId === void 0 &&
+          (me(ue, n, 30 * 86400),
+          V(m, "captured click id from query param", { param: zt, cookieName: ue })),
+        n
       );
-    let r = Oe(ce);
-    return (r && V(m, "using stored click id from cookie", { cookieName: ce }), r || e);
+    if (m.nativeClickId !== void 0) return m.nativeClickId;
+    let t = Oe(ue);
+    return ie(t) ? (V(m, "using stored click id from cookie", { cookieName: ue }), t) : e;
   }
-  function Ao() {
-    Oe(ce) !== void 0 && ge(ce, "", 0);
+  function To() {
+    Oe(ue) !== void 0 && me(ue, "", 0);
   }
-  var Xt = "true",
-    Jt = "false";
-  function To(e) {
-    return e === Xt ? !0 : e === Jt ? !1 : null;
+  var Jt = "true",
+    Zt = "false";
+  function wo(e) {
+    return e === Jt ? !0 : e === Zt ? !1 : null;
   }
-  function wo() {
+  function No() {
     var e;
     if (!W()) return null;
     try {
@@ -560,45 +567,45 @@
       return (x("consent_local_storage_unavailable", n), null);
     }
   }
-  function oa() {
-    let e = wo();
+  function ra() {
+    let e = No();
     if (!e) return null;
     try {
-      return To(e.getItem(Pn));
+      return wo(e.getItem(Pn));
     } catch (n) {
       return (x("consent_local_storage_read_failed", n), null);
     }
   }
-  function ra(e) {
-    let n = wo();
+  function sa(e) {
+    let n = No();
     if (n)
       try {
-        n.setItem(Pn, e ? Xt : Jt);
+        n.setItem(Pn, e ? Jt : Zt);
       } catch (t) {
         x("consent_local_storage_write_failed", t);
       }
   }
   function U() {
     if (!W()) return null;
-    let e = oa();
+    let e = ra();
     if (e === !1) return !1;
-    let n = To(Oe(zt));
+    let n = wo(Oe(Kt));
     return n === !1 ? !1 : e === !0 || n === !0 ? !0 : null;
   }
-  function No(e) {
-    W() && (ra(e), ge(zt, e ? Xt : Jt, 720 * 60 * 60));
+  function Oo(e) {
+    W() && (sa(e), me(Kt, e ? Jt : Zt, 720 * 60 * 60));
   }
   var fn = new WeakMap(),
-    Ye = new WeakMap(),
-    Oo = new WeakMap(),
-    Zt = new WeakMap();
-  function Ro(e) {
+    We = new WeakMap(),
+    Ro = new WeakMap(),
+    ei = new WeakMap();
+  function Do(e) {
     return typeof window != "undefined" && e.length > 0 && fn.has(window);
   }
   function Me(e = !1) {
     if (typeof window == "undefined") return;
-    let n = Ye.get(window);
-    n && (clearTimeout(n.timeout), n.port.close(), Ye.delete(window));
+    let n = We.get(window);
+    n && (clearTimeout(n.timeout), n.port.close(), We.delete(window));
     let t = fn.get(window);
     if ((fn.delete(window), !!t)) {
       if (e)
@@ -611,14 +618,14 @@
       t.port.close();
     }
   }
-  function Do(e, n = "android-app://chatgpt.com") {
+  function Fo(e, n = "android-app://chatgpt.com") {
     var c;
     if (typeof performance == "undefined" || !Number.isFinite(performance.timeOrigin))
       return () => {};
     let t = window;
-    (c = Zt.get(t)) == null || c();
-    let i = Oo.get(t);
-    i || ((i = { id: X(), startedAtMs: Math.floor(performance.timeOrigin) }), Oo.set(t, i));
+    (c = ei.get(t)) == null || c();
+    let i = Ro.get(t);
+    i || ((i = { id: X(), startedAtMs: Math.floor(performance.timeOrigin) }), Ro.set(t, i));
     let o = i,
       r = () => (U() === !1 && e(), w()),
       s = (l) => {
@@ -632,12 +639,12 @@
         let u = l.ports[0],
           p = setTimeout(() => {
             var y;
-            ((y = Ye.get(t)) == null ? void 0 : y.port) === u && Me();
+            ((y = We.get(t)) == null ? void 0 : y.port) === u && Me();
           }, 1e4);
-        (Ye.set(t, { port: u, timeout: p }),
+        (We.set(t, { port: u, timeout: p }),
           (u.onmessage = (y) => {
             var E;
-            if (((E = Ye.get(t)) == null ? void 0 : E.port) !== u || !r()) return;
+            if (((E = We.get(t)) == null ? void 0 : E.port) !== u || !r()) return;
             let g;
             try {
               g = JSON.parse(y.data);
@@ -660,7 +667,7 @@
             let _ = Object.assign({}, g, { documentId: o.id });
             ((u.onmessage = (M) => {
               var T;
-              if (((T = Ye.get(t)) == null ? void 0 : T.port) !== u || !r()) return;
+              if (((T = We.get(t)) == null ? void 0 : T.port) !== u || !r()) return;
               let S;
               try {
                 S = JSON.parse(M.data);
@@ -676,7 +683,7 @@
                 S.documentId !== o.id
               )
                 return;
-              (clearTimeout(p), Ye.delete(t));
+              (clearTimeout(p), We.delete(t));
               let P = { binding: _, port: u, pending: new Map() };
               (fn.set(t, P),
                 (u.onmessage = (h) => {
@@ -720,11 +727,11 @@
       (Me(),
         t.removeEventListener("message", s),
         t.removeEventListener("pagehide", a),
-        Zt.delete(t));
+        ei.delete(t));
     };
-    return (Zt.set(t, d), d);
+    return (ei.set(t, d), d);
   }
-  function Fo(e, n, t) {
+  function Lo(e, n, t) {
     let i = fn.get(window);
     if (!(!i || !e || !w()))
       return i.pending.size >= 4
@@ -754,15 +761,15 @@
             }
           });
   }
-  var sa = 10,
-    ie;
+  var aa = 10,
+    oe;
   function wn(e, n) {
     if (typeof e != "string") return;
     let t = e.trim();
     return t.length > 0 && t.length <= n && !/[\x00-\x1f\x7f]/.test(t) ? t : void 0;
   }
-  function aa(e) {
-    if (!Array.isArray(e) || e.length > sa) return;
+  function da(e) {
+    if (!Array.isArray(e) || e.length > aa) return;
     let n = [];
     for (let t of e) {
       if (!t || typeof t != "object" || Array.isArray(t)) continue;
@@ -772,10 +779,10 @@
     }
     return n.length ? n : void 0;
   }
-  function ni() {
-    if (ie || U() === !1) return;
+  function ti() {
+    if (oe || U() === !1) return;
     let e = { cancel: () => {} };
-    ie = e;
+    oe = e;
     try {
       if (typeof navigator == "undefined") return;
       let n = navigator.userAgentData;
@@ -796,7 +803,7 @@
               model: wn(r == null ? void 0 : r.model, 128),
               platform: wn(r == null ? void 0 : r.platform, 32),
               platform_version: wn(r == null ? void 0 : r.platformVersion, 32),
-              full_version_list: aa(r == null ? void 0 : r.fullVersionList),
+              full_version_list: da(r == null ? void 0 : r.fullVersionList),
             };
             i(s.model || s.platform || s.platform_version || s.full_version_list ? s : void 0);
           })
@@ -805,54 +812,54 @@
       e.cancel();
     }
   }
-  function Lo() {
-    return ie == null ? void 0 : ie.pending;
-  }
   function Ho() {
-    let e = ie == null ? void 0 : ie.hints;
+    return oe == null ? void 0 : oe.pending;
+  }
+  function xo() {
+    let e = oe == null ? void 0 : oe.hints;
     if (!e) return;
-    let n = fe({}, e);
+    let n = le({}, e);
     return (
-      e.full_version_list && (n.full_version_list = e.full_version_list.map((t) => fe({}, t))),
+      e.full_version_list && (n.full_version_list = e.full_version_list.map((t) => le({}, t))),
       n
     );
   }
-  function ti() {
-    (ie == null || ie.cancel(), (ie = void 0));
+  function ii() {
+    (oe == null || oe.cancel(), (oe = void 0));
   }
-  var ii =
+  var oi =
       /(?:^|[^a-z0-9])(?:(?:u?e[\s_-]*mail(?:[\s_-]*address)?|mail[\s_-]*address)[0-9]*|メールアドレス|이메일)(?:$|[^a-z0-9])/i,
-    oi =
-      /phone|mobile|contact[\s_-]*number|(?:^|[^a-z0-9])(?:cell|tel|電話(?:番号)?|휴대폰|전화번호)(?:$|[^a-z0-9])/i,
-    xo = /(?:^|[^a-z0-9])(?:country(?:[\s_-]*code)?|countries|país|国家)(?:$|[^a-z0-9])/i,
-    Uo = /(?:^|[^a-z0-9])(?:city|town|locality)(?:$|[^a-z0-9])/i,
-    Bo = /(?:^|[^a-z0-9])(?:state|region|province)(?:$|[^a-z0-9])/i,
     ri =
+      /phone|mobile|contact[\s_-]*number|(?:^|[^a-z0-9])(?:cell|tel|電話(?:番号)?|휴대폰|전화번호)(?:$|[^a-z0-9])/i,
+    Uo = /(?:^|[^a-z0-9])(?:country(?:[\s_-]*code)?|countries|país|国家)(?:$|[^a-z0-9])/i,
+    Bo = /(?:^|[^a-z0-9])(?:city|town|locality)(?:$|[^a-z0-9])/i,
+    qo = /(?:^|[^a-z0-9])(?:state|region|province)(?:$|[^a-z0-9])/i,
+    si =
       /(?:^|[^a-z0-9])(?:zip|zipcode|zip[\s_-]*code|(?:shipping|billing|postal)[\s_-]+pin[\s_-]*code|p[\s_-]*code|z[\s_-]*code|postal(?![\s_-]*address)(?:[\s_-]*code)?|post[\s_-]*code|postcode)(?:$|[^a-z0-9])/i,
-    qo =
+    Vo =
       /^(?:address|(?:(?:customer[\s_-]+)?(?:full|street|shipping|billing|delivery|home)|customer)[\s_-]+address)$/i,
-    ct =
+    ut =
       /(?:^|[^a-z0-9])(?:phone|dial(?:ing)?|store|merchant|shop|organization|locale|consent)(?:$|[^a-z0-9])/i,
-    si = {
+    ai = {
       firstName: ["firstname", "fn", "fname", "givenname", "forename"],
       lastName: ["lastname", "ln", "lname", "surname", "familyname"],
     },
-    Vo = /[!"#$%&'()*+,\-./:;<=>?@ \[\\\]^_`{|}~\s]+/,
-    zo =
+    zo = /[!"#$%&'()*+,\-./:;<=>?@ \[\\\]^_`{|}~\s]+/,
+    Ko =
       /^(?:full[\s_-]*name|customer[\s_-]*name|your[\s_-]*name|billing[\s_-]*name|shipping[\s_-]*name|name[\s_-]*first[\s_-]*last|first[\s_-]*last[\s_-]*name)$/i,
-    ut =
+    ft =
       /(?:^|[^a-z0-9])(?:cc|card(?:holder)?|credit[\s_-]*card|pay(?:ment)?|security)(?:$|[^a-z0-9])/i,
     pe =
       /(?:^|[^a-z0-9])(?:password|passwd|passcode|pass[\s_-]*code|one[\s_-]*time[\s_-]*(?:code|password|passcode)|(?:verification|security|recovery)[\s_-]*code|otp|cvv|cvc|cvn|csc|credit[\s_-]*card(?![\s_-]*(?:holder[\s_-]*)?(?:(?:first|given|last|family)[\s_-]*)?name$)|card[\s_-]*(?:number|security|verification)|cc[\s_-]*(?:number|exp|csc)|social[\s_-]*security|ssn|date[\s_-]*of[\s_-]*birth|birth[\s_-]*date|dob|court(?:[\s_-]*(?:date|name|case))?|case[\s_-]*(?:description|details|type)|medical[\s_-]*(?:record|history)|diagnosis|offen[cs]e)(?:$|[^a-z0-9])/i,
     Pe =
       /(?:^|[^a-z0-9])(?:gift[\s_-]*recipient|recipient|invitee?|donor|beneficiary|third[\s_-]*party|customer[\s_-]*service|support|referr(?:al|er|ed)|seller|organizer|affiliate|friend|sku)s?(?:$|[^a-z0-9])/i,
-    ai = /(?:^|[^a-z0-9])products?(?:$|[^a-z0-9])/i,
+    di = /(?:^|[^a-z0-9])products?(?:$|[^a-z0-9])/i,
     Nn = /(?:^|[^a-z0-9])(?:confirm(?:ation|ed)?|re[\s_-]*enter|verify)(?:$|[^a-z0-9])/i,
-    ft = /(?:^|[^a-z0-9])(?:account|profile|customer|order[\s_-]*confirmation)(?:$|[^a-z0-9])/i,
+    lt = /(?:^|[^a-z0-9])(?:account|profile|customer|order[\s_-]*confirmation)(?:$|[^a-z0-9])/i,
     On =
       /(?:^|[^a-z0-9])(?:(?:company|business)[\s_-]*(?:contact|support|email|phone)|contact[\s_-]*us)(?:$|[^a-z0-9])/i,
-    Ko = /^[a-z_$][a-z0-9_$]{0,63}$/i,
-    jo = [
+    jo = /^[a-z_$][a-z0-9_$]{0,63}$/i,
+    Go = [
       '[aria-label*="account" i]',
       '[aria-label*="profile" i]',
       '[aria-label*="customer" i]',
@@ -874,10 +881,10 @@
       "main[aria-labelledby]",
       '[role="region"][aria-labelledby]',
     ].join(", "),
-    Go = 'h1, h2, h3, h4, h5, h6, [role="heading"]',
-    di = "[id], [class], [name], [aria-label], [aria-labelledby], [itemprop], [data-bind]",
-    $o = "dt, th, label, span, p",
-    ci = new Set([
+    $o = 'h1, h2, h3, h4, h5, h6, [role="heading"]',
+    ci = "[id], [class], [name], [aria-label], [aria-labelledby], [itemprop], [data-bind]",
+    Wo = "dt, th, label, span, p",
+    ui = new Set([
       "current-password",
       "new-password",
       "one-time-code",
@@ -894,11 +901,11 @@
       "transaction-currency",
       "transaction-amount",
     ]),
-    Wo = new Set(["home", "work", "mobile", "fax", "pager"]);
-  function Yo(e, n, t, i) {
+    Yo = new Set(["home", "work", "mobile", "fax", "pager"]);
+  function Qo(e, n, t, i) {
     (n == null ? void 0 : n.leadingPlusHash) === e ? i.push(e) : t.push(e);
   }
-  function Qo(e, n, t, i) {
+  function Xo(e, n, t, i) {
     var s, a;
     let o = (s = n == null ? void 0 : n.digitsHash) != null ? s : e[0],
       r = (a = n == null ? void 0 : n.leadingPlusHash) != null ? a : e[1];
@@ -906,21 +913,21 @@
   }
   var qn = new Set(["input", "select", "textarea"]),
     Dn = 2,
-    sr = 15,
-    ar = 8,
+    ar = 15,
+    dr = 8,
     mn = 256,
-    da = 20,
-    ca = 15,
+    ca = 20,
+    ua = 15,
     Vn = 100,
-    Xo = 4,
-    ua = 12,
-    Te = 5,
-    fa = 30,
-    la = 60,
-    ga = 15,
     Jo = 4,
-    Zo = 'button, input[type="submit"], input[type="image"], [role="button"]',
-    ma = {
+    fa = 12,
+    Te = 5,
+    la = 30,
+    ga = 60,
+    ma = 15,
+    Zo = 4,
+    er = 'button, input[type="submit"], input[type="image"], [role="button"]',
+    pa = {
       email: ["email"],
       phone: ["tel", "tel-national", "tel-local"],
       firstName: ["given-name", "name"],
@@ -931,41 +938,41 @@
       postalCode: ["postal-code"],
     },
     D = ["form", "js", "html"],
-    pa = ["email", "phone", "firstName", "lastName"],
+    ha = ["email", "phone", "firstName", "lastName"],
     ve = st.map(({ kind: e }) => e),
-    ha = new Set(["firstName", "lastName", "country", "city", "region", "postalCode"]),
-    _a = ["email", "phone"],
-    fi = ["email", "phone"],
-    ya = ["email", "phone", "country", "city", "region", "postalCode"],
-    Qe = ["email", "phone"],
-    va = new Map(st.map((e) => [e.kind, e])),
-    ue = new Map(),
-    De,
+    _a = new Set(["firstName", "lastName", "country", "city", "region", "postalCode"]),
+    ya = ["email", "phone"],
+    li = ["email", "phone"],
+    va = ["email", "phone", "country", "city", "region", "postalCode"],
+    Ye = ["email", "phone"],
+    Ea = new Map(st.map((e) => [e.kind, e])),
+    fe = new Map(),
+    Re,
     Ae,
-    ht,
-    _t;
+    _t,
+    yt;
   function zn(e) {
-    let n = va.get(e);
+    let n = Ea.get(e);
     if (!n) throw new Error(`Unsupported automatic matching identity: ${e}`);
     return n;
   }
-  function Le(e) {
+  function Fe(e) {
     let n = {};
     for (let t of ve) n[t] = e(t);
     return n;
   }
-  var gt;
+  var mt;
   function ee(e) {
     return e === "firstName" || e === "lastName";
   }
-  var yt = ["country", "city", "region", "postalCode"];
+  var vt = ["country", "city", "region", "postalCode"];
   function H(e) {
-    return yt.includes(e);
+    return vt.includes(e);
   }
-  function dr(e) {
+  function cr(e) {
     return new Set(e.filter(({ kind: t }) => t === "country").map(({ value: t }) => t)).size > 1;
   }
-  function vt(e) {
+  function Et(e) {
     var i;
     let n = new Map();
     for (let o of e) {
@@ -974,12 +981,12 @@
       (r.push(o), n.set(o.geographyBundle, r));
     }
     let t = new Set();
-    for (let [o, r] of n) dr(r.map(({ kind: s, raw: a }) => ({ kind: s, value: a }))) && t.add(o);
+    for (let [o, r] of n) cr(r.map(({ kind: s, raw: a }) => ({ kind: s, value: a }))) && t.add(o);
     return e.filter(
       (o) => !H(o.kind) || (o.geographyBundle !== void 0 && !t.has(o.geographyBundle)),
     );
   }
-  function Ea(e) {
+  function Sa(e) {
     var i;
     let n = new Map();
     for (let o of e) {
@@ -989,42 +996,42 @@
     }
     let t = new Set();
     for (let [o, r] of n)
-      dr(r.map(({ kind: s, normalized: a }) => ({ kind: s, value: a }))) && t.add(o);
+      cr(r.map(({ kind: s, normalized: a }) => ({ kind: s, value: a }))) && t.add(o);
     return e.filter(
       (o) => !H(o.kind) || (o.geographyBundle !== void 0 && !t.has(o.geographyBundle)),
     );
   }
-  function Ct(e) {
+  function bt(e) {
     return e === "email" || e === "phone" || ee(e);
   }
-  function _i(e, n) {
+  function yi(e, n) {
     var t, i;
-    return Ct(n) && (i = (t = q(e)) == null ? void 0 : t.userHashingPendingCounts[n]) != null
+    return bt(n) && (i = (t = q(e)) == null ? void 0 : t.userHashingPendingCounts[n]) != null
       ? i
       : 0;
   }
-  function cr() {
+  function ur() {
     return { js: [], form: [], html: [] };
   }
-  function ur(e) {
+  function fr(e) {
     var n;
-    return (n = e != null ? e : m.pixelId) != null ? n : ue.keys().next().value;
+    return (n = e != null ? e : m.pixelId) != null ? n : fe.keys().next().value;
   }
   function J(e) {
-    let n = ur(e);
-    return n === void 0 ? void 0 : ue.get(n);
+    let n = fr(e);
+    return n === void 0 ? void 0 : fe.get(n);
   }
-  function Sa(e) {
-    let n = ur(e);
+  function Ca(e) {
+    let n = fr(e);
     if (n === void 0) return;
-    let t = ue.get(n);
+    let t = fe.get(n);
     return (
       t ||
         ((t = {
           pixelId: n,
           active: !1,
-          candidatesBySource: cr(),
-          ignoredFingerprints: Le(() => new Set()),
+          candidatesBySource: ur(),
+          ignoredFingerprints: Fe(() => new Set()),
           ignoredMerchantHashes: {},
           excludedNameOwners: new WeakSet(),
           pendingEvidenceRetries: new Map(),
@@ -1035,23 +1042,23 @@
           retryableMerchantPhoneProbes: new Set(),
           detachedMerchantPhoneProbeTasks: new Map(),
         }),
-        ue.set(n, t)),
+        fe.set(n, t)),
       t
     );
   }
-  function Fe() {
-    for (let e of ue.values()) if (e.active) return !0;
+  function De() {
+    for (let e of fe.values()) if (e.active) return !0;
     return !1;
   }
-  function Xe() {
-    return Fe() ? (U() === !1 ? (G(), !1) : !0) : !1;
+  function Qe() {
+    return De() ? (U() === !1 ? (G(), !1) : !0) : !1;
   }
   function _e(e) {
     return zn(e).maximum;
   }
   function _n(e, n) {
     var r;
-    if (!Ct(n)) return [];
+    if (!bt(n)) return [];
     let t = (r = q(e.pixelId)) == null ? void 0 : r.config.user,
       i = t == null ? void 0 : t[zn(n).field],
       o = n === "phone" ? [i, t == null ? void 0 : t.phone_number_with_plus_sha256] : [i];
@@ -1061,7 +1068,7 @@
     let t = _n(e, n);
     return t.length > 0 ? t.join(":") : void 0;
   }
-  function Je(e, n) {
+  function Xe(e, n) {
     var o;
     if (n !== "phone") return;
     let t = _n(e, n);
@@ -1071,13 +1078,13 @@
       ? void 0
       : i;
   }
-  function Ca(e, n, t, i = e.candidatesBySource[t]) {
+  function ba(e, n, t, i = e.candidatesBySource[t]) {
     let o = D.indexOf(t);
     return D.slice(0, o + 1).some((r) =>
       (r === t ? i : e.candidatesBySource[r]).some((s) => s.task.merchantPhoneProbeSignature === n),
     );
   }
-  function bt(e, n, t, i) {
+  function It(e, n, t, i) {
     for (let o of D)
       for (let r of e.candidatesBySource[o])
         if (
@@ -1088,20 +1095,20 @@
           return r.task;
   }
   function pn(e, n, t, i, o, r = !1) {
-    let s = se(t),
+    let s = ae(t),
       a = D.indexOf(i),
-      d = Ca(e, n, i, o),
+      d = ba(e, n, i, o),
       c = e.merchantPhoneProbeSources.has(s);
     return (
       !d &&
-      (r || lr(e) < Dn) &&
+      (r || gr(e) < Dn) &&
       (c
         ? e.retryableMerchantPhoneProbes.has(s)
         : e.merchantPhoneProbeSources.size < Dn ||
-          [...e.merchantPhoneProbeSources].some(([u, p]) => D.indexOf(p) > a && !fr(e, u)))
+          [...e.merchantPhoneProbeSources].some(([u, p]) => D.indexOf(p) > a && !lr(e, u)))
     );
   }
-  function fr(e, n) {
+  function lr(e, n) {
     let t = e.detachedMerchantPhoneProbeTasks.get(n);
     return (t == null ? void 0 : t.pending) !== void 0
       ? !0
@@ -1109,13 +1116,13 @@
           e.candidatesBySource[i].some(
             (o) =>
               o.task.pending !== void 0 &&
-              se(o.task.fingerprint) === n &&
+              ae(o.task.fingerprint) === n &&
               o.task.merchantPhoneProbeSignature !== void 0 &&
               o.task.merchantPhoneProbeSignature === Q(e, "phone"),
           ),
         );
   }
-  function lr(e) {
+  function gr(e) {
     let n = new Set();
     for (let t of D)
       for (let i of e.candidatesBySource[t])
@@ -1124,7 +1131,7 @@
     return n.size;
   }
   function Fn(e, n, t) {
-    let i = se(n),
+    let i = ae(n),
       o = e.merchantPhoneProbeSources.get(i),
       r = D.indexOf(t);
     if (o !== void 0) {
@@ -1137,21 +1144,21 @@
         a = r;
       for (let [d, c] of e.merchantPhoneProbeSources) {
         let l = D.indexOf(c);
-        l > a && !fr(e, d) && ((s = d), (a = l));
+        l > a && !lr(e, d) && ((s = d), (a = l));
       }
       if (s === void 0) return;
       (e.merchantPhoneProbeSources.delete(s), e.retryableMerchantPhoneProbes.delete(s));
     }
     (e.merchantPhoneProbeSources.set(i, t), e.retryableMerchantPhoneProbes.delete(i));
   }
-  function yi(e, n, t) {
-    let i = se(n),
+  function vi(e, n, t) {
+    let i = ae(n),
       o = e.merchantPhoneProbeSources.get(i);
     o !== void 0 && D.indexOf(t) < D.indexOf(o) && e.merchantPhoneProbeSources.set(i, t);
   }
-  function ba(e, n) {
+  function Ia(e, n) {
     if (n.kind !== "phone") return;
-    let t = se(n.fingerprint);
+    let t = ae(n.fingerprint);
     if (e.merchantPhoneProbeSources.has(t)) {
       for (let i of D)
         if (e.candidatesBySource[i].some((o) => o.task === n)) {
@@ -1160,12 +1167,12 @@
         }
     }
   }
-  function vi(e, n) {
+  function Ei(e, n) {
     let t = n === "phone" ? Q(e, n) : void 0,
       i = e.merchantPhoneSupplement,
       o = n === "phone" && i && i.merchantHashSignature === Q(e, n) ? i.task : void 0,
       r = new Set(),
-      s = _e(n) - (_n(e, n).length > 0 ? 1 : 0) - _i(e.pixelId, n);
+      s = _e(n) - (_n(e, n).length > 0 ? 1 : 0) - yi(e.pixelId, n);
     for (let a of D)
       for (let d of e.candidatesBySource[a])
         d.task.kind === n &&
@@ -1175,7 +1182,7 @@
           (r.add(d.task), (s -= 1));
     return Math.max(0, s);
   }
-  function gr(e) {
+  function mr(e) {
     var t;
     let n = (t = e.getAttribute("autocomplete")) == null ? void 0 : t.trim().toLowerCase();
     return n ? n.split(/\s+/) : [];
@@ -1186,8 +1193,8 @@
     return (
       (i = e[t]) != null && i.startsWith("section-") && e[t] !== "section-" && (t += 1),
       (e[t] === "shipping" || e[t] === "billing") && (t += 1),
-      Wo.has((o = e[t]) != null ? o : "") && (t += 1),
-      ma[n].includes((r = e[t]) != null ? r : "")
+      Yo.has((o = e[t]) != null ? o : "") && (t += 1),
+      pa[n].includes((r = e[t]) != null ? r : "")
         ? ((t += 1), e[t] === "webauthn" && (t += 1), t === e.length)
         : !1
     );
@@ -1200,20 +1207,20 @@
           .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
           .toLowerCase();
   }
-  function Ei(e) {
+  function Si(e) {
     var t, i, o;
     let n = [];
     try {
       let r = e.labels;
       if (r)
-        for (let d = 0; d < r.length && d < Jo; d += 1) {
+        for (let d = 0; d < r.length && d < Zo; d += 1) {
           let c = (t = r[d]) == null ? void 0 : t.textContent;
           typeof c == "string" && n.push(c);
         }
       let s = e.getAttribute("aria-labelledby"),
         a = (i = e.ownerDocument) != null ? i : typeof document == "undefined" ? void 0 : document;
       if (s && typeof (a == null ? void 0 : a.getElementById) == "function") {
-        let d = s.trim().split(/\s+/).slice(0, Jo);
+        let d = s.trim().split(/\s+/).slice(0, Zo);
         for (let c of d) {
           let l = (o = a.getElementById(c)) == null ? void 0 : o.textContent;
           typeof l == "string" && n.push(l);
@@ -1224,8 +1231,8 @@
     }
     return n;
   }
-  function Ia(e, n) {
-    let t = Ei(e);
+  function Ma(e, n) {
+    let t = Si(e);
     if (!t) return;
     let i = [
       e.name || e.getAttribute("name"),
@@ -1247,14 +1254,14 @@
     var t;
     try {
       let i = e.type.toLowerCase(),
-        o = Ia(e, i),
+        o = Ma(e, i),
         r = n && o !== void 0 ? e.value : void 0;
       return {
         input: e,
         tagName: e.tagName.toLowerCase(),
         type: i,
         value: r,
-        autocomplete: gr(e),
+        autocomplete: mr(e),
         hints: o,
         inputMode: (t = e.getAttribute("inputmode")) == null ? void 0 : t.trim().toLowerCase(),
       };
@@ -1262,80 +1269,80 @@
       return;
     }
   }
-  function It(e) {
+  function Mt(e) {
     let { autocomplete: n, hints: t } = e;
-    return t !== void 0 && !n.some((i) => ci.has(i)) && !t.some((i) => Pe.test(i));
+    return t !== void 0 && !n.some((i) => ui.has(i)) && !t.some((i) => Pe.test(i));
   }
-  function mr(e) {
-    return e.split(Vo).filter(Boolean);
+  function pr(e) {
+    return e.split(zo).filter(Boolean);
   }
   function Rn(e, n) {
-    let i = mr(e).join("");
-    return si[n].includes(i);
+    let i = pr(e).join("");
+    return ai[n].includes(i);
   }
-  function Et(e, n) {
-    let t = mr(e);
+  function St(e, n) {
+    let t = pr(e);
     if (t.length < 2 || (t[0] !== "billing" && t[0] !== "shipping")) return !1;
     let i = t.slice(1).join("");
-    return i === "name" || si[n].includes(i);
+    return i === "name" || ai[n].includes(i);
   }
-  function Si(e) {
+  function Ci(e) {
     return (
-      !hn(e) && (Rn(e, "firstName") || Rn(e, "lastName") || Et(e, "firstName") || Et(e, "lastName"))
+      !hn(e) && (Rn(e, "firstName") || Rn(e, "lastName") || St(e, "firstName") || St(e, "lastName"))
     );
   }
   function hn(e) {
-    return zo.test(e.trim());
+    return Ko.test(e.trim());
   }
-  function pr(e) {
-    return e !== void 0 && e.some(hn) && !e.some(Si);
+  function hr(e) {
+    return e !== void 0 && e.some(hn) && !e.some(Ci);
   }
   function Hn(e) {
     var t, i;
     return (
       (ye(e.autocomplete, "firstName") && ye(e.autocomplete, "lastName")) ||
-      pr(e.hints) ||
+      hr(e.hints) ||
       (e.input.form != null &&
         !!((t = e.hints) != null && t.includes("name")) &&
-        !((i = e.hints) != null && i.some(Si)))
+        !((i = e.hints) != null && i.some(Ci)))
     );
   }
-  function hr(e) {
-    return qo.test(e.trim());
-  }
   function _r(e) {
-    return e.slice(0, 2).some((n) => ct.test(n));
+    return Vo.test(e.trim());
+  }
+  function yr(e) {
+    return e.slice(0, 2).some((n) => ut.test(n));
   }
   function Kn(e, n) {
-    if (H(n) && ct.test(e)) return !1;
+    if (H(n) && ut.test(e)) return !1;
     switch (n) {
       case "email":
-        return ii.test(e);
-      case "phone":
         return oi.test(e);
+      case "phone":
+        return ri.test(e);
       case "firstName":
         return hn(e) || (Rn(e, "firstName") && !Rn(e, "lastName"));
       case "lastName":
         return Rn(e, "lastName") || hn(e);
       case "country":
-        return xo.test(e);
-      case "city":
         return Uo.test(e);
-      case "region":
+      case "city":
         return Bo.test(e);
+      case "region":
+        return qo.test(e);
       case "postalCode":
-        return ri.test(e);
+        return si.test(e);
     }
   }
-  function Mt(e, n, t = !1) {
+  function Pt(e, n, t = !1) {
     if (typeof e != "string") return;
     if (!t || !ee(n)) return e;
     let i = e.trim().split(/\s+/);
     return n === "firstName" ? i[0] : i.slice(1).join(" ") || void 0;
   }
-  function Ma(e) {
+  function Pa(e) {
     let { tagName: n, type: t, autocomplete: i } = e;
-    if (!qn.has(n) || !It(e) || (n === "input" && t !== "email" && t !== "text" && t !== "hidden"))
+    if (!qn.has(n) || !Mt(e) || (n === "input" && t !== "email" && t !== "text" && t !== "hidden"))
       return !1;
     let { hints: o } = e;
     return t === "hidden" && o.some((s) => pe.test(s))
@@ -1350,32 +1357,32 @@
             (i.length === 1 && i[0] !== "on" && i[0] !== "off")
           );
   }
-  function Pa(e) {
+  function ka(e) {
     var s;
     let { tagName: n, type: t, autocomplete: i, inputMode: o } = e,
-      r = ye(i, "postalCode") || !!((s = e.hints) != null && s.some((a) => ri.test(a)));
+      r = ye(i, "postalCode") || !!((s = e.hints) != null && s.some((a) => si.test(a)));
     return !qn.has(n) ||
       (n === "input" && t !== "tel" && t !== "text" && t !== "hidden") ||
-      !It(e) ||
+      !Mt(e) ||
       e.hints.some((a) => pe.test(a)) ||
       r
       ? !1
-      : t === "tel" || ye(i, "phone") || o === "tel" || e.hints.some((a) => oi.test(a));
+      : t === "tel" || ye(i, "phone") || o === "tel" || e.hints.some((a) => ri.test(a));
   }
-  function er(e, n) {
+  function nr(e, n) {
     let { tagName: t, type: i, autocomplete: o } = e;
     return e.input.form == null ||
       !qn.has(t) ||
       (t === "input" && i !== "text" && i !== "hidden") ||
-      !It(e) ||
+      !Mt(e) ||
       o.some((r) => r.startsWith("cc-")) ||
-      e.hints.some((r) => pe.test(r) || ut.test(r))
+      e.hints.some((r) => pe.test(r) || ft.test(r))
       ? !1
-      : ye(o, n) || e.hints.includes("name") || e.hints.some((r) => Kn(r, n) || Et(r, n));
+      : ye(o, n) || e.hints.includes("name") || e.hints.some((r) => Kn(r, n) || St(r, n));
   }
-  function lt(e, n) {
+  function gt(e, n) {
     var r;
-    if (e.autocomplete.includes("street-address") || ((r = e.hints) != null && r.some(hr)))
+    if (e.autocomplete.includes("street-address") || ((r = e.hints) != null && r.some(_r)))
       return !1;
     let { tagName: t, type: i, autocomplete: o } = e;
     return (
@@ -1385,34 +1392,34 @@
         i === "hidden" ||
         i === "tel" ||
         (n === "postalCode" && i === "number")) &&
-      It(e) &&
+      Mt(e) &&
       !e.hints.some((s) => pe.test(s)) &&
-      (ye(o, n) || (!_r(e.hints) && e.hints.some((s) => Kn(s, n))))
+      (ye(o, n) || (!yr(e.hints) && e.hints.some((s) => Kn(s, n))))
     );
   }
-  var Ci = {
-    email: Ma,
-    phone: Pa,
-    firstName: (e) => er(e, "firstName"),
-    lastName: (e) => er(e, "lastName"),
-    country: (e) => lt(e, "country"),
-    city: (e) => lt(e, "city"),
-    region: (e) => lt(e, "region"),
-    postalCode: (e) => lt(e, "postalCode"),
+  var bi = {
+    email: Pa,
+    phone: ka,
+    firstName: (e) => nr(e, "firstName"),
+    lastName: (e) => nr(e, "lastName"),
+    country: (e) => gt(e, "country"),
+    city: (e) => gt(e, "city"),
+    region: (e) => gt(e, "region"),
+    postalCode: (e) => gt(e, "postalCode"),
   };
-  function ka(e) {
+  function Aa(e) {
     return ve.filter((n) => ye(e.autocomplete, n));
   }
-  function Aa(e, n) {
+  function Ta(e, n) {
     return n.length === 2 && n.includes("firstName") && n.includes("lastName") && Hn(e);
   }
   function jn(e) {
-    let n = ve.filter((r) => Ci[r](e)),
+    let n = ve.filter((r) => bi[r](e)),
       t = new Set(n),
-      i = ka(e);
+      i = Aa(e);
     if (i.length > 0) return i.filter((r) => t.has(r));
-    let o = n.filter((r) => ha.has(r));
-    return o.length > 1 && !Aa(e, o) ? [] : n;
+    let o = n.filter((r) => _a.has(r));
+    return o.length > 1 && !Ta(e, o) ? [] : n;
   }
   function Gn(e) {
     let { type: n, autocomplete: t, hints: i, inputMode: o } = e;
@@ -1421,17 +1428,17 @@
       ye(t, "email") ||
       o === "email" ||
       t.includes("username") ||
-      !!(i != null && i.some((r) => ii.test(r)))
+      !!(i != null && i.some((r) => oi.test(r)))
     );
   }
   function xn(e) {
     var n;
     return !!((n = e.hints) != null && n.some((t) => Nn.test(t)));
   }
-  function li(e, n) {
-    return Ci[n](e) && !xn(e) && (n !== "email" || Gn(e));
+  function gi(e, n) {
+    return bi[n](e) && !xn(e) && (n !== "email" || Gn(e));
   }
-  function yr(e, n = "") {
+  function vr(e, n = "") {
     let t = e;
     return [
       B(n),
@@ -1440,29 +1447,29 @@
       B(typeof t.getAttribute == "function" ? t.getAttribute("aria-label") : void 0),
     ];
   }
-  function bi(e, n = "") {
-    return yr(e, n).some((t) => Pe.test(t));
+  function Ii(e, n = "") {
+    return vr(e, n).some((t) => Pe.test(t));
   }
-  function Ta(e, n = "") {
-    return yr(e, n).some((t) => ut.test(t));
+  function wa(e, n = "") {
+    return vr(e, n).some((t) => ft.test(t));
   }
-  function vr(e, n, t) {
+  function Er(e, n, t) {
     return (
-      (t.inferredNameExclusion || Ta(n, t.intent)) && e.excludedNameOwners.add(n),
+      (t.inferredNameExclusion || wa(n, t.intent)) && e.excludedNameOwners.add(n),
       e.excludedNameOwners.has(n)
     );
   }
-  function Er(e, n) {
+  function Sr(e, n) {
     var t;
     return (
       (ye(e.autocomplete, n) && e.autocomplete.some((i) => i === "billing" || i === "shipping")) ||
-      !!((t = e.hints) != null && t.some((i) => Et(i, n)))
+      !!((t = e.hints) != null && t.some((i) => St(i, n)))
     );
   }
-  function wa(e) {
+  function Na(e) {
     return xn(e) ? 0 : Gn(e) ? 2 : 1;
   }
-  function Sr(e) {
+  function Cr(e) {
     return ye(e.autocomplete, "city") && e.autocomplete.includes("address-level2");
   }
   function ln(e) {
@@ -1482,18 +1489,18 @@
     let t = Object.getOwnPropertyDescriptor(e, n);
     return t && "value" in t ? t.value : void 0;
   }
-  function Cr(e, n, t, i) {
+  function br(e, n, t, i) {
     if (typeof e != "string") return;
     let o = zn(t).normalize(e);
     return o
       ? Object.assign({ source: n, kind: t, raw: o }, H(t) && i ? { geographyBundle: i } : {})
       : void 0;
   }
-  function br(e, n, t, i, o) {
-    let r = Cr(n, t, i, o);
+  function Ir(e, n, t, i, o) {
+    let r = br(n, t, i, o);
     r && e.push(r);
   }
-  function gn(e, n = _a, t) {
+  function gn(e, n = ya, t) {
     let i = Y(e, "event");
     if (i !== void 0 && (typeof i != "string" || i.length === 0 || i.length > mn)) return [];
     let o = [],
@@ -1508,15 +1515,15 @@
       try {
         u = Object.getOwnPropertyNames(c);
         let f = Y(c, "role");
-        if (typeof f == "string" && (Pe.test(B(f)) || ai.test(B(f)))) continue;
+        if (typeof f == "string" && (Pe.test(B(f)) || di.test(B(f)))) continue;
       } catch (f) {
         continue;
       }
-      let p = u.some((f) => Si(B(f)));
+      let p = u.some((f) => Ci(B(f)));
       for (let f of u) {
-        if (a-- === 0) return vt(o);
+        if (a-- === 0) return Et(o);
         let y = B(f);
-        if (f === "event" || pe.test(y) || Pe.test(y) || ai.test(y)) continue;
+        if (f === "event" || pe.test(y) || Pe.test(y) || di.test(y)) continue;
         let g;
         try {
           g = Y(c, f);
@@ -1527,48 +1534,48 @@
         if (_.length > 0) {
           let E = hn(y);
           if (E && p) continue;
-          for (let M of _) br(o, Mt(g, M, E), "js", M, t != null ? t : c);
+          for (let M of _) Ir(o, Pt(g, M, E), "js", M, t != null ? t : c);
         } else
-          g && typeof g == "object" && r.push({ value: g, suppressGeography: l || ct.test(y) });
+          g && typeof g == "object" && r.push({ value: g, suppressGeography: l || ut.test(y) });
       }
     }
-    return vt(o);
+    return Et(o);
   }
-  function Na(e) {
+  function Oa(e) {
     if (!Array.isArray(e)) return [];
     let n = Math.max(0, e.length - Vn),
       t = [];
     for (let i = e.length - 1; i >= n; i -= 1) t.push(...gn(e[i]));
-    return vt(t);
+    return Et(t);
   }
-  function Oa(e) {
+  function Ra(e) {
     if (!Array.isArray(e)) return [];
     let n = [],
       t = Math.max(0, e.length - Vn);
     for (let i = e.length - 1; i >= t; i -= 1) {
       let o = e[i];
-      Array.isArray(o) && o[0] === "identify" && n.push(...gn(o[1], fi));
+      Array.isArray(o) && o[0] === "identify" && n.push(...gn(o[1], li));
     }
     return n;
   }
-  function nr(e, n) {
+  function tr(e, n) {
     if (typeof n != "function") return;
     let t = n.call(e),
       i = Y(t, "traits");
     return typeof i == "function" ? i.call(t) : i;
   }
-  function Ra() {
+  function Da() {
     let e = [];
     try {
       let r = Y(window, "Shopify"),
         s = Y(r, "checkout");
-      e.push(...gn(s, fi));
+      e.push(...gn(s, li));
     } catch (r) {}
     let n = new WeakSet();
     for (let r of ["klaviyo", "_learnq", "_klOnsite"])
       try {
         let s = Y(window, r);
-        s && typeof s == "object" && !n.has(s) && (n.add(s), e.push(...Oa(s)));
+        s && typeof s == "object" && !n.has(s) && (n.add(s), e.push(...Ra(s)));
       } catch (s) {}
     let t = new WeakSet();
     try {
@@ -1577,7 +1584,7 @@
       r &&
         typeof r == "object" &&
         typeof s == "function" &&
-        (e.push(...gn(nr(r, s), fi)), t.add(r));
+        (e.push(...gn(tr(r, s), li)), t.add(r));
     } catch (r) {}
     let i = Object.getOwnPropertyNames(window),
       o = Math.max(0, i.length - Vn);
@@ -1600,25 +1607,25 @@
         else {
           let c = Y(s, "user");
           if (typeof c != "function") continue;
-          d = nr(s, c);
+          d = tr(s, c);
         }
         e.push(...gn(d));
       } catch (s) {}
-    return vt(e);
+    return Et(e);
   }
-  function Da() {
+  function Fa() {
     if (typeof window == "undefined") return [];
     let e = [],
       n = window.dataLayer;
     Array.isArray(n) && e.push(n);
     let t = Y(window, "adobeDataLayer");
     if (
-      (Array.isArray(t) && !e.includes(t) && e.length < Xo && e.push(t),
+      (Array.isArray(t) && !e.includes(t) && e.length < Jo && e.push(t),
       typeof document == "undefined" || typeof document.getElementsByTagName != "function")
     )
       return e;
     let i = document.getElementsByTagName("script");
-    for (let o = 0; o < i.length && o < ua && e.length < Xo; o += 1) {
+    for (let o = 0; o < i.length && o < fa && e.length < Jo; o += 1) {
       let r = i[o],
         s = r == null ? void 0 : r.getAttribute("src");
       if (!s) continue;
@@ -1635,7 +1642,7 @@
       )
         continue;
       let d = a.searchParams.get("l");
-      if (!d || d === "dataLayer" || !Ko.test(d)) continue;
+      if (!d || d === "dataLayer" || !jo.test(d)) continue;
       let c = Y(window, d);
       Array.isArray(c) && !e.includes(c) && e.push(c);
     }
@@ -1646,7 +1653,7 @@
     let i = ((r = e.tagName) == null ? void 0 : r.toLowerCase()) === "form" || !!e.form;
     if (!i && (s = e.closest) != null && s.call(e, 'footer, [role="contentinfo"]')) return !0;
     let o = e;
-    for (let c = 0; o && c < ar; c += 1) {
+    for (let c = 0; o && c < dr; c += 1) {
       if (c > 0 && o === t) return !1;
       if (
         ((((a = o.tagName) == null ? void 0 : a.toLowerCase()) === "footer" ||
@@ -1665,7 +1672,7 @@
     }
     return !1;
   }
-  function Fa(e) {
+  function La(e) {
     var r, s, a, d, c, l, u, p;
     let n = (s = (r = e.tagName) == null ? void 0 : r.toLowerCase()) != null ? s : "",
       t =
@@ -1674,7 +1681,7 @@
       i = e;
     if (t) {
       let f = e.textContent;
-      if (typeof f != "string" || f.length > mn || !ft.test(B(f))) return;
+      if (typeof f != "string" || f.length > mn || !lt.test(B(f))) return;
       i =
         (l =
           (c =
@@ -1690,19 +1697,19 @@
     if (!t && o) {
       let f =
           [i.id, i.getAttribute("class"), i.getAttribute("aria-label")].some((g) =>
-            ft.test(B(g)),
+            lt.test(B(g)),
           ) ||
           i.getAttribute("data-account") !== null ||
           i.getAttribute("data-profile") !== null,
         y =
-          (p = (u = Ei(i)) == null ? void 0 : u.filter((g) => g.length <= mn).map(B)) != null
+          (p = (u = Si(i)) == null ? void 0 : u.filter((g) => g.length <= mn).map(B)) != null
             ? p
             : [];
-      if (y.some((g) => Pe.test(g) || On.test(g)) || (!f && !y.some((g) => ft.test(g)))) return;
+      if (y.some((g) => Pe.test(g) || On.test(g)) || (!f && !y.some((g) => lt.test(g)))) return;
     }
     return typeof i.querySelectorAll == "function" && !Un(i) ? i : void 0;
   }
-  function La(e, n) {
+  function Ha(e, n) {
     var c, l, u, p;
     let t = n.get(e);
     if (t) return t;
@@ -1725,7 +1732,7 @@
           ? void 0
           : u.trim(),
       s = r && !/[\s()[\]{}?:,+*/|&=!<>]/.test(r) ? r : void 0,
-      a = gr(e),
+      a = mr(e),
       d = {
         hints: [
           e.id,
@@ -1733,39 +1740,39 @@
           e.getAttribute("class"),
           e.getAttribute("aria-label"),
           e.getAttribute("itemprop"),
-          ...((p = Ei(e)) != null ? p : []),
+          ...((p = Si(e)) != null ? p : []),
           s,
         ].map(B),
-        hasSensitiveAutocomplete: a.some((f) => ci.has(f)),
+        hasSensitiveAutocomplete: a.some((f) => ui.has(f)),
       };
     return (n.set(e, d), d);
   }
-  function tr(e, n, t, i, o, r, s = !1, a, d = ve) {
+  function ir(e, n, t, i, o, r, s = !1, a, d = ve) {
     let c = d.filter((_) => t[_] < Te && !i[_].has(n));
     if (c.length === 0) return;
-    let l = La(n, o);
+    let l = Ha(n, o);
     if (l.hasSensitiveAutocomplete || Un(n, !0, r)) return;
     let u = a === void 0 ? l.hints : [...l.hints, B(a)];
     if (u.some((_) => Pe.test(_) || On.test(_) || pe.test(_) || Nn.test(_))) return;
-    let p = !_r(u) && !u.some(hr),
+    let p = !yr(u) && !u.some(_r),
       f = c.filter((_) => (!H(_) || p) && u.some((E) => Kn(E, _)));
     if (f.length === 0) return;
     let y = n.textContent,
-      g = s || pr(u);
-    for (let _ of f) (i[_].add(n), (t[_] += 1), br(e, Mt(y, _, g), "html", _));
+      g = s || hr(u);
+    for (let _ of f) (i[_].add(n), (t[_] += 1), Ir(e, Pt(y, _, g), "html", _));
   }
-  function Ha(e, n, t, i, o, r, s) {
+  function xa(e, n, t, i, o, r, s) {
     var u;
     let a = (p, f) => {
-      r.has(p) || (tr(n, p, t, i, o, f, !1, void 0, Qe), r.add(p));
+      r.has(p) || (ir(n, p, t, i, o, f, !1, void 0, Ye), r.add(p));
     };
-    typeof e.matches == "function" && e.matches(di) && a(e);
-    let d = e.querySelectorAll(di);
-    for (let p = 0; p < d.length && Qe.some((f) => t[f] < Te); p += 1) a(d[p], e);
-    if (s === 0 || !Qe.some((p) => t[p] < Te)) return s;
-    let c = e.querySelectorAll($o),
+    typeof e.matches == "function" && e.matches(ci) && a(e);
+    let d = e.querySelectorAll(ci);
+    for (let p = 0; p < d.length && Ye.some((f) => t[f] < Te); p += 1) a(d[p], e);
+    if (s === 0 || !Ye.some((p) => t[p] < Te)) return s;
+    let c = e.querySelectorAll(Wo),
       l = 0;
-    for (let p = 0; p < c.length && s > 0 && l < ga && Qe.some((f) => t[f] < Te); p += 1) {
+    for (let p = 0; p < c.length && s > 0 && l < ma && Ye.some((f) => t[f] < Te); p += 1) {
       s -= 1;
       let f = c[p];
       if (Un(f, !0, e)) continue;
@@ -1773,20 +1780,20 @@
       if (typeof y != "string" || y.length > mn) continue;
       let g = B(y);
       if (Pe.test(g) || On.test(g) || pe.test(g) || Nn.test(g)) continue;
-      let _ = Qe.filter((S) => t[S] < Te && Kn(g, S)),
+      let _ = Ye.filter((S) => t[S] < Te && Kn(g, S)),
         E = f.parentElement,
         M = (u = f.nextElementSibling) != null ? u : E && E !== e ? E.nextElementSibling : null;
-      _.length === 0 || !M || ((l += 1), tr(n, M, t, i, o, e, hn(g), g, _));
+      _.length === 0 || !M || ((l += 1), ir(n, M, t, i, o, e, hn(g), g, _));
     }
     return s;
   }
-  function xa(e) {
+  function Ua(e) {
     var r, s, a;
     if (typeof document == "undefined" || typeof document.querySelectorAll != "function") return [];
     let n = [],
       t = [],
       i = !1,
-      o = Le(() => 0);
+      o = Fe(() => 0);
     try {
       let d = document.querySelectorAll("input, select, textarea"),
         c = new Map(),
@@ -1796,8 +1803,8 @@
         if (!M || typeof M.tagName != "string" || typeof M.type != "string") continue;
         let S = `${M.tagName.toLowerCase()}:${M.type.toLowerCase()}`,
           P = (r = c.get(S)) != null ? r : 0;
-        if (P >= sr || (M.form && e.has(M.form))) continue;
-        let T = He(M);
+        if (P >= ar || (M.form && e.has(M.form))) continue;
+        let T = Le(M);
         if (!T) continue;
         let h = (s = T.form) != null ? s : void 0;
         if (h) {
@@ -1806,56 +1813,56 @@
         }
         let v = h ? Bn(h) : {},
           b = (a = v.intent) != null ? a : "";
-        if (bi(h != null ? h : T, b) || Un(T, !1, h)) continue;
+        if (Ii(h != null ? h : T, b) || Un(T, !1, h)) continue;
         c.set(S, P + 1);
         let F = Ln(T, !1);
         if (!F) continue;
         let z = jn(F);
         if (h) {
-          z.some((N) => li(F, N)) && e.set(h, v);
+          z.some((N) => gi(F, N)) && e.set(h, v);
           continue;
         }
         let I,
           C = !1,
           A = Hn(F),
-          L = z.filter((N) => ya.includes(N));
+          L = z.filter((N) => va.includes(N));
         for (let N of L) {
-          if (o[N] >= Te || !li(F, N)) continue;
+          if (o[N] >= Te || !gi(F, N)) continue;
           C || ((I = T.value), (C = !0));
-          let O = Cr(Mt(I, N, A), "html", N, T);
+          let O = br(Pt(I, N, A), "html", N, T);
           O &&
-            (!i && N === "city" && Sr(F) ? (n.unshift(O), (i = !0)) : (A ? t : n).push(O),
+            (!i && N === "city" && Cr(F) ? (n.unshift(O), (i = !0)) : (A ? t : n).push(O),
             (o[N] += 1));
         }
       }
       let u = new Set(),
-        p = Le(() => new Set()),
+        p = Fe(() => new Set()),
         f = new WeakMap(),
         y = new Set(),
-        g = fa,
-        _ = la;
-      for (let E of [jo, Go]) {
-        if (g === 0 || !Qe.some((S) => o[S] < Te)) break;
+        g = la,
+        _ = ga;
+      for (let E of [Go, $o]) {
+        if (g === 0 || !Ye.some((S) => o[S] < Te)) break;
         let M = document.querySelectorAll(E);
-        for (let S = 0; S < M.length && g > 0 && Qe.some((P) => o[P] < Te); S += 1) {
+        for (let S = 0; S < M.length && g > 0 && Ye.some((P) => o[P] < Te); S += 1) {
           g -= 1;
-          let P = Fa(M[S]);
-          !P || u.has(P) || (u.add(P), (_ = Ha(P, n, o, p, f, y, _)));
+          let P = La(M[S]);
+          !P || u.has(P) || (u.add(P), (_ = xa(P, n, o, p, f, y, _)));
         }
       }
     } catch (d) {}
     return (n.some(({ kind: d }) => ee(d)) || n.push(...t), n);
   }
-  function Ua(e) {
-    if (!Fe() || typeof window == "undefined") return [];
+  function Ba(e) {
+    if (!De() || typeof window == "undefined") return [];
     let n = [];
-    for (let t of Da()) (t === Ae && t === ht) || (n.push(...Na(t)), t === Ae && (ht = t));
-    return (n.push(...Ra()), n.push(...xa(e)), n);
+    for (let t of Fa()) (t === Ae && t === _t) || (n.push(...Oa(t)), t === Ae && (_t = t));
+    return (n.push(...Da()), n.push(...Ua(e)), n);
   }
-  function se(e) {
+  function ae(e) {
     return `${e.primary}:${e.secondary}:${e.length}`;
   }
-  function Ii(e, n) {
+  function Mi(e, n) {
     let t = Q(e, n);
     if (e.ignoredMerchantHashes[n] !== t) {
       if ((e.ignoredFingerprints[n].clear(), (e.ignoredMerchantHashes[n] = t), n === "phone")) {
@@ -1875,9 +1882,9 @@
     (e.formInputs.size === 0 && e.sources.delete("form"),
       (e.source = D.find((n) => e.sources.has(n))));
   }
-  function Mi(e, n, t, i, o) {
+  function Pi(e, n, t, i, o) {
     let r = e.merchantPhoneSupplement;
-    if (!(n !== "phone" || !r || r.merchantHashSignature !== Q(e, n) || r.fingerprint !== se(t))) {
+    if (!(n !== "phone" || !r || r.merchantHashSignature !== Q(e, n) || r.fingerprint !== ae(t))) {
       if (i === "form") {
         if (!o) return;
         r.formInputs.add(o);
@@ -1885,7 +1892,7 @@
       return (r.sources.add(i), $n(r), r);
     }
   }
-  function Pi(e, n, t, i, o = !1) {
+  function ki(e, n, t, i, o = !1) {
     var a;
     let r = e.find((d) => d.task === n.task);
     if (r) {
@@ -1899,16 +1906,16 @@
       t === "form" ? { task: n.task, inputs: new Set(i ? [i] : n.formInputs) } : { task: n.task };
     o ? e.unshift(s) : e.push(s);
   }
-  function oe(e, n, t) {
+  function re(e, n, t) {
     let i = e.candidatesBySource[n];
     e.candidatesBySource[n] = t;
     let o = new Set(i.filter((s) => !t.includes(s)).map((s) => s.task)),
       r = new Set();
     for (let s of o)
       D.some((d) => e.candidatesBySource[d].some((c) => c.task === s))
-        ? ba(e, s)
-        : (s.kind === "phone" && s.pending !== void 0 && Je(e, "phone") !== void 0
-            ? e.detachedMerchantPhoneProbeTasks.set(se(s.fingerprint), s)
+        ? Ia(e, s)
+        : (s.kind === "phone" && s.pending !== void 0 && Xe(e, "phone") !== void 0
+            ? e.detachedMerchantPhoneProbeTasks.set(ae(s.fingerprint), s)
             : (s.pending = void 0),
           r.add(s.kind));
     r.size > 0 &&
@@ -1916,7 +1923,7 @@
         e.active && J(e.pixelId) === e && ke(e, r);
       });
   }
-  function mt(e, n) {
+  function pt(e, n) {
     n.source ||
       ((n.task.merchantPhoneProbeSignature = void 0),
       e.ignoredFingerprints.phone.delete(n.fingerprint),
@@ -1924,7 +1931,7 @@
       e.retryableMerchantPhoneProbes.delete(n.fingerprint),
       (e.merchantPhoneSupplement = void 0));
   }
-  function Ba(e, n) {
+  function qa(e, n) {
     var r, s;
     let t = e.merchantPhoneSupplement;
     if (!t || !t.formInputs.delete(n)) return;
@@ -1932,19 +1939,19 @@
       o = i.find((a) => a.task === t.task);
     ((r = o == null ? void 0 : o.inputs) == null || r.delete(n),
       ((s = o == null ? void 0 : o.inputs) == null ? void 0 : s.size) === 0 &&
-        oe(
+        re(
           e,
           "form",
           i.filter((a) => a !== o),
         ),
       $n(t),
-      mt(e, t));
+      pt(e, t));
   }
-  function qa(e) {
+  function Va(e) {
     let n = e.merchantPhoneSupplement;
     !n || n.formInputs.size === 0 || (n.formInputs.clear(), $n(n));
   }
-  function re(e) {
+  function se(e) {
     var n, t, i, o;
     for (let r of ve) {
       let s = new Set();
@@ -1952,7 +1959,7 @@
       let a = _n(e, r),
         d = new Set(a),
         c = Q(e, r),
-        l = Ii(e, r),
+        l = Mi(e, r),
         u = new Set(a),
         p = e.merchantPhoneSupplement;
       r === "phone" &&
@@ -1963,7 +1970,7 @@
       let f = new Set(),
         y = new Set(),
         g = 0,
-        _ = _i(e.pixelId, r),
+        _ = yi(e.pixelId, r),
         E = Math.max(0, _e(r) - (a.length > 0 ? 1 : 0) - _);
       for (let S of D) {
         let P = e.candidatesBySource[S];
@@ -1990,7 +1997,7 @@
             continue;
           }
           let v = (n = h.task.wireValues) != null ? n : [],
-            b = se(h.task.fingerprint);
+            b = ae(h.task.fingerprint);
           h.task.merchantPhoneProbeSignature !== void 0 &&
             (r !== "phone" ||
               h.task.merchantPhoneProbeSignature !== c ||
@@ -2029,7 +2036,7 @@
                   D.indexOf(S) < D.indexOf(O.source)
                 ) {
                   let K = new Set();
-                  if (S === "form") for (let de of (o = h.inputs) != null ? o : []) K.add(de);
+                  if (S === "form") for (let ce of (o = h.inputs) != null ? o : []) K.add(ce);
                   e.merchantPhoneSupplement = {
                     fingerprint: b,
                     formInputs: K,
@@ -2078,7 +2085,7 @@
             E === 0 &&
             h.task.pending !== void 0 &&
             h.task.merchantPhoneProbeSignature === void 0
-              ? Je(e, r)
+              ? Xe(e, r)
               : void 0;
           if (z !== void 0 && pn(e, z, h.task.fingerprint, S, T, !0)) {
             ((h.task.merchantPhoneProbeSignature = z),
@@ -2100,7 +2107,7 @@
             (h.task.pending !== void 0 && (g += 1), (E -= 1));
           }
         }
-        oe(e, S, T);
+        re(e, S, T);
       }
       let M = new Set();
       for (let S of D) for (let P of e.candidatesBySource[S]) P.task.kind === r && M.add(P.task);
@@ -2110,36 +2117,36 @@
           (S.pending = void 0);
     }
   }
-  function ki(e, n, t, i, o = !1) {
+  function Ai(e, n, t, i, o = !1) {
     let r = D.indexOf(n);
     for (let a = 0; a < D.length; a += 1) {
       let d = D[a];
       if (e.candidatesBySource[d].find((l) => l.task.kind === t && he(l.task.fingerprint, i)))
         return a >= r;
     }
-    let s = Je(e, t);
-    return s && lr(e) >= Dn
+    let s = Xe(e, t);
+    return s && gr(e) >= Dn
       ? !1
-      : vi(e, t) > 0 ||
-          (s && (bt(e, s, t, i) !== void 0 || pn(e, s, i, n))) ||
+      : Ei(e, t) > 0 ||
+          (s && (It(e, s, t, i) !== void 0 || pn(e, s, i, n))) ||
           (o && e.candidatesBySource[n].some((a) => a.task.kind === t))
         ? !0
         : D.slice(r + 1).some((a) => e.candidatesBySource[a].some((d) => d.task.kind === t));
   }
-  function ir(e, n) {
+  function or(e, n) {
     for (let t of D) {
       let i = e.candidatesBySource[t],
         o = i.filter((r) => r.task !== n);
-      o.length !== i.length && oe(e, t, o);
+      o.length !== i.length && re(e, t, o);
     }
-    e.active && re(e);
+    e.active && se(e);
   }
-  function Pt(e, n, t) {
+  function kt(e, n, t) {
     for (let i of D)
       for (let o of e.candidatesBySource[i])
         if (o.task.kind === n && he(o.task.fingerprint, t)) return o.task;
     if (n === "phone") {
-      let i = se(t),
+      let i = ae(t),
         o = e.detachedMerchantPhoneProbeTasks.get(i);
       if (o) return (e.detachedMerchantPhoneProbeTasks.delete(i), o);
     }
@@ -2149,12 +2156,12 @@
     for (let [i, o] of e.pendingEvidenceRetries) o.evidence.some((r) => n.has(r.kind)) && t.add(i);
     for (let [i, o] of e.pendingFormRetries)
       Array.from(o.values()).some((r) => Array.from(r.kinds).some((s) => n.has(s))) && t.add(i);
-    re(e);
-    for (let i of t) (gi(e, i), pi(e, i));
+    se(e);
+    for (let i of t) (mi(e, i), hi(e, i));
   }
-  function Ir(e, n, t, i) {
-    let o = Ii(e, n),
-      r = se(i);
+  function Mr(e, n, t, i) {
+    let o = Mi(e, n),
+      r = ae(i);
     if (o.has(r)) return;
     if (H(n)) return { kind: n, fingerprint: i, wireValues: [t] };
     let s = zn(n).field,
@@ -2207,7 +2214,7 @@
                 (E && e.retryableMerchantPhoneProbes.add(r), ke(e, new Set([n])));
                 return;
               }
-              (o.add(r), ir(e, a), ke(e, new Set([n])));
+              (o.add(r), or(e, a), ke(e, new Set([n])));
               return;
             }
             if (
@@ -2243,14 +2250,14 @@
                 ke(e, new Set([n]));
                 return;
               }
-              (o.add(r), ir(e, a), ke(e, new Set([n])));
+              (o.add(r), or(e, a), ke(e, new Set([n])));
             }
           },
         ),
         a
       );
   }
-  function Mr(e, n, t = []) {
+  function Pr(e, n, t = []) {
     var r;
     let i = new Set();
     for (let s of t) s.task.kind === n && s.task.pending !== void 0 && i.add(s.task.pending);
@@ -2261,14 +2268,14 @@
       for (let s of e.detachedMerchantPhoneProbeTasks.values())
         s.pending !== void 0 && i.add(s.pending);
     let o = q(e.pixelId);
-    if (Ct(n) && o != null && o.userHashingPendingCounts[n]) {
+    if (bt(n) && o != null && o.userHashingPendingCounts[n]) {
       let s = (r = o.userHashingPendingPromises) == null ? void 0 : r[n];
       s && i.add(s);
     }
     return i;
   }
-  function Va(e, n, t) {
-    let i = Mr(e, n.kind);
+  function za(e, n, t) {
+    let i = Pr(e, n.kind);
     for (let o of i) {
       let r = e.pendingEvidenceRetries.get(o);
       if (r) {
@@ -2283,30 +2290,30 @@
       }
       (e.pendingEvidenceRetries.set(o, { evidence: [n], preferNewest: t }),
         o.then(
-          () => gi(e, o),
-          () => gi(e, o),
+          () => mi(e, o),
+          () => mi(e, o),
         ));
       return;
     }
   }
-  function gi(e, n) {
+  function mi(e, n) {
     let t = e.pendingEvidenceRetries.get(n);
     (e.pendingEvidenceRetries.delete(n),
-      t && e.active && J(e.pixelId) === e && Xe() && (re(e), St(e, t.evidence, t.preferNewest)));
+      t && e.active && J(e.pixelId) === e && Qe() && (se(e), Ct(e, t.evidence, t.preferNewest)));
   }
-  function mi(e, n, t, i, o = []) {
+  function pi(e, n, t, i, o = []) {
     var s, a, d, c, l, u;
-    let r = Mr(e, t, o);
+    let r = Pr(e, t, o);
     for (let p of r) {
       let f = e.pendingFormRetries.get(p);
       if (f) {
-        let y = (a = (s = He(n)) == null ? void 0 : s.form) != null ? a : n,
+        let y = (a = (s = Le(n)) == null ? void 0 : s.form) != null ? a : n,
           g =
             (c = f.get(n)) != null
               ? c
               : (d = Array.from(f.entries()).find(([_]) => {
                     var E, M;
-                    return ((M = (E = He(_)) == null ? void 0 : E.form) != null ? M : _) === y;
+                    return ((M = (E = Le(_)) == null ? void 0 : E.form) != null ? M : _) === y;
                   })) == null
                 ? void 0
                 : d[1];
@@ -2330,28 +2337,28 @@
                 break;
               }
           }
-          _ < _e(t) && f.set(n, { kinds: new Set([t]), options: i ? fe({}, i) : void 0 });
+          _ < _e(t) && f.set(n, { kinds: new Set([t]), options: i ? le({}, i) : void 0 });
         }
         return;
       }
       (e.pendingFormRetries.set(
         p,
-        new Map([[n, { kinds: new Set([t]), options: i ? fe({}, i) : void 0 }]]),
+        new Map([[n, { kinds: new Set([t]), options: i ? le({}, i) : void 0 }]]),
       ),
         p.then(
-          () => pi(e, p),
-          () => pi(e, p),
+          () => hi(e, p),
+          () => hi(e, p),
         ));
       return;
     }
   }
-  function pi(e, n) {
+  function hi(e, n) {
     var i, o, r, s;
     let t = e.pendingFormRetries.get(n);
-    if ((e.pendingFormRetries.delete(n), !(!t || !e.active || J(e.pixelId) !== e || !Xe()))) {
-      re(e);
+    if ((e.pendingFormRetries.delete(n), !(!t || !e.active || J(e.pixelId) !== e || !Qe()))) {
+      se(e);
       for (let [a, d] of t) {
-        let c = He(a),
+        let c = Le(a),
           l = (i = c == null ? void 0 : c.form) != null ? i : a,
           u = new Set(
             Array.from(d.kinds).filter((g) => {
@@ -2367,32 +2374,32 @@
           y = ((o = d.options) == null ? void 0 : o.passive) !== !0 && f !== void 0 && f !== l;
         try {
           c != null && c.form
-            ? xe(e, c.form, (r = d.options) != null ? r : {}, u)
+            ? He(e, c.form, (r = d.options) != null ? r : {}, u)
             : c
-              ? Or(e, c, u)
-              : xe(e, a, (s = d.options) != null ? s : { passive: !0 }, u);
+              ? Rr(e, c, u)
+              : He(e, a, (s = d.options) != null ? s : { passive: !0 }, u);
         } finally {
           y && ((e.activeMatchingForm = p), (e.latestMatchingFormOwner = f));
         }
       }
     }
   }
-  function Pr(e, n) {
+  function kr(e, n) {
     let t = J(e);
     !(t != null && t.active) || J(e) !== t || n === "externalId" || ke(t, new Set([n]));
   }
-  function kr(e) {
+  function Ar(e) {
     let n = J(e);
-    !(n != null && n.active) || J(e) !== n || ke(n, new Set(pa));
+    !(n != null && n.active) || J(e) !== n || ke(n, new Set(ha));
   }
-  function St(e, n, t = !1) {
+  function Ct(e, n, t = !1) {
     let i = new Map();
     for (let o of n)
       H(o.kind) && o.geographyBundle && !i.has(o.source) && i.set(o.source, o.geographyBundle);
     for (let [o, r] of i) {
       let s = e.candidatesBySource[o];
       s.some((a) => H(a.task.kind) && a.geographyBundle !== r) &&
-        oe(
+        re(
           e,
           o,
           s.filter((a) => !H(a.task.kind)),
@@ -2402,34 +2409,34 @@
       if (H(o.kind) && (!o.geographyBundle || i.get(o.source) !== o.geographyBundle)) continue;
       let r = e.candidatesBySource[o.source],
         s = ln(o.raw),
-        a = Ii(e, o.kind),
-        d = Mi(e, o.kind, s, o.source);
+        a = Mi(e, o.kind),
+        d = Pi(e, o.kind, s, o.source);
       if (
-        (d && Pi(r, d, o.source, void 0, t),
-        a.has(se(s)) || r.find((f) => f.task.kind === o.kind && he(f.task.fingerprint, s)))
+        (d && ki(r, d, o.source, void 0, t),
+        a.has(ae(s)) || r.find((f) => f.task.kind === o.kind && he(f.task.fingerprint, s)))
       )
         continue;
-      let l = Pt(e, o.kind, s);
+      let l = kt(e, o.kind, s);
       if (l) {
         let f = { task: l };
         (o.kind === "phone" &&
           l.merchantPhoneProbeSignature === Q(e, o.kind) &&
-          yi(e, l.fingerprint, o.source),
+          vi(e, l.fingerprint, o.source),
           H(o.kind) && o.geographyBundle && (f.geographyBundle = o.geographyBundle),
           t && o.source === "js" && l.merchantPhoneProbeSignature === void 0
             ? r.unshift(f)
             : (t && o.source === "js" && (f.deferredNewest = !0), r.push(f)),
-          re(e));
+          se(e));
         continue;
       }
-      if (!ki(e, o.source, o.kind, s, t && H(o.kind))) {
-        Va(e, o, t);
+      if (!Ai(e, o.source, o.kind, s, t && H(o.kind))) {
+        za(e, o, t);
         continue;
       }
-      let u = vi(e, o.kind) === 0 ? Je(e, o.kind) : void 0,
-        p = Ir(e, o.kind, o.raw, s);
+      let u = Ei(e, o.kind) === 0 ? Xe(e, o.kind) : void 0,
+        p = Mr(e, o.kind, o.raw, s);
       if (p) {
-        let f = u !== void 0 && (bt(e, u, o.kind, s) !== void 0 || pn(e, u, s, o.source, r)),
+        let f = u !== void 0 && (It(e, u, o.kind, s) !== void 0 || pn(e, u, s, o.source, r)),
           y = { task: p };
         (f &&
           ((p.merchantPhoneProbeSignature = u),
@@ -2437,79 +2444,79 @@
           t && o.source === "js" && (y.deferredNewest = !0)),
           H(o.kind) && o.geographyBundle && (y.geographyBundle = o.geographyBundle),
           t && o.source === "js" && !f ? r.unshift(y) : r.push(y),
-          re(e));
+          se(e));
       }
     }
   }
-  function hi() {
+  function _i() {
     try {
-      Ae && Ae.push === _t && (gt ? Object.defineProperty(Ae, "push", gt) : delete Ae.push);
+      Ae && Ae.push === yt && (mt ? Object.defineProperty(Ae, "push", mt) : delete Ae.push);
     } catch (e) {}
-    ((Ae = void 0), (ht = void 0), (_t = void 0), (gt = void 0));
+    ((Ae = void 0), (_t = void 0), (yt = void 0), (mt = void 0));
   }
-  function or(e) {
+  function rr(e) {
     try {
       return window.dataLayer === e;
     } catch (n) {
       return !1;
     }
   }
-  function za() {
-    if (!Fe() || typeof window == "undefined") return;
+  function Ka() {
+    if (!De() || typeof window == "undefined") return;
     let e = window.dataLayer;
     if (!Array.isArray(e)) {
-      hi();
+      _i();
       return;
     }
     let n = e;
-    if (Ae === n && n.push === _t) return;
-    hi();
+    if (Ae === n && n.push === yt) return;
+    _i();
     let t = n.push;
     if (typeof t != "function") return;
     let i = Object.getOwnPropertyDescriptor(n, "push"),
       o = function (...r) {
-        if (!Fe() || this !== n || !or(n)) return t.apply(this, r);
+        if (!De() || this !== n || !rr(n)) return t.apply(this, r);
         let s = t.apply(this, r);
-        if (!Fe() || !or(n)) return s;
+        if (!De() || !rr(n)) return s;
         try {
-          if (!Xe()) return s;
+          if (!Qe()) return s;
           let a = [],
             d = Math.max(0, r.length - Vn);
           for (let c = d; c < r.length; c += 1) a.push(...gn(r[c]));
           if (a.length === 0) return s;
-          for (let c of ue.values()) c.active && St(c, a, !0);
+          for (let c of fe.values()) c.active && Ct(c, a, !0);
         } catch (a) {}
         return s;
       };
     try {
       if (((n.push = o), n.push !== o)) return;
-      ((Ae = n), (_t = o), (gt = i));
+      ((Ae = n), (yt = o), (mt = i));
     } catch (r) {}
   }
-  function Ka(e, n = ve) {
-    (oe(
+  function ja(e, n = ve) {
+    (re(
       e,
       "form",
       e.candidatesBySource.form.filter((t) => !n.includes(t.task.kind)),
     ),
       e.candidatesBySource.form.length === 0 && (e.activeMatchingForm = void 0));
   }
-  function Ar(e, n) {
+  function Tr(e, n) {
     let t = e.candidatesBySource.form.filter((i) => {
       var s;
       let o = i.task.kind;
       if (!ee(o) || (n !== void 0 && i.nameOwner !== n)) return !0;
       let r = new Set();
       for (let a of (s = i.inputs) != null ? s : []) {
-        let d = He(a),
+        let d = Le(a),
           c = d ? Ln(d, !1) : void 0;
-        c && jn(c).includes(o) && Er(c, o) && r.add(a);
+        c && jn(c).includes(o) && Sr(c, o) && r.add(a);
       }
       return ((i.inputs = r), r.size > 0);
     });
-    (oe(e, "form", t), e.candidatesBySource.form.length === 0 && (e.activeMatchingForm = void 0));
+    (re(e, "form", t), e.candidatesBySource.form.length === 0 && (e.activeMatchingForm = void 0));
   }
-  function Ai(e, n, t, i) {
+  function Ti(e, n, t, i) {
     var o;
     return Object.assign(
       { task: e, inputs: new Set([t]) },
@@ -2517,25 +2524,25 @@
       H(n) && i ? { geographyBundle: i } : {},
     );
   }
-  function Tr(e, n, t, i, o, r, s) {
+  function wr(e, n, t, i, o, r, s) {
     var d;
-    let a = (d = Pt(e, n, o)) != null ? d : Ir(e, n, t, o);
-    if (a) return (s && (a.merchantPhoneProbeSignature = s), Ai(a, n, i, r));
+    let a = (d = kt(e, n, o)) != null ? d : Mr(e, n, t, o);
+    if (a) return (s && (a.merchantPhoneProbeSignature = s), Ti(a, n, i, r));
   }
-  function wr(e, n, t, i = ve, o = !0, r, s = t) {
+  function Nr(e, n, t, i = ve, o = !0, r, s = t) {
     var P, T;
     let a =
-        i.some(H) || n.some(({ kind: h }) => H(h)) ? Array.from(new Set([...i, ...yt])) : [...i],
+        i.some(H) || n.some(({ kind: h }) => H(h)) ? Array.from(new Set([...i, ...vt])) : [...i],
       d = e.merchantPhoneSupplement,
       c = o && a.includes("phone") && d ? new Set(d.formInputs) : void 0;
-    o && a.includes("phone") && qa(e);
+    o && a.includes("phone") && Va(e);
     let l = new Set(n.map(({ kind: h }) => h));
-    if (n.some(({ kind: h }) => H(h))) for (let h of yt) l.add(h);
+    if (n.some(({ kind: h }) => H(h))) for (let h of vt) l.add(h);
     let u = o
         ? e.candidatesBySource.form.flatMap((h) => {
             if (!a.includes(h.task.kind)) return [h];
             if (l.has(h.task.kind) || !h.inputs) return [];
-            let v = new Set([...h.inputs].filter((b) => !ui(b, t)));
+            let v = new Set([...h.inputs].filter((b) => !fi(b, t)));
             return v.size === 0
               ? []
               : v.size === h.inputs.size
@@ -2546,7 +2553,7 @@
       p = u.length,
       f = !1,
       y = !1,
-      g = Le(
+      g = Fe(
         (h) =>
           u.filter((v) => {
             var b;
@@ -2557,16 +2564,16 @@
             );
           }).length,
       ),
-      _ = Le((h) => Math.max(0, _e(h) - (_n(e, h).length > 0 ? 1 : 0) - _i(e.pixelId, h))),
-      E = Je(e, "phone"),
+      _ = Fe((h) => Math.max(0, _e(h) - (_n(e, h).length > 0 ? 1 : 0) - yi(e.pixelId, h))),
+      E = Xe(e, "phone"),
       M = E !== void 0 && u.some((h) => h.task.merchantPhoneProbeSignature === E);
     for (let h = 0; h < n.length; h += 1) {
       let v = n[h],
         b = ln(v.normalized),
         F = n.slice(h + 1).filter((k) => k.kind === v.kind && !he(ln(k.normalized), b)).length,
-        z = Mi(e, v.kind, b, "form", v.input);
+        z = Pi(e, v.kind, b, "form", v.input);
       if (z) {
-        (Pi(u, z, "form", v.input), (f = !0));
+        (ki(u, z, "form", v.input), (f = !0));
         continue;
       }
       let I = u.find((k) => k.task.kind === v.kind && he(k.task.fingerprint, b));
@@ -2574,12 +2581,12 @@
         ((P = I.inputs) == null || P.add(v.input), (f = !0));
         continue;
       }
-      let C = Pt(e, v.kind, b);
+      let C = kt(e, v.kind, b);
       if (C) {
-        (u.push(Ai(C, v.kind, v.input, t)), (f = !0));
+        (u.push(Ti(C, v.kind, v.input, t)), (f = !0));
         let k = C.merchantPhoneProbeSignature;
         k !== void 0 && k === Q(e, v.kind)
-          ? (yi(e, C.fingerprint, "form"), (M = !0))
+          ? (vi(e, C.fingerprint, "form"), (M = !0))
           : v.kind === "phone" &&
               C.pending !== void 0 &&
               E !== void 0 &&
@@ -2591,20 +2598,20 @@
         continue;
       }
       let A = v.kind === "phone" ? Q(e, v.kind) : void 0,
-        L = A === void 0 ? void 0 : bt(e, A, v.kind, b),
+        L = A === void 0 ? void 0 : It(e, A, v.kind, b),
         N =
           v.kind === "phone" &&
           (L !== void 0 ||
             (g[v.kind] >= _[v.kind] && E !== void 0 && !M && pn(e, E, b, "form", u)));
       if (g[v.kind] >= _[v.kind] && !N) {
-        (mi(e, s, v.kind, r, u), (y = !0));
+        (pi(e, s, v.kind, r, u), (y = !0));
         continue;
       }
-      if (!N && !ki(e, "form", v.kind, b, !0)) {
-        (mi(e, s, v.kind, r, u), (y = !0));
+      if (!N && !Ai(e, "form", v.kind, b, !0)) {
+        (pi(e, s, v.kind, r, u), (y = !0));
         continue;
       }
-      let O = Tr(e, v.kind, v.normalized, v.input, b, t, N ? A : void 0);
+      let O = wr(e, v.kind, v.normalized, v.input, b, t, N ? A : void 0);
       O && (u.push(O), (f = !0), N ? ((M = !0), Fn(e, b, "form")) : (g[v.kind] += 1));
     }
     if (!(f || u.length > p)) {
@@ -2612,38 +2619,38 @@
         let h = !1,
           v = e.candidatesBySource.form.filter((b) => {
             if (!a.includes(b.task.kind) || !b.inputs) return !0;
-            for (let F of [...b.inputs]) ui(F, t) && (b.inputs.delete(F), (h = !0));
+            for (let F of [...b.inputs]) fi(F, t) && (b.inputs.delete(F), (h = !0));
             return b.inputs.size > 0;
           });
         if (
           (v.length !== e.candidatesBySource.form.length && (h = !0),
-          h && oe(e, "form", v),
+          h && re(e, "form", v),
           d && c != null && c.size && e.merchantPhoneSupplement === d)
         ) {
-          for (let b of c) ui(b, t) || d.formInputs.add(b);
+          for (let b of c) fi(b, t) || d.formInputs.add(b);
           (d.formInputs.size > 0 ? d.sources.add("form") : d.sources.delete("form"),
             $n(d),
-            mt(e, d));
+            pt(e, d));
         }
-        return (h && re(e), y);
+        return (h && se(e), y);
       }
       return o
-        ? (oe(e, "form", u),
-          d && e.merchantPhoneSupplement === d && mt(e, d),
+        ? (re(e, "form", u),
+          d && e.merchantPhoneSupplement === d && pt(e, d),
           (e.activeMatchingForm = u.length > 0 ? t : void 0),
-          re(e),
+          se(e),
           !0)
         : y;
     }
     return (
-      oe(e, "form", u),
-      d && e.merchantPhoneSupplement === d && mt(e, d),
+      re(e, "form", u),
+      d && e.merchantPhoneSupplement === d && pt(e, d),
       (o || !e.activeMatchingForm) && (e.activeMatchingForm = t),
-      re(e),
+      se(e),
       !0
     );
   }
-  function He(e) {
+  function Le(e) {
     if (!e || typeof e != "object") return;
     let n = e;
     if (
@@ -2655,9 +2662,9 @@
     let t = n;
     return typeof t.type == "string" ? t : void 0;
   }
-  function ui(e, n) {
+  function fi(e, n) {
     if (e === n) return !0;
-    let t = He(e);
+    let t = Le(e);
     if (!t) return !1;
     if (t.form) return t.form === n;
     if ("contains" in n && typeof n.contains == "function")
@@ -2668,11 +2675,11 @@
       }
     return !1;
   }
-  function Nr(e, n = jn(e)) {
+  function Or(e, n = jn(e)) {
     let t = Hn(e),
       i = [];
     for (let o of n) {
-      let r = Mt(e.value, o, t),
+      let r = Pt(e.value, o, t),
         s = r === void 0 ? void 0 : zn(o).normalize(r);
       if (s) {
         if ((i.push({ kind: o, normalized: s }), !t || !ee(o))) break;
@@ -2680,16 +2687,16 @@
     }
     return i;
   }
-  function Or(e, n, t) {
+  function Rr(e, n, t) {
     var P, T, h, v, b, F, z;
-    let i = He(n);
+    let i = Le(n);
     if (!i) return;
     let o = (P = i.form) != null ? P : void 0,
       r = o != null ? o : i,
       s = o ? Bn(o) : void 0,
       a = t === void 0 || t.has("firstName") || t.has("lastName");
-    if ((o && s && a && vr(e, o, s) && Ar(e), bi(r))) {
-      o && s && xe(e, o, s, t);
+    if ((o && s && a && Er(e, o, s) && Tr(e), Ii(r))) {
+      o && s && He(e, o, s, t);
       return;
     }
     let d = Ln(i, !1);
@@ -2709,13 +2716,13 @@
         p.contains(i),
       y = o != null ? o : f ? p : void 0;
     if (y && (u || c.some((I) => ee(I)) || l)) {
-      xe(e, y, s != null ? s : Bn(y), t);
+      He(e, y, s != null ? s : Bn(y), t);
       return;
     }
     let g = [];
     if (c.length > 0)
       try {
-        ((d.value = i.value), (g = Nr(d, c)));
+        ((d.value = i.value), (g = Or(d, c)));
       } catch (I) {
         g = [];
       }
@@ -2723,11 +2730,11 @@
       var A;
       return (
         I === "phone" &&
-        ((A = e.merchantPhoneSupplement) == null ? void 0 : A.fingerprint) === se(ln(C))
+        ((A = e.merchantPhoneSupplement) == null ? void 0 : A.fingerprint) === ae(ln(C))
       );
     });
     if (
-      ((t === void 0 || t.has("phone")) && !_ && Ba(e, i),
+      ((t === void 0 || t.has("phone")) && !_ && qa(e, i),
       xn(d) &&
         ((g = g.filter(({ kind: I, normalized: C }) => {
           var O;
@@ -2736,8 +2743,8 @@
               var K;
               return (
                 k.task.kind === I &&
-                Array.from((K = k.inputs) != null ? K : []).some((de) => {
-                  let Ne = Ln(de, !1);
+                Array.from((K = k.inputs) != null ? K : []).some((ce) => {
+                  let Ne = Ln(ce, !1);
                   return Ne !== void 0 && !xn(Ne);
                 })
               );
@@ -2761,7 +2768,7 @@
         !E.has(I.task.kind) &&
         (I.inputs.delete(i),
         I.inputs.size === 0 &&
-          oe(
+          re(
             e,
             "form",
             e.candidatesBySource.form.filter((C) => C !== I),
@@ -2776,7 +2783,7 @@
     for (let { kind: I } of g) e.latestMatchingFormOwners[I] = r;
     if (e.activeMatchingForm !== r || g.some(({ kind: I }) => H(I))) {
       if (
-        !wr(
+        !Nr(
           e,
           g.map(({ kind: C, normalized: A }) => ({ input: i, kind: C, normalized: A })),
           r,
@@ -2797,25 +2804,25 @@
           return k.task.kind === I && ((K = k.inputs) == null ? void 0 : K.has(i));
         }),
         L = ln(C),
-        N = Mi(e, I, L, "form", i);
+        N = Pi(e, I, L, "form", i);
       if (N) {
         (A &&
           !he(A.task.fingerprint, L) &&
           ((h = A.inputs) == null || h.delete(i),
           ((v = A.inputs) != null && v.size) ||
-            oe(
+            re(
               e,
               "form",
               e.candidatesBySource.form.filter((k) => k !== A),
             )),
-          Pi(e.candidatesBySource.form, N, "form", i));
+          ki(e.candidatesBySource.form, N, "form", i));
         continue;
       }
       if (A && he(A.task.fingerprint, L)) continue;
       A &&
         ((b = A.inputs) == null || b.delete(i),
         ((F = A.inputs) != null && F.size) ||
-          oe(
+          re(
             e,
             "form",
             e.candidatesBySource.form.filter((k) => k !== A),
@@ -2823,51 +2830,51 @@
       let O = e.candidatesBySource.form.find((k) => k.task.kind === I && he(k.task.fingerprint, L));
       if (O) (z = O.inputs) == null || z.add(i);
       else {
-        let k = e.candidatesBySource.form.filter((an) => {
-            var co;
+        let k = e.candidatesBySource.form.filter((sn) => {
+            var uo;
             return (
-              an.task.kind === I &&
-              an.task.merchantPhoneProbeSignature === void 0 &&
-              an.task !== ((co = e.merchantPhoneSupplement) == null ? void 0 : co.task)
+              sn.task.kind === I &&
+              sn.task.merchantPhoneProbeSignature === void 0 &&
+              sn.task !== ((uo = e.merchantPhoneSupplement) == null ? void 0 : uo.task)
             );
           }).length,
-          K = Pt(e, I, L);
+          K = kt(e, I, L);
         if (K) {
-          let an = I === "phone" ? Q(e, I) : void 0;
-          (an !== void 0 && K.merchantPhoneProbeSignature === an && yi(e, K.fingerprint, "form"),
-            e.candidatesBySource.form.push(Ai(K, I, i)),
-            re(e));
+          let sn = I === "phone" ? Q(e, I) : void 0;
+          (sn !== void 0 && K.merchantPhoneProbeSignature === sn && vi(e, K.fingerprint, "form"),
+            e.candidatesBySource.form.push(Ti(K, I, i)),
+            se(e));
           continue;
         }
-        let de = vi(e, I) === 0 ? Je(e, I) : void 0,
-          Ne = de !== void 0 && (bt(e, de, I, L) !== void 0 || pn(e, de, L, "form"));
-        if (!(Ne || (k < _e(I) && ki(e, "form", I, L)))) {
-          mi(e, i, I, o ? (s != null ? s : {}) : void 0);
+        let ce = Ei(e, I) === 0 ? Xe(e, I) : void 0,
+          Ne = ce !== void 0 && (It(e, ce, I, L) !== void 0 || pn(e, ce, L, "form"));
+        if (!(Ne || (k < _e(I) && Ai(e, "form", I, L)))) {
+          pi(e, i, I, o ? (s != null ? s : {}) : void 0);
           continue;
         }
-        let ao = Tr(e, I, C, i, L, void 0, Ne ? de : void 0);
-        ao && (Ne && Fn(e, L, "form"), e.candidatesBySource.form.push(ao), re(e));
+        let co = wr(e, I, C, i, L, void 0, Ne ? ce : void 0);
+        co && (Ne && Fn(e, L, "form"), e.candidatesBySource.form.push(co), se(e));
       }
     }
     e.candidatesBySource.form.length === 0 && (e.activeMatchingForm = void 0);
   }
-  function Ti(e) {
+  function wi(e) {
     var n, t;
-    if (Xe())
-      for (let i of ue.values())
+    if (Qe())
+      for (let i of fe.values())
         i.active &&
-          Or(i, (t = (n = e.composedPath) == null ? void 0 : n.call(e)[0]) != null ? t : e.target);
+          Rr(i, (t = (n = e.composedPath) == null ? void 0 : n.call(e)[0]) != null ? t : e.target);
   }
-  function Rr(e) {
-    e.key === "Enter" && Ti(e);
+  function Dr(e) {
+    e.key === "Enter" && wi(e);
   }
-  function xe(e, n, t = {}, i) {
+  function He(e, n, t = {}, i) {
     var z, I;
     if (!e.active || !n || typeof n != "object") return;
     let o = n,
       { intent: r = "", passive: s = !1 } = t,
-      d = (i === void 0 || i.has("firstName") || i.has("lastName")) && vr(e, o, t);
-    if ((d && !s ? Ka(e, ["firstName", "lastName"]) : d && Ar(e, o), bi(o, r))) return;
+      d = (i === void 0 || i.has("firstName") || i.has("lastName")) && Er(e, o, t);
+    if ((d && !s ? ja(e, ["firstName", "lastName"]) : d && Tr(e, o), Ii(o, r))) return;
     let c, l;
     if ("elements" in n) ((c = n), (l = c.elements));
     else if ("querySelectorAll" in n && typeof n.querySelectorAll == "function")
@@ -2885,8 +2892,8 @@
       if (!A || typeof A.tagName != "string" || typeof A.type != "string") continue;
       let L = `${A.tagName.toLowerCase()}:${A.type.toLowerCase()}`,
         N = (z = _.get(L)) != null ? z : 0;
-      if (N >= sr) continue;
-      let O = He(A);
+      if (N >= ar) continue;
+      let O = Le(A);
       if (!O || (!c && O.form)) continue;
       _.set(L, N + 1);
       for (let R of e.candidatesBySource.form)
@@ -2902,45 +2909,45 @@
         ((R === "phone" || (R === "email" && Gn(k))) && f.add(R),
           ee(R) && y.add(R),
           H(R) && g.add(R));
-      let de = K.filter((R) => !ee(R) || !d || Er(k, R));
-      if (!de.some((R) => (s ? li(k, R) : Ci[R](k)))) continue;
+      let ce = K.filter((R) => !ee(R) || !d || Sr(k, R));
+      if (!ce.some((R) => (s ? gi(k, R) : bi[R](k)))) continue;
       try {
         k.value = O.value;
       } catch (R) {
         continue;
       }
-      let Ne = Nr(k, de);
+      let Ne = Or(k, ce);
       for (let R of Ne)
         p.push({
           snapshot: k,
           kind: R.kind,
           normalized: R.normalized,
-          confidence: R.kind === "email" ? wa(k) : R.kind === "city" && Sr(k) ? 3 : 2,
+          confidence: R.kind === "email" ? Na(k) : R.kind === "city" && Cr(k) ? 3 : 2,
           confirmation: xn(k),
           geographyBundle: H(R.kind) ? o : void 0,
         });
     }
-    let E = Ea(p);
+    let E = Sa(p);
     E.sort((C, A) => A.confidence - C.confidence);
     let M = E.some(({ kind: C, snapshot: A }) => ee(C) && !Hn(A)),
       S = E.filter((C) => !(M && ee(C.kind) && Hn(C.snapshot))),
       P = new Set();
     for (let C of ["firstName", "lastName"])
       new Set(S.filter((L) => L.kind === C).map((L) => L.normalized)).size > 1 && P.add(C);
-    let T = Le(() => new Set());
+    let T = Fe(() => new Set());
     for (let C of S) {
       if (P.has(C.kind)) continue;
       let A = T[C.kind],
         L = C.kind === "phone" ? e.merchantPhoneSupplement : void 0,
         N = L !== void 0 && L.merchantHashSignature === Q(e, C.kind),
-        O = _e(C.kind) + (Je(e, C.kind) || N ? Dn : 0);
+        O = _e(C.kind) + (Xe(e, C.kind) || N ? Dn : 0);
       A.size >= O ||
         (C.confirmation && A.size > 0 && !A.has(C.normalized)) ||
         (u.push({ input: C.snapshot.input, kind: C.kind, normalized: C.normalized }),
         C.confirmation || A.add(C.normalized));
     }
     let h = Array.from(
-        new Set([...u.map(({ kind: C }) => C), ...f, ...y, ...P, ...(g.size > 0 ? yt : [])]),
+        new Set([...u.map(({ kind: C }) => C), ...f, ...y, ...P, ...(g.size > 0 ? vt : [])]),
       ),
       v = e.latestMatchingFormOwner,
       b = new Map(h.map((C) => [C, e.latestMatchingFormOwners[C]]));
@@ -2948,25 +2955,25 @@
       e.latestMatchingFormOwner = o;
       for (let C of h) e.latestMatchingFormOwners[C] = o;
     }
-    let F = wr(e, u, o, h, !s || e.activeMatchingForm === o, t);
+    let F = Nr(e, u, o, h, !s || e.activeMatchingForm === o, t);
     if (!s && !F) {
       e.latestMatchingFormOwner = v;
       for (let C of h) e.latestMatchingFormOwners[C] = b.get(C);
     }
   }
-  function rr(e, n) {
+  function sr(e, n) {
     let t = e.activeMatchingForm;
     if (t) {
       let i = n.get(t);
-      i !== void 0 && xe(e, t, Object.assign({}, i, { passive: !0 }));
+      i !== void 0 && He(e, t, Object.assign({}, i, { passive: !0 }));
     }
-    for (let [i, o] of n) i !== t && xe(e, i, Object.assign({}, o, { passive: !0 }));
+    for (let [i, o] of n) i !== t && He(e, i, Object.assign({}, o, { passive: !0 }));
   }
-  function ja(e, n) {
+  function Ga(e, n) {
     var t, i;
     try {
       let o = e.submitter,
-        r = Fr(o);
+        r = Lr(o);
       return r &&
         ((i = r.form) != null ? i : (t = r.closest) == null ? void 0 : t.call(r, "form")) === n
         ? r
@@ -2975,23 +2982,23 @@
       return;
     }
   }
-  function Dr(e) {
+  function Fr(e) {
     var o, r;
-    if (!Xe()) return;
+    if (!Qe()) return;
     let n = (r = (o = e.composedPath) == null ? void 0 : o.call(e)[0]) != null ? r : e.target;
     if (!n || typeof n != "object") return;
-    let t = ja(e, n),
+    let t = Ga(e, n),
       i = Bn(n);
     if (t)
       try {
-        i.intent = wi(t);
+        i.intent = Ni(t);
       } catch (s) {}
-    for (let s of ue.values()) s.active && xe(s, n, i);
+    for (let s of fe.values()) s.active && He(s, n, i);
   }
-  function Fr(e) {
+  function Lr(e) {
     var t;
     let n = e;
-    for (let i = 0; n && typeof n == "object" && i < da; i += 1) {
+    for (let i = 0; n && typeof n == "object" && i < ca; i += 1) {
       let o = n,
         r = typeof o.tagName == "string" ? o.tagName.toLowerCase() : "";
       if (
@@ -3004,7 +3011,7 @@
       n = o.parentElement;
     }
   }
-  function wi(e) {
+  function Ni(e) {
     return [
       B(e.textContent),
       B(e.value),
@@ -3019,13 +3026,13 @@
       t = [];
     try {
       if (typeof n.querySelectorAll == "function") {
-        let s = n.querySelectorAll(Zo);
-        for (let a = 0; a < s.length && a < ca; a += 1) t.push(s[a]);
+        let s = n.querySelectorAll(er);
+        for (let a = 0; a < s.length && a < ua; a += 1) t.push(s[a]);
       }
     } catch (s) {}
     if (t.length === 0)
       try {
-        let s = (r = n.querySelector) == null ? void 0 : r.call(n, Zo);
+        let s = (r = n.querySelector) == null ? void 0 : r.call(n, er);
         s && t.push(s);
       } catch (s) {}
     let i = "",
@@ -3033,14 +3040,14 @@
     for (let s of t)
       if (!(!s || typeof s != "object"))
         try {
-          let a = wi(s);
-          (i || (i = a), o || (o = ut.test(a)));
+          let a = Ni(s);
+          (i || (i = a), o || (o = ft.test(a)));
         } catch (a) {}
     return { intent: i, inferredNameExclusion: o };
   }
-  function Ga(e) {
+  function $a(e) {
     let n = e.parentElement;
-    for (let t = 0; n && t < ar; t += 1) {
+    for (let t = 0; n && t < dr; t += 1) {
       let i = n.tagName.toLowerCase();
       if (i === "body" || i === "html") return;
       if (typeof n.querySelector == "function" && n.querySelector("input, select, textarea"))
@@ -3048,10 +3055,10 @@
       n = n.parentElement;
     }
   }
-  function Lr(e) {
+  function Hr(e) {
     var d, c, l, u, p, f, y, g, _;
-    if (!Fe()) return;
-    let n = Fr((c = (d = e.composedPath) == null ? void 0 : d.call(e)[0]) != null ? c : e.target);
+    if (!De()) return;
+    let n = Lr((c = (d = e.composedPath) == null ? void 0 : d.call(e)[0]) != null ? c : e.target);
     if (
       !n ||
       n.disabled ||
@@ -3075,18 +3082,18 @@
     let r =
       (_ = (g = n.form) != null ? g : (y = n.closest) == null ? void 0 : y.call(n, "form")) != null
         ? _
-        : Ga(n);
+        : $a(n);
     if (!r) return;
-    let s = wi(n);
-    if (!Xe()) return;
+    let s = Ni(n);
+    if (!Qe()) return;
     let a = Object.assign(Bn(r), { intent: s });
-    for (let E of ue.values()) E.active && xe(E, r, a);
+    for (let E of fe.values()) E.active && He(E, r, a);
   }
-  function $a(e) {
+  function Wa(e) {
     e.stateGeneration += 1;
     for (let n of D) for (let t of e.candidatesBySource[n]) t.task.pending = void 0;
     for (let n of e.detachedMerchantPhoneProbeTasks.values()) n.pending = void 0;
-    (e.detachedMerchantPhoneProbeTasks.clear(), (e.candidatesBySource = cr()));
+    (e.detachedMerchantPhoneProbeTasks.clear(), (e.candidatesBySource = ur()));
     for (let n of ve) e.ignoredFingerprints[n].clear();
     ((e.ignoredMerchantHashes = {}),
       (e.activeMatchingForm = void 0),
@@ -3099,46 +3106,46 @@
       e.merchantPhoneProbeSources.clear(),
       e.retryableMerchantPhoneProbes.clear());
   }
-  function pt() {
-    (hi(),
-      De &&
-        (De.removeEventListener("change", Ti, !0),
-        De.removeEventListener("keydown", Rr, !0),
-        De.removeEventListener("click", Lr, !0),
-        De.removeEventListener("submit", Dr, !0),
-        (De = void 0)));
+  function ht() {
+    (_i(),
+      Re &&
+        (Re.removeEventListener("change", wi, !0),
+        Re.removeEventListener("keydown", Dr, !0),
+        Re.removeEventListener("click", Hr, !0),
+        Re.removeEventListener("submit", Fr, !0),
+        (Re = void 0)));
   }
-  function Ze(e, n) {
-    let t = e ? Sa(n) : J(n);
+  function Je(e, n) {
+    let t = e ? Ca(n) : J(n);
     if (!t) {
-      !e && !Fe() && pt();
+      !e && !De() && ht();
       return;
     }
     if (!e) {
-      ((t.active = !1), $a(t), Fe() || pt());
+      ((t.active = !1), Wa(t), De() || ht());
       return;
     }
-    (t.active || (ht = void 0),
+    (t.active || (_t = void 0),
       (t.active = !0),
       typeof document != "undefined" &&
-        (De !== document &&
-          (pt(),
-          document.addEventListener("change", Ti, !0),
-          document.addEventListener("keydown", Rr, !0),
-          document.addEventListener("click", Lr, !0),
-          document.addEventListener("submit", Dr, !0),
-          (De = document)),
+        (Re !== document &&
+          (ht(),
+          document.addEventListener("change", wi, !0),
+          document.addEventListener("keydown", Dr, !0),
+          document.addEventListener("click", Hr, !0),
+          document.addEventListener("submit", Fr, !0),
+          (Re = document)),
         Wn(t.pixelId)));
   }
-  function Hr(e, n = !0, t) {
+  function xr(e, n = !0, t) {
     var l, u, p, f, y, g;
     let i = J(t),
       o = dt(e);
-    n && i != null && i.active && re(i);
+    n && i != null && i.active && se(i);
     let r = {},
       s = {},
-      a = Le(() => new Set()),
-      d = Le(() => 0);
+      a = Fe(() => new Set()),
+      d = Fe(() => 0);
     (o != null && o.external_id_sha256 && (s.eid = o.external_id_sha256),
       o != null && o.country && (s.co = o.country),
       o != null && o.city && (s.ct = o.city),
@@ -3146,7 +3153,7 @@
     let c = (l = o == null ? void 0 : o.postal_code) != null ? l : o == null ? void 0 : o.zip_code;
     c && (s.pc = c);
     for (let _ of st) {
-      if (!Ct(_.kind)) continue;
+      if (!bt(_.kind)) continue;
       let E = o == null ? void 0 : o[_.field],
         M = _.kind === "phone" ? (o == null ? void 0 : o.phone_number_with_plus_sha256) : void 0,
         S = _.kind === "phone" ? [E, M] : [E],
@@ -3177,7 +3184,7 @@
           if (v && !a[S].has(v)) {
             (a[S].add(v), P.push(v));
             let b = (f = i.merchantPhoneSupplement) == null ? void 0 : f.task;
-            Yo(v, b == null ? void 0 : b.phoneWireValues, T, h);
+            Qo(v, b == null ? void 0 : b.phoneWireValues, T, h);
           }
           for (let b of i.candidatesBySource[_]) {
             if (d[S] >= _e(S)) break;
@@ -3190,7 +3197,7 @@
               !F.some((z) => a[S].has(z))
             ) {
               for (let z of F) (a[S].add(z), P.push(z));
-              (S === "phone" && Qo(F, b.task.phoneWireValues, T, h), (d[S] += 1));
+              (S === "phone" && Xo(F, b.task.phoneWireValues, T, h), (d[S] += 1));
             }
           }
           if (P.length > 0) {
@@ -3216,7 +3223,7 @@
       }
     return Object.keys(r).length > 0 ? r : void 0;
   }
-  function xr(e) {
+  function Ur(e) {
     let n = J(e);
     return !!(
       n != null &&
@@ -3234,44 +3241,44 @@
     );
   }
   function Wn(e) {
-    if (Xe())
+    if (Qe())
       try {
-        za();
+        Ka();
         let n = new Map(),
-          t = Ua(n);
+          t = Ba(n);
         if (e !== void 0) {
           let i = J(e);
-          i != null && i.active && (rr(i, n), St(i, t));
+          i != null && i.active && (sr(i, n), Ct(i, t));
           return;
         }
-        for (let i of ue.values()) i.active && (rr(i, n), St(i, t));
+        for (let i of fe.values()) i.active && (sr(i, n), Ct(i, t));
       } catch (n) {}
   }
-  function Ur() {
-    (pt(), ue.clear());
+  function Br() {
+    (ht(), fe.clear());
   }
-  var Wa = "oaiq_cs:",
+  var Ya = "oaiq_cs:",
     Yn = "v",
-    At = "c",
+    Tt = "c",
     yn = "g",
-    Br = new WeakMap();
-  function kt(e) {
+    qr = new WeakMap();
+  function At(e) {
     return e === Yn || e === yn;
   }
-  function Ni(e) {
-    return e === At || e === yn;
+  function Oi(e) {
+    return e === Tt || e === yn;
   }
-  function Oi(e, n) {
-    let t = kt(e) || kt(n),
-      i = Ni(e) || Ni(n);
-    return t && i ? yn : i ? At : t ? Yn : void 0;
+  function Ri(e, n) {
+    let t = At(e) || At(n),
+      i = Oi(e) || Oi(n);
+    return t && i ? yn : i ? Tt : t ? Yn : void 0;
   }
-  function Ri() {
+  function Di() {
     if (!W()) return null;
-    let e = Br.get(window);
-    return (e || ((e = new Map()), Br.set(window, e)), e);
+    let e = qr.get(window);
+    return (e || ((e = new Map()), qr.set(window, e)), e);
   }
-  function qr() {
+  function Vr() {
     var e;
     if (!W()) return null;
     try {
@@ -3280,28 +3287,28 @@
       return (x("consent_session_storage_unavailable", n), null);
     }
   }
-  function Vr(e) {
-    let n = qr();
+  function zr(e) {
+    let n = Vr();
     if (n)
       try {
         let t = n.getItem(e);
-        if (t === Yn || t === At || t === yn) return t;
+        if (t === Yn || t === Tt || t === yn) return t;
         if (t !== null) return (x("consent_session_storage_invalid_value"), yn);
       } catch (t) {
         x("consent_session_storage_read_failed", t);
       }
   }
-  function Ya(e) {
+  function Qa(e) {
     var t;
-    let n = (t = Ri()) == null ? void 0 : t.get(e);
-    return n != null ? n : Vr(e);
+    let n = (t = Di()) == null ? void 0 : t.get(e);
+    return n != null ? n : zr(e);
   }
-  function Di(e, n) {
+  function Fi(e, n) {
     var t;
-    (t = Ri()) == null || t.set(e, n);
+    (t = Di()) == null || t.set(e, n);
   }
-  function Qa(e, n) {
-    let t = qr();
+  function Xa(e, n) {
+    let t = Vr();
     if (t)
       try {
         t.setItem(e, n);
@@ -3309,29 +3316,29 @@
         x("consent_session_storage_write_failed", i);
       }
   }
-  function Fi(e) {
+  function Li(e) {
     try {
-      return `${Wa}${encodeURIComponent(e)}`;
+      return `${Ya}${encodeURIComponent(e)}`;
     } catch (n) {
       return (x("consent_session_storage_key_failed", n), null);
     }
   }
-  function zr(e, n, t) {
-    let i = Fi(e);
+  function Kr(e, n, t) {
+    let i = Li(e);
     if (!i) return null;
-    let o = Ya(i),
-      r = t && !kt(o),
-      s = kt(o) || r,
-      a = n && s && !Ni(o);
+    let o = Qa(i),
+      r = t && !At(o),
+      s = At(o) || r,
+      a = n && s && !Oi(o);
     if (!r && !a) return null;
-    let d = Oi(o, r && a ? yn : a ? At : Yn);
-    return (d && Di(i, d), { isFirstVisit: r, isFirstConsentGrant: a });
+    let d = Ri(o, r && a ? yn : a ? Tt : Yn);
+    return (d && Fi(i, d), { isFirstVisit: r, isFirstConsentGrant: a });
   }
-  function Xa(e) {
-    let n = Fi(e);
-    n && Di(n, Yn);
+  function Ja(e) {
+    let n = Li(e);
+    n && Fi(n, Yn);
   }
-  function Li(e) {
+  function Hi(e) {
     let n = e.consentSessionMarker;
     if (!(n != null && n.revocableGrant)) return !1;
     let t = Object.assign({}, e.metadata, {
@@ -3346,35 +3353,35 @@
       (e.metadata = t),
       (n.state = "v"),
       (n.revocableGrant = !1),
-      Xa(n.pixelId),
+      Ja(n.pixelId),
       !0
     );
   }
-  function Hi(e, n) {
+  function xi(e, n) {
     var r;
-    let t = Fi(e);
+    let t = Li(e);
     if (!t) return;
-    let i = Oi(Vr(t), n);
+    let i = Ri(zr(t), n);
     if (!i) return;
-    Qa(t, i);
-    let o = Oi((r = Ri()) == null ? void 0 : r.get(t), i);
-    o && Di(t, o);
+    Xa(t, i);
+    let o = Ri((r = Di()) == null ? void 0 : r.get(t), i);
+    o && Fi(t, o);
   }
   var ne = null,
     vn = !1,
     Qn = !1;
-  function Tt(e) {
+  function wt(e) {
     return typeof e == "string" && e.length > 0 && e.length <= 128 && !/[^A-Za-z0-9_-]/.test(e);
   }
-  function jr(e) {
-    let n = window.sessionStorage.getItem(Kt);
+  function Gr(e) {
+    let n = window.sessionStorage.getItem(jt);
     if (!n) return null;
     try {
       let t = JSON.parse(n);
       if (!t || typeof t != "object" || Array.isArray(t)) return null;
       let i = t;
-      return !Tt(i.pixelId) ||
-        !Tt(i.testSessionId) ||
+      return !wt(i.pixelId) ||
+        !wt(i.testSessionId) ||
         typeof i.expiresAtMs != "number" ||
         !Number.isFinite(i.expiresAtMs) ||
         i.expiresAtMs <= 0 ||
@@ -3385,20 +3392,20 @@
       return null;
     }
   }
-  function Gr() {
+  function $r() {
     if (((ne = null), (vn = !1), (Qn = !1), typeof window == "undefined")) return;
     let e = Date.now();
     try {
-      ne = jr(e);
+      ne = Gr(e);
     } catch (n) {
       Qn = !0;
     }
     try {
       let n = new URLSearchParams(window.location.search),
-        t = n.getAll(po),
-        i = n.getAll(ho);
+        t = n.getAll(ho),
+        i = n.getAll(_o);
       if (t.length === 0 && i.length === 0) return;
-      if (t.length !== 1 || i.length !== 1 || !Tt(t[0]) || !Tt(i[0])) {
+      if (t.length !== 1 || i.length !== 1 || !wt(t[0]) || !wt(i[0])) {
         vn = !0;
         return;
       }
@@ -3410,7 +3417,7 @@
       }
       ne = { pixelId: r, testSessionId: o, expiresAtMs: e + 18e5 };
       try {
-        window.sessionStorage.setItem(Kt, JSON.stringify(ne));
+        window.sessionStorage.setItem(jt, JSON.stringify(ne));
       } catch (s) {
         Qn = !0;
       }
@@ -3418,10 +3425,10 @@
       vn = !0;
     }
   }
-  function $r() {
+  function Wr() {
     if (!(vn || Qn || typeof window == "undefined"))
       try {
-        ne = jr(Date.now());
+        ne = Gr(Date.now());
       } catch (e) {
         Qn = !0;
       }
@@ -3431,7 +3438,7 @@
       ? null
       : { pixelId: ne.pixelId, testSessionId: ne.testSessionId };
   }
-  function Wr(e, n, t) {
+  function Yr(e, n, t) {
     var i, o, r;
     try {
       let s =
@@ -3439,9 +3446,9 @@
           ? void 0
           : o.openaiConversionEvent;
       return typeof (s == null ? void 0 : s.postMessage) != "function"
-        ? (r = nd(e, n, t)) != null
+        ? (r = td(e, n, t)) != null
           ? r
-          : Fo(e, n, t)
+          : Lo(e, n, t)
         : new Promise((a) => {
             let d = setTimeout(() => a(!1), 2e3),
               c = (l) => {
@@ -3464,10 +3471,10 @@
       return;
     }
   }
-  var Za = 4,
-    xi = 0,
-    ed = 0;
-  function nd(e, n, t) {
+  var ed = 4,
+    Ui = 0,
+    nd = 0;
+  function td(e, n, t) {
     let i = window.openaiConversionEvent;
     if (
       !i ||
@@ -3477,16 +3484,16 @@
       typeof i.removeEventListener != "function"
     )
       return;
-    if (xi >= Za) return Promise.resolve(!1);
-    let o = `${X()}_${++ed}`;
+    if (Ui >= ed) return Promise.resolve(!1);
+    let o = `${X()}_${++nd}`;
     return (
-      xi++,
+      Ui++,
       new Promise((r) => {
         let s = !1,
           a = setTimeout(() => d(!1), 2e3),
           d = (l) => {
             if (!s) {
-              ((s = !0), clearTimeout(a), xi--);
+              ((s = !0), clearTimeout(a), Ui--);
               try {
                 i.removeEventListener("message", c);
               } catch (u) {}
@@ -3512,10 +3519,10 @@
       })
     );
   }
-  var Ui = !1,
-    en,
-    wt = [];
-  function td() {
+  var Bi = !1,
+    Ze,
+    Nt = [];
+  function id() {
     var e, n;
     try {
       let t = window,
@@ -3535,23 +3542,23 @@
       return;
     }
   }
-  function Ue() {
-    en == null || en();
+  function xe() {
+    Ze == null || Ze();
   }
   function En() {
-    return en !== void 0;
+    return Ze !== void 0;
   }
   function Jn() {
-    ((Ui = !1), Ue());
+    ((Bi = !1), xe());
   }
-  function Bi(e) {
-    if (m.clickId || !w() || U() === !1) return (Ue(), !1);
-    if (en) return (wt.push(e), !0);
-    if (Ui) return !1;
-    Ui = !0;
-    let n = td();
+  function qi(e) {
+    if (!w() || U() === !1 || un()) return (xe(), !1);
+    if (Ze) return (Nt.push(e), !0);
+    if (Bi) return !1;
+    Bi = !0;
+    let n = id();
     if (!n) return !1;
-    wt.push(e);
+    Nt.push(e);
     let t = !1,
       i,
       o = () => {
@@ -3560,9 +3567,9 @@
         try {
           i == null || i();
         } catch (d) {}
-        en = void 0;
-        let a = wt;
-        wt = [];
+        Ze = void 0;
+        let a = Nt;
+        Nt = [];
         for (let d of a) d();
       },
       r = (a) => {
@@ -3570,16 +3577,13 @@
           try {
             if (!a || typeof a != "object" || Array.isArray(a)) return;
             let d = a.oppref;
-            if (d !== null && !me(d)) return;
-            (w() &&
-              U() !== !1 &&
-              ((m.clickId = Re(m.clickId)),
-              !m.clickId && me(d) && ((m.clickId = d), ge(ce, d, 30 * 86400))),
+            if (d !== null && !ie(d)) return;
+            (ie(d) && w() && U() !== !1 && !un() && ((m.nativeClickId = d), me(ue, d, 30 * 86400)),
               o());
           } catch (d) {}
       },
       s = setTimeout(o, 250);
-    en = o;
+    Ze = o;
     try {
       if (n.kind === "webkit") Promise.resolve(n.handler.postMessage("get")).then(r, o);
       else {
@@ -3601,40 +3605,40 @@
     }
     return !0;
   }
-  var od = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,
-    rd = 365 * 24 * 60 * 60;
-  function qi(e) {
-    return typeof e == "string" && od.test(e);
+  var rd = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,
+    sd = 365 * 24 * 60 * 60;
+  function Vi(e) {
+    return typeof e == "string" && rd.test(e);
   }
-  function sd(e) {
+  function ad(e) {
     ((e[6] = (e[6] & 15) | 64), (e[8] = (e[8] & 63) | 128));
     let n = Array.from(e, (t) => t.toString(16).padStart(2, "0")).join("");
     return `${n.slice(0, 8)}-${n.slice(8, 12)}-${n.slice(12, 16)}-${n.slice(16, 20)}-${n.slice(20)}`;
   }
-  function ad() {
+  function dd() {
     let e = typeof window != "undefined" ? window.crypto : globalThis.crypto;
     if (typeof (e == null ? void 0 : e.randomUUID) == "function") {
       let n = e.randomUUID();
-      if (qi(n)) return n;
+      if (Vi(n)) return n;
     }
     if (typeof (e == null ? void 0 : e.getRandomValues) == "function")
-      return sd(e.getRandomValues(new Uint8Array(16)));
+      return ad(e.getRandomValues(new Uint8Array(16)));
     x("browser_ref_random_unavailable");
   }
-  function Vi() {
+  function zi() {
     if (!w()) return;
-    let e = Oe(dn);
-    if (qi(e)) return e;
-    e !== void 0 && Qt(dn);
-    let n = ad();
-    if (!n || !ge(dn, n, rd)) return;
-    let t = Oe(dn);
-    return t === n && qi(t) ? t : void 0;
+    let e = Oe(an);
+    if (Vi(e)) return e;
+    e !== void 0 && Xt(an);
+    let n = dd();
+    if (!n || !me(an, n, sd)) return;
+    let t = Oe(an);
+    return t === n && Vi(t) ? t : void 0;
   }
-  function Nt() {
-    Qt(dn);
+  function Ot() {
+    Xt(an);
   }
-  var Ki = {
+  var ji = {
       appointment_scheduled: "customer_action",
       checkout_started: "contents",
       contents_viewed: "contents",
@@ -3647,23 +3651,23 @@
       subscription_created: "plan_enrollment",
       trial_started: "plan_enrollment",
     },
-    dd = { contents: !0, custom: !0, customer_action: !0, plan_enrollment: !0 },
-    Xr = {
+    cd = { contents: !0, custom: !0, customer_action: !0, plan_enrollment: !0 },
+    Jr = {
       contents: ["type", "amount", "currency", "contents"],
       custom: ["type", "plan_id", "amount", "currency", "contents"],
       customer_action: ["type", "amount", "currency"],
       plan_enrollment: ["type", "plan_id", "amount", "currency", "contents"],
     },
-    Jr = ["id", "name", "content_type", "quantity", "amount", "currency"],
-    cd = ["event_id", "eventId", "custom_event_name", "opt_out"],
-    ud = /^[A-Za-z]{3}$/,
-    Yr = /^[0-9a-f]{64}$/i,
-    fd = /^[a-z0-9](?:[a-z0-9_-]{0,62}[a-z0-9])?$/,
-    ld =
+    Zr = ["id", "name", "content_type", "quantity", "amount", "currency"],
+    ud = ["event_id", "eventId", "custom_event_name", "opt_out"],
+    fd = /^[A-Za-z]{3}$/,
+    Qr = /^[0-9a-f]{64}$/i,
+    ld = /^[a-z0-9](?:[a-z0-9_-]{0,62}[a-z0-9])?$/,
+    gd =
       "eventOptions.custom_event_name must be 1-64 characters of letters, numbers, underscores, or dashes, and must start and end with a letter or number.",
-    gd = "eventOptions.custom_event_name must not overlap with reserved event names.",
-    md = ["pixelId", "oppref", "debug", "user"],
-    pd = [
+    md = "eventOptions.custom_event_name must not overlap with reserved event names.",
+    pd = ["pixelId", "oppref", "debug", "user"],
+    hd = [
       ...kn.map(({ field: e }) => e),
       "phone_number_with_plus_sha256",
       "country",
@@ -3672,7 +3676,7 @@
       "postal_code",
       "zip_code",
     ];
-  function Be(e) {
+  function Ue(e) {
     return !!e && typeof e == "object" && !Array.isArray(e);
   }
   function $(e, n) {
@@ -3682,10 +3686,10 @@
     return typeof e == "string" && e.length > 0;
   }
   function Zn(e) {
-    return typeof e == "string" && Object.prototype.hasOwnProperty.call(Ki, e);
+    return typeof e == "string" && Object.prototype.hasOwnProperty.call(ji, e);
   }
-  function hd(e) {
-    return typeof e == "string" && Object.prototype.hasOwnProperty.call(dd, e);
+  function _d(e) {
+    return typeof e == "string" && Object.prototype.hasOwnProperty.call(cd, e);
   }
   function Ee(e, n, t, i = !1) {
     return n === void 0
@@ -3694,25 +3698,25 @@
         ? (e.push(`${t} should be ${i ? "a string" : "a non-empty string"}.`), !0)
         : !1;
   }
-  function zi(e, n, t) {
+  function Ki(e, n, t) {
     return n !== void 0 && !Number.isInteger(n) ? (e.push(`${t} should be an integer.`), !0) : !1;
   }
-  function Zr(e, n, t) {
+  function es(e, n, t) {
     if (n !== void 0) {
       if (!Sn(n)) {
         e.push(`${t} should be a non-empty string.`);
         return;
       }
-      ud.test(n) || e.push(`${t} should be a 3-letter ISO 4217 currency code.`);
+      fd.test(n) || e.push(`${t} should be a 3-letter ISO 4217 currency code.`);
     }
   }
-  function _d(e, n) {
+  function yd(e, n) {
     if (!Sn(n)) return;
     let t = n.toLowerCase();
-    if (!fd.test(t))
-      return (e.push(ld), { code: "invalid_custom_event_name", field: "custom_event_name" });
-    if (Zn(t))
+    if (!ld.test(t))
       return (e.push(gd), { code: "invalid_custom_event_name", field: "custom_event_name" });
+    if (Zn(t))
+      return (e.push(md), { code: "invalid_custom_event_name", field: "custom_event_name" });
   }
   function et(e, n, t, i) {
     let o = Object.keys(n);
@@ -3721,25 +3725,25 @@
       t.includes(s) || e.push(`${i}.${s} is not a documented field.`);
     }
   }
-  function yd(e, n, t, i) {
+  function vd(e, n, t, i) {
     if ($(n, "amount") && !$(n, "currency"))
       return (
         e.push(`${t}.currency is required when ${i} is present.`),
         { code: "missing_currency", field: "data.currency" }
       );
-    if ($(n, "currency") && (Zr(e, n.currency, `${t}.currency`), typeof n.currency != "string"))
+    if ($(n, "currency") && (es(e, n.currency, `${t}.currency`), typeof n.currency != "string"))
       return { code: "invalid_field_type", field: "data.currency" };
   }
-  function vd(e, n, t, i) {
+  function Ed(e, n, t, i) {
     let o = `eventProps.contents[${n}]`;
-    if (!Be(e)) {
+    if (!Ue(e)) {
       i.push(`${o} should be an object.`);
       return;
     }
-    (et(i, e, Jr, o), Ee(i, e.id, `${o}.id`), Ee(i, e.name, `${o}.name`, !0));
+    (et(i, e, Zr, o), Ee(i, e.id, `${o}.id`), Ee(i, e.name, `${o}.name`, !0));
     let r = Ee(i, e.content_type, `${o}.content_type`),
-      s = zi(i, e.quantity, `${o}.quantity`),
-      a = zi(i, e.amount, `${o}.amount`),
+      s = Ki(i, e.quantity, `${o}.quantity`),
+      a = Ki(i, e.amount, `${o}.amount`),
       d;
     return (
       r && typeof e.content_type != "string"
@@ -3753,14 +3757,14 @@
           ),
           d != null ? d : { code: "missing_currency", field: "data.contents[].currency" })
         : ($(e, "currency") &&
-            (Zr(i, e.currency, `${o}.currency`),
+            (es(i, e.currency, `${o}.currency`),
             !d &&
               typeof e.currency != "string" &&
               (d = { code: "invalid_field_type", field: "data.contents[].currency" })),
           d)
     );
   }
-  function Ed(e, n) {
+  function Sd(e, n) {
     if (!$(e, "contents")) return;
     if (!Array.isArray(e.contents))
       return (
@@ -3770,22 +3774,22 @@
     let t = Sn(e.currency),
       i;
     for (let o = 0; o < e.contents.length; o += 1) {
-      let r = vd(e.contents[o], o, t, n);
+      let r = Ed(e.contents[o], o, t, n);
       i || (i = r);
     }
     return i;
   }
-  function Sd(e, n, t) {
+  function Cd(e, n, t) {
     if (n == null) {
       e && t.push(`eventProps.type should be "${e}".`);
       return;
     }
-    if (!Be(n))
+    if (!Ue(n))
       return (
         t.push("eventProps should be an object when provided."),
         { code: "invalid_field_type", field: "data" }
       );
-    e && et(t, n, Xr[e], "eventProps");
+    e && et(t, n, Jr[e], "eventProps");
     let i,
       o = n.type;
     e
@@ -3796,39 +3800,39 @@
           (t.push(`eventProps.type should be "${e}".`),
           typeof o != "string" && (i = { code: "invalid_field_type", field: "data.type" }))
       : o !== void 0 &&
-        !hd(o) &&
+        !_d(o) &&
         t.push("eventProps.type should be a documented data object type.");
-    let r = zi(t, n.amount, "eventProps.amount"),
-      s = yd(t, n, "eventProps", "eventProps.amount");
+    let r = Ki(t, n.amount, "eventProps.amount"),
+      s = vd(t, n, "eventProps", "eventProps.amount");
     if (
       (i || (r ? (i = { code: "invalid_amount", field: "data.amount" }) : (i = s)),
       (e === "custom" || e === "plan_enrollment") && Ee(t, n.plan_id, "eventProps.plan_id"),
       e === "contents" || e === "custom" || e === "plan_enrollment")
     ) {
-      let a = Ed(n, t);
+      let a = Sd(n, t);
       i || (i = a);
     }
     return i;
   }
-  function Cd(e, n, t) {
+  function bd(e, n, t) {
     if (n == null)
       return e === "custom"
         ? (t.push("eventOptions.custom_event_name is required for custom events."),
           { code: "custom_event_name_required", field: "custom_event_name" })
         : void 0;
-    if (!Be(n)) {
+    if (!Ue(n)) {
       t.push("eventOptions should be an object when provided.");
       return;
     }
     let i;
     if (
-      (et(t, n, cd, "eventOptions"),
+      (et(t, n, ud, "eventOptions"),
       $(n, "event_id") && Ee(t, n.event_id, "eventOptions.event_id"),
       $(n, "eventId") && Ee(t, n.eventId, "eventOptions.eventId"),
       $(n, "custom_event_name"))
     ) {
       Ee(t, n.custom_event_name, "eventOptions.custom_event_name");
-      let o = _d(t, n.custom_event_name);
+      let o = yd(t, n.custom_event_name);
       e === "custom" &&
         (Sn(n.custom_event_name)
           ? (i = o)
@@ -3855,13 +3859,13 @@
       i
     );
   }
-  function es(e, n) {
+  function ns(e, n) {
     let t = [];
-    if (!Be(e)) return (t.push("init config should be an object."), t);
+    if (!Ue(e)) return (t.push("init config should be an object."), t);
     if (
-      (et(t, e, md, "init"),
+      (et(t, e, pd, "init"),
       $(e, "oppref") &&
-        !me(e.oppref) &&
+        !ie(e.oppref) &&
         t.push("init.oppref should be a non-empty, well-formed string."),
       $(e, "pixelId")
         ? Ee(t, e.pixelId, "init.pixelId")
@@ -3869,9 +3873,9 @@
       $(e, "debug") && typeof e.debug != "boolean" && t.push("init.debug should be a boolean."),
       $(e, "user"))
     )
-      if (!Be(e.user)) t.push("init.user should be an object.");
+      if (!Ue(e.user)) t.push("init.user should be an object.");
       else {
-        et(t, e.user, pd, "init.user");
+        et(t, e.user, hd, "init.user");
         for (let { field: i } of kn)
           if ($(e.user, i)) {
             let o = e.user[i];
@@ -3882,13 +3886,13 @@
             o = typeof i == "string" ? i.trim() : i;
           if (typeof o != "string" || o.length === 0)
             Ee(t, o, "init.user.phone_number_with_plus_sha256");
-          else if (!Yr.test(o))
+          else if (!Qr.test(o))
             t.push(
               "init.user.phone_number_with_plus_sha256 should be a 64-character hexadecimal SHA-256 digest.",
             );
           else {
             let r = e.user.phone_number_sha256;
-            (typeof r != "string" || !Yr.test(r.trim())) &&
+            (typeof r != "string" || !Qr.test(r.trim())) &&
               t.push(
                 "init.user.phone_number_with_plus_sha256 requires init.user.phone_number_sha256 to be a 64-character hexadecimal SHA-256 digest.",
               );
@@ -3897,22 +3901,22 @@
       }
     return t;
   }
-  function Ot(e) {
+  function Rt(e) {
     return Zn(e) ? e : "unknown";
   }
-  function ns(e, n, t) {
+  function ts(e, n, t) {
     let i = [];
     if (!Sn(e))
       return (
         i.push("eventName should be a non-empty string."),
         { issues: i, diagnosticReason: "unsupported_event_name" }
       );
-    let o = Zn(e) ? Ki[e] : void 0;
+    let o = Zn(e) ? ji[e] : void 0;
     o || i.push("eventName is not a documented measurement event.");
     let r = [],
-      s = Sd(o, n, r),
+      s = Cd(o, n, r),
       a = [],
-      d = Cd(e, t, a);
+      d = bd(e, t, a);
     if ((i.push(...r, ...a), !o))
       return {
         issues: i,
@@ -3926,7 +3930,7 @@
         diagnosticDetail: { code: "missing_required_field", field: "data" },
       };
     if (r.length > 0) {
-      let c = Be(t) ? t.custom_event_name : void 0,
+      let c = Ue(t) ? t.custom_event_name : void 0,
         u =
           (typeof c != "string" || (c !== "" && !Zn(c.toLowerCase()))) &&
           (d == null ? void 0 : d.field) === "custom_event_name"
@@ -3941,7 +3945,7 @@
     }
     return { issues: i };
   }
-  function Qr(e, n) {
+  function Xr(e, n) {
     let t = Object.create(null);
     for (let i of Object.keys(e)) t[i] = void 0;
     for (let i of n) {
@@ -3950,34 +3954,34 @@
     }
     return t;
   }
-  function ts(e, n) {
-    if (!Zn(e) || !Be(n)) return n;
-    let t = Qr(n, Xr[Ki[e]]),
+  function is(e, n) {
+    if (!Zn(e) || !Ue(n)) return n;
+    let t = Xr(n, Jr[ji[e]]),
       i = t.contents;
     if (Array.isArray(i)) {
       let o = [],
         r = i.length;
       for (let s = 0; s < r; s += 1) {
         let a = i[s];
-        o[s] = Be(a) ? Qr(a, Jr) : a;
+        o[s] = Ue(a) ? Xr(a, Zr) : a;
       }
       t.contents = o;
     }
     return t;
   }
-  var Ad = 250,
-    ze = "oai::diagnostic",
-    Td = "openai::sdk_init",
-    $i = 2147483647,
-    Rt = 64,
-    is = 60 * 1024,
+  var Td = 250,
+    Ve = "oai::diagnostic",
+    wd = "openai::sdk_init",
+    Wi = 2147483647,
+    Dt = 64,
+    os = 60 * 1024,
     Ce = 64 * 1024,
-    nn = new WeakMap(),
-    os = new WeakMap();
-  function Ji(e, n) {
+    en = new WeakMap(),
+    rs = new WeakMap();
+  function Zi(e, n) {
     return Object.prototype.hasOwnProperty.call(e, n);
   }
-  function as(e) {
+  function ds(e) {
     e.metadata &&
       ((e.metadata.schema_version = 1),
       delete e.metadata.dropped_event_details,
@@ -3986,12 +3990,12 @@
   function Z(e) {
     var n, t;
     return (
-      e.eventName === ze &&
+      e.eventName === Ve &&
       (((n = e.metadata) == null ? void 0 : n.is_first_visit_in_session) === !0 ||
         ((t = e.metadata) == null ? void 0 : t.is_first_consent_grant_in_session) === !0)
     );
   }
-  function tn(e, n) {
+  function nn(e, n) {
     var o, r;
     let t = n != null ? n : j().find((s) => s.pendingEvents.includes(e));
     if (!t) return !1;
@@ -4002,19 +4006,20 @@
     );
   }
   function G() {
-    ((nn = new WeakMap()),
-      ti(),
+    ((en = new WeakMap()),
+      ii(),
       (m.consent = !1),
       Me(!0),
       bn(!1),
       (m.browserRef = void 0),
-      Nt(),
+      Ot(),
       (m.clickId = void 0),
       (m.explicitClickId = void 0),
-      Ao());
+      (m.nativeClickId = void 0),
+      To());
     let e = j();
     if (e.length === 0) {
-      (le.splice(0, le.length), Jn());
+      (ge.splice(0, ge.length), Jn());
       return;
     }
     for (let n of e) {
@@ -4028,25 +4033,25 @@
             dropped_event_name_counts: {},
             dropped_event_phase_counts: {},
           })),
-          as(i),
-          !((o = i.consentSessionMarker) != null && o.revocableGrant) || tn(i, n)
+          ds(i),
+          !((o = i.consentSessionMarker) != null && o.revocableGrant) || nn(i, n)
             ? !0
-            : (Li(i), ((r = i.metadata) == null ? void 0 : r.is_first_visit_in_session) === !0)
+            : (Hi(i), ((r = i.metadata) == null ? void 0 : r.is_first_visit_in_session) === !0)
         );
       });
-      (n.pendingEvents.splice(0, n.pendingEvents.length, ...t), cs(n));
+      (n.pendingEvents.splice(0, n.pendingEvents.length, ...t), us(n));
     }
     Jn();
   }
-  function Zi(e) {
+  function eo(e) {
     return (
       e.transport.activeFetchRequest !== null || e.transport.credentiallessEventsInFlight.size > 0
     );
   }
-  function Ft(e) {
+  function Lt(e) {
     return e.pendingEvents.length > 0 && e.pendingEvents.every(Z);
   }
-  function Ve(e) {
+  function qe(e) {
     ((e.transport.nextFlushRetryAtMs = null), (e.transport.consecutiveFlushFailures = 0));
   }
   function Se(e) {
@@ -4056,17 +4061,17 @@
       (e.transport.firstPendingEventAtMs = null),
       (e.transport.lastPendingEventAtMs = null));
   }
-  function ds(e) {
-    let n = un();
+  function cs(e) {
+    let n = cn();
     ((e.transport.firstPendingEventAtMs = n), (e.transport.lastPendingEventAtMs = n));
   }
-  function Lt(e) {
+  function Ht(e) {
     e.transport.consecutiveFlushFailures += 1;
-    let n = Math.min(5e3 * lo(2, e.transport.consecutiveFlushFailures - 1), 3e5);
-    e.transport.nextFlushRetryAtMs = un() + n;
+    let n = Math.min(5e3 * go(2, e.transport.consecutiveFlushFailures - 1), 3e5);
+    e.transport.nextFlushRetryAtMs = cn() + n;
   }
-  function Wi(e) {
-    if (!w()) for (let n of e) Li(n) && as(n);
+  function Yi(e) {
+    if (!w()) for (let n of e) Hi(n) && ds(n);
   }
   function nt(e, n) {
     let t = e.pendingEvents,
@@ -4079,32 +4084,32 @@
       s >= 0 && (t.splice(s, 1), o.push(r));
     }
     for (let r of o)
-      r.consentSessionMarker && Hi(r.consentSessionMarker.pixelId, r.consentSessionMarker.state);
-    if ((Ve(e), t.length === 0)) {
+      r.consentSessionMarker && xi(r.consentSessionMarker.pixelId, r.consentSessionMarker.state);
+    if ((qe(e), t.length === 0)) {
       Se(e);
       return;
     }
-    (ds(e), te(e.pixelId));
+    (cs(e), te(e.pixelId));
   }
-  function cs(e) {
+  function us(e) {
     let n = e ? [e] : j();
-    for (let t of n) (Se(t), Ve(t));
+    for (let t of n) (Se(t), qe(t));
   }
-  function us() {
-    ((nn = new WeakMap()), ti());
+  function fs() {
+    ((en = new WeakMap()), ii());
     for (let e of j())
-      (cs(e),
+      (us(e),
         (e.transport.activeFetchRequest = null),
         e.transport.credentiallessEventsInFlight.clear());
   }
-  function wd(e) {
+  function Nd(e) {
     try {
       return new URL(e);
     } catch (n) {
       return (x("invalid_endpoint_url", n, { endpoint: e }), null);
     }
   }
-  function Dt(e, n) {
+  function Ft(e, n) {
     if (typeof navigator != "undefined" && typeof navigator.sendBeacon == "function")
       try {
         if (navigator.sendBeacon(e, n)) return !0;
@@ -4113,30 +4118,30 @@
       }
     return !1;
   }
-  function Nd(e = 1, n = m.pixelId) {
+  function Od(e = 1, n = m.pixelId) {
     if (!m.endpoint || !n) return null;
-    let t = wd(m.endpoint);
+    let t = Nd(m.endpoint);
     return t
-      ? (t.searchParams.set(cn.PixelId, n),
-        t.searchParams.set(cn.SdkType, mo),
-        t.searchParams.set(cn.SdkVersion, Ie),
-        t.searchParams.set(cn.Timestamp, String(Date.now())),
-        t.searchParams.set(cn.EventCount, String(Math.max(1, Math.floor(e)))),
+      ? (t.searchParams.set(dn.PixelId, n),
+        t.searchParams.set(dn.SdkType, po),
+        t.searchParams.set(dn.SdkVersion, Ie),
+        t.searchParams.set(dn.Timestamp, String(Date.now())),
+        t.searchParams.set(dn.EventCount, String(Math.max(1, Math.floor(e)))),
         t.toString())
       : null;
   }
-  function eo(e, n, t) {
+  function no(e, n, t) {
     let i = q(n);
     if (!w() || !m.initialized || !i) return;
     let o = Date.now(),
       r = {
         testSessionContext: Xn(o),
         clickContext: { clickId: m.clickId },
-        eventName: ze,
+        eventName: Ve,
         metadata: {
           type: "diagnostic",
           schema_version: 1,
-          config: fe({ automatic_advanced_matching: e }, t != null ? t : {}),
+          config: le({ automatic_advanced_matching: e }, t != null ? t : {}),
           dropped_event_count: 0,
           dropped_event_reason_counts: {},
           dropped_event_name_counts: {},
@@ -4154,12 +4159,12 @@
     let n = e === void 0 ? j() : [q(e)];
     for (let t of n) {
       if (!t) continue;
-      if (!w() && !Ft(t)) {
-        (t.pendingEvents.splice(0, t.pendingEvents.length), Ve(t), Se(t));
+      if (!w() && !Lt(t)) {
+        (t.pendingEvents.splice(0, t.pendingEvents.length), qe(t), Se(t));
         continue;
       }
       if (t.pendingEvents.length === 0) {
-        (t.transport.activeFetchRequest || Ve(t), Se(t));
+        (t.transport.activeFetchRequest || qe(t), Se(t));
         continue;
       }
       if (!m.initialized) {
@@ -4167,11 +4172,11 @@
         continue;
       }
       if (typeof setInterval != "function") {
-        Ke(void 0, t.pixelId);
+        ze(void 0, t.pixelId);
         continue;
       }
       let i = t.transport,
-        o = un();
+        o = cn();
       (i.firstPendingEventAtMs == null && (i.firstPendingEventAtMs = o),
         (i.lastPendingEventAtMs = o),
         i.flushSchedulerInterval ||
@@ -4180,22 +4185,22 @@
               Se(t);
               return;
             }
-            if (!w() && !Ft(t)) {
-              (t.pendingEvents.splice(0, t.pendingEvents.length), Ve(t), Se(t));
+            if (!w() && !Lt(t)) {
+              (t.pendingEvents.splice(0, t.pendingEvents.length), qe(t), Se(t));
               return;
             }
             if (i.activeFetchRequest) return;
-            let r = un(),
+            let r = cn(),
               s = i.nextFlushRetryAtMs != null && r >= i.nextFlushRetryAtMs;
             if (i.nextFlushRetryAtMs != null && !s) return;
-            let a = Od(t) ? 4e3 : 1e3,
+            let a = Rd(t) ? 4e3 : 1e3,
               d = i.lastPendingEventAtMs != null && r - i.lastPendingEventAtMs >= a,
               c = i.firstPendingEventAtMs != null && r - i.firstPendingEventAtMs >= 4e3;
-            (s || d || c) && Ke(void 0, t.pixelId);
-          }, Ad)));
+            (s || d || c) && ze(void 0, t.pixelId);
+          }, Td)));
     }
   }
-  function rs(e, n = !0) {
+  function ss(e, n = !0) {
     var t, i, o, r, s;
     return {
       test_session_id: (t = e.testSessionId) != null ? t : null,
@@ -4203,7 +4208,7 @@
       oppref: Z(e)
         ? w() &&
           ((i = e.metadata) == null ? void 0 : i.consent) === !0 &&
-          me((o = e.clickContext) == null ? void 0 : o.clickId)
+          ie((o = e.clickContext) == null ? void 0 : o.clickId)
           ? e.clickContext.clickId
           : void 0
         : n
@@ -4217,34 +4222,34 @@
       referrer_url: e.referrerUrl,
       opt_out: e.optOut,
       custom_event_name: e.eventName === "custom" ? e.customEventName : void 0,
-      data: e.eventName === ze ? Dd(e.metadata) : (s = e.metadata) != null ? s : {},
+      data: e.eventName === Ve ? Fd(e.metadata) : (s = e.metadata) != null ? s : {},
     };
   }
   function Cn(e) {
-    return e === Td || e === ze;
+    return e === wd || e === Ve;
   }
-  function Od(e) {
-    return e.pendingEvents.length > 0 && e.pendingEvents.every((n) => n.eventName === ze);
+  function Rd(e) {
+    return e.pendingEvents.length > 0 && e.pendingEvents.every((n) => n.eventName === Ve);
   }
-  function ji(e, n, t) {
+  function Gi(e, n, t) {
     var i, o, r;
     try {
       let s = (i = e.metadata) == null ? void 0 : i[t],
         a = (o = n.metadata) == null ? void 0 : o[t];
-      for (let d in a) Ji(a, d) && (s[d] = ((r = s[d]) != null ? r : 0) + a[d]);
+      for (let d in a) Zi(a, d) && (s[d] = ((r = s[d]) != null ? r : 0) + a[d]);
       return s;
     } catch (s) {
       return {};
     }
   }
-  function Rd(e, n) {
+  function Dd(e, n) {
     try {
       let t = e.metadata,
         i = n.metadata;
       if (!t || !i) return null;
       let o = t.dropped_event_details,
         r = i.dropped_event_details;
-      if ((o && o.length > Rt) || (r && r.length > Rt)) return null;
+      if ((o && o.length > Dt) || (r && r.length > Dt)) return null;
       if (!o) return r;
       if (!r) return o;
       if (o.length === 1 && r.length === 1) {
@@ -4252,10 +4257,10 @@
           d = r[0];
         if (a.reason === d.reason && a.code === d.code && a.field === d.field) {
           let c = a.count + d.count;
-          return !Number.isInteger(c) || c <= 0 || c > $i ? null : ((a.count = c), o);
+          return !Number.isInteger(c) || c <= 0 || c > Wi ? null : ((a.count = c), o);
         }
       }
-      let s = os.get(o);
+      let s = rs.get(o);
       if (!s || s.size !== o.length) {
         s = new Map();
         for (let a = 0; a < o.length; a += 1) {
@@ -4263,7 +4268,7 @@
             u = `${d}|${c}|${l}`;
           s.has(u) || s.set(u, a);
         }
-        os.set(o, s);
+        rs.set(o, s);
       }
       for (let a = 0; a < r.length; a += 1) {
         let d = r[a],
@@ -4272,10 +4277,10 @@
           u = l === void 0 ? void 0 : o[l];
         if (u) {
           let p = u.count + d.count;
-          if (!Number.isInteger(p) || p <= 0 || p > $i) return null;
+          if (!Number.isInteger(p) || p <= 0 || p > Wi) return null;
           u.count = p;
         } else {
-          if (o.length >= Rt) return null;
+          if (o.length >= Dt) return null;
           (s.set(c, o.length), o.push(d));
         }
       }
@@ -4284,11 +4289,11 @@
       return null;
     }
   }
-  function Gi(e, n) {
+  function $i(e, n) {
     let t = {};
     for (let i in e) {
       let o = e[i];
-      !Ji(e, i) ||
+      !Zi(e, i) ||
         typeof o != "number" ||
         o <= 0 ||
         ((n === "dropped_event_reason_counts"
@@ -4297,14 +4302,14 @@
             )
           : n === "dropped_event_phase_counts"
             ? /^(?:before_init|after_init)$/.test(i)
-            : i === "unknown" || Ot(i) === i) &&
+            : i === "unknown" || Rt(i) === i) &&
           (t[i] = o));
     }
     return t;
   }
-  function Dd(e) {
+  function Fd(e) {
     try {
-      if (e && !Ji(e, "dropped_event_details_schema_version")) {
+      if (e && !Zi(e, "dropped_event_details_schema_version")) {
         let n = e.dropped_event_details,
           t = e.dropped_event_count;
         if (
@@ -4318,18 +4323,18 @@
           type: "diagnostic",
           schema_version: n ? 2 : 1,
           dropped_event_count: t,
-          dropped_event_reason_counts: Gi(
+          dropped_event_reason_counts: $i(
             e.dropped_event_reason_counts,
             "dropped_event_reason_counts",
           ),
-          dropped_event_name_counts: Gi(e.dropped_event_name_counts, "dropped_event_name_counts"),
-          dropped_event_phase_counts: Gi(
+          dropped_event_name_counts: $i(e.dropped_event_name_counts, "dropped_event_name_counts"),
+          dropped_event_phase_counts: $i(
             e.dropped_event_phase_counts,
             "dropped_event_phase_counts",
           ),
         };
         if (n) {
-          if (!Array.isArray(n) || n.length === 0 || n.length > Rt) throw new Error();
+          if (!Array.isArray(n) || n.length === 0 || n.length > Dt) throw new Error();
           let s = [];
           for (let a = 0; a < n.length; a += 1) {
             let { reason: d, code: c, field: l, count: u } = n[a];
@@ -4348,7 +4353,7 @@
               ) ||
               !Number.isInteger(u) ||
               u <= 0 ||
-              u > $i
+              u > Wi
             )
               throw new Error();
             s.push({ reason: d, code: c, field: l, count: u });
@@ -4387,34 +4392,34 @@
       dropped_event_phase_counts: {},
     };
   }
-  function qe(e, n) {
+  function Be(e, n) {
     var t;
     return (t = e.metadata) == null ? void 0 : t[n];
   }
-  function Yi(e, n) {
+  function Qi(e, n) {
     var h, v, b;
     let t =
         ((h = e.metadata) == null ? void 0 : h.dropped_event_count) +
         ((v = n.metadata) == null ? void 0 : v.dropped_event_count),
-      i = Rd(e, n),
-      o = ji(e, n, "dropped_event_reason_counts"),
-      r = ji(e, n, "dropped_event_name_counts"),
-      s = ji(e, n, "dropped_event_phase_counts"),
-      a = qe(n, "consent"),
-      d = qe(e, "consent"),
+      i = Dd(e, n),
+      o = Gi(e, n, "dropped_event_reason_counts"),
+      r = Gi(e, n, "dropped_event_name_counts"),
+      s = Gi(e, n, "dropped_event_phase_counts"),
+      a = Be(n, "consent"),
+      d = Be(e, "consent"),
       c = typeof a == "boolean" ? a : d,
-      l = qe(n, "config"),
-      u = qe(e, "config"),
+      l = Be(n, "config"),
+      u = Be(e, "config"),
       p =
         l && typeof l == "object" && !Array.isArray(l)
           ? l
           : u && typeof u == "object" && !Array.isArray(u)
             ? u
             : void 0,
-      f = qe(e, "is_first_visit_in_session") === !0 || qe(n, "is_first_visit_in_session") === !0,
+      f = Be(e, "is_first_visit_in_session") === !0 || Be(n, "is_first_visit_in_session") === !0,
       y =
-        qe(e, "is_first_consent_grant_in_session") === !0 ||
-        qe(n, "is_first_consent_grant_in_session") === !0;
+        Be(e, "is_first_consent_grant_in_session") === !0 ||
+        Be(n, "is_first_consent_grant_in_session") === !0;
     !Z(e) && Z(n) && (e.clickContext = (b = n.clickContext) != null ? b : {});
     let g = e.consentSessionMarker,
       _ = n.consentSessionMarker,
@@ -4452,7 +4457,7 @@
       e
     );
   }
-  function Qi(e) {
+  function Xi(e) {
     var i, o;
     let n = e.testSessionContext,
       t = JSON.stringify(
@@ -4460,36 +4465,36 @@
       );
     return Z(e) && ((o = e.metadata) == null ? void 0 : o.consent) === !1 ? `${t}:denied` : t;
   }
-  function fs(e, n) {
+  function ls(e, n) {
     var s;
-    if (e.eventName !== ze) return null;
+    if (e.eventName !== Ve) return null;
     let t = q(n),
-      i = (s = t == null ? void 0 : t.pendingEvents) != null ? s : le,
-      o = Qi(e),
+      i = (s = t == null ? void 0 : t.pendingEvents) != null ? s : ge,
+      o = Xi(e),
       r;
     for (let a = 0; a < i.length; a += 1) {
       let d = i[a];
-      d.eventName !== ze ||
-        Qi(d) !== o ||
-        tn(d, t) ||
-        (r ? (Yi(r, d), i.splice(a, 1), (a -= 1)) : (r = d));
+      d.eventName !== Ve ||
+        Xi(d) !== o ||
+        nn(d, t) ||
+        (r ? (Qi(r, d), i.splice(a, 1), (a -= 1)) : (r = d));
     }
-    return r ? Yi(r, e) : null;
+    return r ? Qi(r, e) : null;
   }
-  function Fd(e) {
+  function Ld(e) {
     let n = new Map();
     for (let t = 0; t < e.pendingEvents.length; t += 1) {
       let i = e.pendingEvents[t];
-      if (i.eventName !== ze || tn(i, e)) continue;
-      let o = Qi(i),
+      if (i.eventName !== Ve || nn(i, e)) continue;
+      let o = Xi(i),
         r = n.get(o);
-      r ? (Yi(r, i), e.pendingEvents.splice(t, 1), (t -= 1)) : n.set(o, i);
+      r ? (Qi(r, i), e.pendingEvents.splice(t, 1), (t -= 1)) : n.set(o, i);
     }
   }
   function be(e, n) {
     var c;
     if (n.length === 0) return null;
-    let t = Nd(n.length, e.pixelId);
+    let t = Od(n.length, e.pixelId);
     if (!t) return null;
     let i = n.map((l) => l.eventName),
       o = n.some((l) => !Cn(l.eventName)),
@@ -4500,22 +4505,22 @@
         return (
           ((u = l.clickContext) == null ? void 0 : u.clickId) !== void 0 &&
           (!Z(l) ||
-            (((p = l.metadata) == null ? void 0 : p.consent) === !0 && me(l.clickContext.clickId)))
+            (((p = l.metadata) == null ? void 0 : p.consent) === !0 && ie(l.clickContext.clickId)))
         );
       })
         ? s
         : void 0,
       d = r
-        ? { events: n.map((l) => rs(l, !1)) }
+        ? { events: n.map((l) => ss(l, !1)) }
         : {
             obref: m.browserRef,
             events: n.map((l) => {
               var u;
-              return rs(l, ((u = l.clickContext) == null ? void 0 : u.clickId) !== a);
+              return ss(l, ((u = l.clickContext) == null ? void 0 : u.clickId) !== a);
             }),
             oppref: a,
-            client_hints: o ? Ho() : void 0,
-            user: o ? Hr(e.config.user, !0, e.pixelId) : void 0,
+            client_hints: o ? xo() : void 0,
+            user: o ? xr(e.config.user, !0, e.pixelId) : void 0,
           };
     return {
       endpoint: t,
@@ -4525,10 +4530,10 @@
       omitCredentials: r,
     };
   }
-  function Ld(e, { coalesceDiagnostics: n = !0 } = {}) {
-    return (n && Fd(e), be(e, e.pendingEvents.slice()));
+  function Hd(e, { coalesceDiagnostics: n = !0 } = {}) {
+    return (n && Ld(e), be(e, e.pendingEvents.slice()));
   }
-  function ae(e) {
+  function de(e) {
     try {
       return new Blob([e.body]).size;
     } catch (n) {
@@ -4540,19 +4545,19 @@
       return t;
     }
   }
-  function Ht(e, n) {
-    if (ae(n) <= is) return n;
+  function xt(e, n) {
+    if (de(n) <= os) return n;
     let t = be(e, n.eventsToSend.slice(0, 1)),
       i = 2,
       o = n.eventsToSend.length - 1;
     for (; i <= o;) {
       let r = Math.floor((i + o) / 2),
         s = be(e, n.eventsToSend.slice(0, r));
-      ae(s) <= is ? ((t = s), (i = r + 1)) : (o = r - 1);
+      de(s) <= os ? ((t = s), (i = r + 1)) : (o = r - 1);
     }
     return t;
   }
-  function ls(e) {
+  function gs(e) {
     return (
       e.eventName === "order_created" ||
       e.eventName === "subscription_created" ||
@@ -4562,17 +4567,17 @@
       e.eventName === "trial_started"
     );
   }
-  function xt(e, n) {
-    let t = n.eventsToSend.filter((i) => ls(i) && !tn(i, e) && ae(be(e, [i])) <= Ce);
+  function Ut(e, n) {
+    let t = n.eventsToSend.filter((i) => gs(i) && !nn(i, e) && de(be(e, [i])) <= Ce);
     return t.length > 0 && t.length < n.eventsToSend.length ? be(e, t) : null;
   }
-  function Hd(e, n) {
-    let t = xt(e, n);
-    return t ? tt(e, t) : Ht(e, n);
+  function xd(e, n) {
+    let t = Ut(e, n);
+    return t ? tt(e, t) : xt(e, n);
   }
   function tt(e, n) {
     var a, d;
-    let t = ae(n);
+    let t = de(n);
     if (t <= Ce) return n;
     let i = n.eventsToSend,
       o = null,
@@ -4586,34 +4591,34 @@
       )
         continue;
       let l = be(e, i.slice(s, c));
-      if ((o != null || (o = l), (r += ae(l)), r >= t)) return Hd(e, n);
+      if ((o != null || (o = l), (r += de(l)), r >= t)) return xd(e, n);
       s = c;
     }
     if (r > Ce) {
-      let c = xt(e, n);
+      let c = Ut(e, n);
       if (c) return tt(e, c);
     }
-    return o && o.eventsToSend.length < i.length ? (ae(o) <= Ce ? o : Ht(e, o)) : Ht(e, n);
+    return o && o.eventsToSend.length < i.length ? (de(o) <= Ce ? o : xt(e, o)) : xt(e, n);
   }
-  function Xi(e, n = !1) {
+  function Ji(e, n = !1) {
     var o;
     let t = new Set(e.pendingEvents),
       i = !1;
     e: for (; w();) {
       if (U() === !1) return (G(), i);
-      let r = e.pendingEvents.filter((a) => t.has(a) && !Z(a) && !tn(a, e)),
+      let r = e.pendingEvents.filter((a) => t.has(a) && !Z(a) && !nn(a, e)),
         s = be(e, r);
       if (!s) return i;
-      for (n && (s = (o = xt(e, s)) != null ? o : s), s = tt(e, s); ;) {
+      for (n && (s = (o = Ut(e, s)) != null ? o : s), s = tt(e, s); ;) {
         if (!w()) return i;
         if (U() === !1) return (G(), i);
-        if (s.eventsToSend.length === 1 && ae(s) > Ce) {
+        if (s.eventsToSend.length === 1 && de(s) > Ce) {
           t.delete(s.eventsToSend[0]);
           continue e;
         }
-        if (ae(s) <= Ce && Dt(s.endpoint, s.body)) break;
+        if (de(s) <= Ce && Ft(s.endpoint, s.body)) break;
         if ((U() === !1 && G(), !w())) return i;
-        let a = xt(e, s);
+        let a = Ut(e, s);
         if (a) {
           s = tt(e, a);
           continue;
@@ -4626,24 +4631,24 @@
     }
     return i;
   }
-  function ss(e, n) {
-    n.eventsToSend.length < e.pendingEvents.length && Xi(e);
+  function as(e, n) {
+    n.eventsToSend.length < e.pendingEvents.length && Ji(e);
   }
-  function gs(e, n) {
+  function ms(e, n) {
     let t;
-    do ((t = e.pendingEvents.length), Ud(e, n));
+    do ((t = e.pendingEvents.length), Bd(e, n));
     while (
       (n == null ? void 0 : n.preferBeacon) === !0 &&
-      !Zi(e) &&
+      !eo(e) &&
       e.pendingEvents.length > 0 &&
       e.pendingEvents.length < t
     );
   }
-  function xd(e, n, t) {
+  function Ud(e, n, t) {
     if (typeof fetch != "function") return;
     let i = be(
       e,
-      n.eventsToSend.filter((s) => Z(s) && !tn(s, e)),
+      n.eventsToSend.filter((s) => Z(s) && !nn(s, e)),
     );
     if (!i) return;
     let o = i.eventsToSend;
@@ -4666,7 +4671,7 @@
       });
     } catch (s) {
       for (let a of o) e.transport.credentiallessEventsInFlight.delete(a);
-      (Wi(o), x("fetch_failed", s, { endpoint: i.endpoint }), Lt(e), te(e.pixelId));
+      (Yi(o), x("fetch_failed", s, { endpoint: i.endpoint }), Ht(e), te(e.pixelId));
       return;
     }
     r.then(
@@ -4677,41 +4682,41 @@
           a >= 0 &&
             (e.pendingEvents.splice(a, 1),
             s.consentSessionMarker &&
-              Hi(s.consentSessionMarker.pixelId, s.consentSessionMarker.state));
+              xi(s.consentSessionMarker.pixelId, s.consentSessionMarker.state));
         }
-        (Ve(e), e.pendingEvents.length === 0 && !Zi(e) ? Se(e) : (ds(e), te(e.pixelId)));
+        (qe(e), e.pendingEvents.length === 0 && !eo(e) ? Se(e) : (cs(e), te(e.pixelId)));
       },
       (s) => {
         let a = !1;
         for (let d of o) a = e.transport.credentiallessEventsInFlight.delete(d) || a;
-        (Wi(o), x("fetch_failed", s, { endpoint: i.endpoint }), a && (Lt(e), te(e.pixelId)));
+        (Yi(o), x("fetch_failed", s, { endpoint: i.endpoint }), a && (Ht(e), te(e.pixelId)));
       },
     );
   }
-  function Ke(e, n) {
+  function ze(e, n) {
     if (!W()) return;
     if (En()) {
       if ((e == null ? void 0 : e.preferBeacon) !== !0) return;
-      Ue();
+      xe();
     }
     let t = n === void 0 ? j() : [q(n)];
-    for (let i of t) i && gs(i, e);
+    for (let i of t) i && ms(i, e);
   }
-  function Ud(e, n) {
+  function Bd(e, n) {
     var p;
     let t = e.pendingEvents,
       i = e.transport;
     if (t.length === 0) {
-      (Ve(e), Se(e));
+      (qe(e), Se(e));
       return;
     }
-    if (!w() && !Ft(e)) {
-      (t.splice(0, t.length), Ve(e), Se(e));
+    if (!w() && !Lt(e)) {
+      (t.splice(0, t.length), qe(e), Se(e));
       return;
     }
     if (!m.initialized) return;
     if (
-      (no(e.pixelId),
+      (to(e.pixelId),
       U() === !1 && G(),
       (n == null ? void 0 : n.preferBeacon) !== !0 &&
         w() &&
@@ -4719,46 +4724,46 @@
         Wn(e.pixelId),
       (n == null ? void 0 : n.preferBeacon) === !0)
     )
-      nn.delete(e);
+      en.delete(e);
     else if (w() && t.some((f) => !Cn(f.eventName))) {
-      let f = Lo();
+      let f = Ho();
       if (f) {
-        nn.get(e) !== f &&
-          (nn.set(e, f),
+        en.get(e) !== f &&
+          (en.set(e, f),
           f.then(() => {
-            nn.get(e) === f && (nn.delete(e), q(e.pixelId) === e && gs(e, n));
+            en.get(e) === f && (en.delete(e), q(e.pixelId) === e && ms(e, n));
           }));
         return;
       }
     }
-    let o = xr(e.pixelId) && t.some((f) => !Cn(f.eventName));
+    let o = Ur(e.pixelId) && t.some((f) => !Cn(f.eventName));
     if (
       ((e.userConfigHashingPending || o) &&
         w() &&
-        !Ft(e) &&
+        !Lt(e) &&
         (n == null ? void 0 : n.preferBeacon) !== !0) ||
       !m.endpoint
     )
       return;
     let r = (n == null ? void 0 : n.preferBeacon) === !0;
-    if (!r && i.nextFlushRetryAtMs != null && un() < i.nextFlushRetryAtMs) return;
-    let s = Zi(e),
-      a = Ld(e, { coalesceDiagnostics: !s });
+    if (!r && i.nextFlushRetryAtMs != null && cn() < i.nextFlushRetryAtMs) return;
+    let s = eo(e),
+      a = Hd(e, { coalesceDiagnostics: !s });
     if (!a) return;
     let d = r && !a.omitCredentials,
       c = (p = n == null ? void 0 : n.reason) != null ? p : "scheduler";
     if (s) {
-      if ((r && xd(e, a, c), d)) {
+      if ((r && Ud(e, a, c), d)) {
         let f = be(
           e,
           a.eventsToSend.filter((y) => !Z(y)),
         );
-        f && !Dt(f.endpoint, f.body) && Xi(e, !0);
+        f && !Ft(f.endpoint, f.body) && Ji(e, !0);
       }
       return;
     }
-    if (((a = r ? tt(e, a) : Ht(e, a)), (d = r && !a.omitCredentials), d)) {
-      if (ae(a) <= Ce && Dt(a.endpoint, a.body)) {
+    if (((a = r ? tt(e, a) : xt(e, a)), (d = r && !a.omitCredentials), d)) {
+      if (de(a) <= Ce && Ft(a.endpoint, a.body)) {
         (V(m, "queue flushed", {
           reason: c,
           transport: "beacon",
@@ -4770,7 +4775,7 @@
       }
       if (
         (U() === !1 && G(),
-        !w() || (e.pendingEvents.some((f) => ls(f) && !tn(f, e)) && (Xi(e, !0) || !w())))
+        !w() || (e.pendingEvents.some((f) => gs(f) && !nn(f, e)) && (Ji(e, !0) || !w())))
       )
         return;
     }
@@ -4783,13 +4788,13 @@
           eventCount: a.eventsToSend.length,
           eventNames: a.eventNames,
         }),
-        Ge(null, null, function* () {
+        je(null, null, function* () {
           try {
             let y =
               !r &&
               !a.omitCredentials &&
               a.eventsToSend.length <= 100 &&
-              ae(a) <= Ce &&
+              de(a) <= Ce &&
               a.eventsToSend.some((_) => !Cn(_.eventName)) &&
               a.eventsToSend.every((_) => {
                 var E, M;
@@ -4800,10 +4805,10 @@
                     !!(
                       (M = (E = _.clickContext) == null ? void 0 : E.clickId) != null && M.trim()
                     ) ||
-                    Ro(e.pixelId))
+                    Do(e.pixelId))
                 );
               })
-                ? Wr(e.pixelId, a.body, a.eventsToSend.length)
+                ? Yr(e.pixelId, a.body, a.eventsToSend.length)
                 : void 0;
             if (y) {
               let _ = yield y;
@@ -4829,7 +4834,7 @@
               method: "POST",
               headers: { "Content-Type": "text/plain" },
               body: a.body,
-              keepalive: ae(a) <= Ce,
+              keepalive: de(a) <= Ce,
               credentials: a.omitCredentials ? "omit" : "include",
               mode: "no-cors",
             };
@@ -4850,7 +4855,7 @@
           } catch (y) {
             if (i.activeFetchRequest !== f) return;
             ((i.activeFetchRequest = null),
-              Wi(a.eventsToSend),
+              Yi(a.eventsToSend),
               V(m, "queue flush failed", {
                 reason: c,
                 transport: "fetch",
@@ -4858,46 +4863,46 @@
                 eventNames: a.eventNames,
               }),
               x("fetch_failed", y, { endpoint: a.endpoint }),
-              Lt(e),
+              Ht(e),
               te(e.pixelId));
           }
         }),
-        r && ss(e, a));
+        r && as(e, a));
       return;
     }
-    let l = !d && !a.omitCredentials && ae(a) <= Ce && Dt(a.endpoint, a.body) ? "beacon" : "none",
+    let l = !d && !a.omitCredentials && de(a) <= Ce && Ft(a.endpoint, a.body) ? "beacon" : "none",
       u = { reason: c, transport: l, eventCount: a.eventsToSend.length, eventNames: a.eventNames };
     if (l === "none") {
-      (V(m, "queue flush failed", u), Lt(e), te(e.pixelId), r && a.omitCredentials && ss(e, a));
+      (V(m, "queue flush failed", u), Ht(e), te(e.pixelId), r && a.omitCredentials && as(e, a));
       return;
     }
     (V(m, "queue flushed", u), nt(e, a.eventsToSend));
   }
-  var Bd = 3e5,
-    qd = 250,
-    je = new Map(),
-    to,
+  var qd = 3e5,
+    Vd = 250,
+    Ke = new Map(),
+    io,
     Mn = !0,
     we;
-  function Vd() {
+  function zd() {
     if (!(typeof window == "undefined" || typeof window.fetch != "function"))
       return window.fetch.bind(window);
   }
-  function zd(e) {
+  function Kd(e) {
     return !e || typeof e != "object" || Array.isArray(e)
       ? !1
       : typeof e.automatic_advanced_matching_enabled == "boolean";
   }
-  function Kd(e) {
-    return `${go}/pixel-config/v1/${encodeURIComponent(e)}.json`;
+  function jd(e) {
+    return `${mo}/pixel-config/v1/${encodeURIComponent(e)}.json`;
   }
-  function Ut(e) {
+  function Bt(e) {
     (e.refreshTimeout !== void 0 && (clearTimeout(e.refreshTimeout), (e.refreshTimeout = void 0)),
       e.expiryTimeout !== void 0 && (clearTimeout(e.expiryTimeout), (e.expiryTimeout = void 0)));
   }
-  function ps(e) {
+  function hs(e) {
     var t;
-    Ut(e);
+    Bt(e);
     let n = Math.max(0, ((t = e.expiresAt) != null ? t : Date.now()) - Date.now());
     ((e.refreshTimeout = setTimeout(
       () => {
@@ -4906,54 +4911,54 @@
       Math.max(0, n - 3e3),
     )),
       (e.expiryTimeout = setTimeout(() => {
-        ((e.expiryTimeout = void 0), (e.enabled = !1), (e.loaded = !1), Ze(!1, e.pixelId), In(e));
+        ((e.expiryTimeout = void 0), (e.enabled = !1), (e.loaded = !1), Je(!1, e.pixelId), In(e));
       }, n)),
       typeof e.refreshTimeout == "object" &&
         "unref" in e.refreshTimeout &&
         e.refreshTimeout.unref(),
       typeof e.expiryTimeout == "object" && "unref" in e.expiryTimeout && e.expiryTimeout.unref());
   }
-  function on(e, n, t, i) {
+  function tn(e, n, t, i) {
     let o =
       i.retryAttempted === !0
         ? { retry_attempted: !0, retry_succeeded: n === "enabled" || n === "disabled" }
         : void 0;
     if (n === "request_failed" && e.loaded && e.expiresAt !== void 0 && e.expiresAt > Date.now()) {
-      o && eo(n, e.pixelId, o);
+      o && no(n, e.pixelId, o);
       return;
     }
     let r = !e.loaded || e.enabled !== t;
     ((e.enabled = t),
       (e.loaded = !0),
-      (e.expiresAt = Date.now() + Bd),
-      Ze(e.enabled && Mn, e.pixelId),
-      (r || o) && eo(n, e.pixelId, o),
-      ps(e));
+      (e.expiresAt = Date.now() + qd),
+      Je(e.enabled && Mn, e.pixelId),
+      (r || o) && no(n, e.pixelId, o),
+      hs(e));
   }
-  function rn(e, n) {
+  function on(e, n) {
     return e.activeLoad === n && Mn;
   }
-  function ms(e, n) {
-    return !rn(e, n) || n.retryAttempted
+  function ps(e, n) {
+    return !on(e, n) || n.retryAttempted
       ? !1
       : ((n.retryAttempted = !0),
         (n.retryTimeout = setTimeout(() => {
           ((n.retryTimeout = void 0),
-            rn(e, n) &&
+            on(e, n) &&
               ((n.abortController =
                 typeof AbortController == "function" ? new AbortController() : void 0),
-              hs(e, n)));
-        }, qd)),
+              _s(e, n)));
+        }, Vd)),
         !0);
   }
-  function hs(e, n) {
-    return Ge(this, null, function* () {
+  function _s(e, n) {
+    return je(this, null, function* () {
       let t = n.abortController,
         i;
       try {
-        let o = Vd();
+        let o = zd();
         if (!o) {
-          rn(e, n) && on(e, "request_failed", !1, n);
+          on(e, n) && tn(e, "request_failed", !1, n);
           return;
         }
         let r = new Promise((c, l) => {
@@ -4962,7 +4967,7 @@
             }, 3e3);
           }),
           s = yield Promise.race([
-            o(Kd(e.pixelId), {
+            o(jd(e.pixelId), {
               method: "GET",
               credentials: "omit",
               mode: "cors",
@@ -4971,32 +4976,32 @@
             }),
             r,
           ]);
-        if (!rn(e, n)) return;
+        if (!on(e, n)) return;
         if (s.status === 404) {
-          on(e, "not_found", !1, n);
+          tn(e, "not_found", !1, n);
           return;
         }
         if (!s.ok) {
-          if ((s.status === 408 || (s.status >= 500 && s.status < 600)) && ms(e, n)) return;
-          on(e, "request_failed", !1, n);
+          if ((s.status === 408 || (s.status >= 500 && s.status < 600)) && ps(e, n)) return;
+          tn(e, "request_failed", !1, n);
           return;
         }
         let a;
         try {
           a = yield s.json();
         } catch (c) {
-          rn(e, n) && on(e, "invalid", !1, n);
+          on(e, n) && tn(e, "invalid", !1, n);
           return;
         }
-        if (!rn(e, n)) return;
-        if (!zd(a)) {
-          on(e, "invalid", !1, n);
+        if (!on(e, n)) return;
+        if (!Kd(a)) {
+          tn(e, "invalid", !1, n);
           return;
         }
         let d = a.automatic_advanced_matching_enabled;
-        on(e, d ? "enabled" : "disabled", d, n);
+        tn(e, d ? "enabled" : "disabled", d, n);
       } catch (o) {
-        rn(e, n) && !ms(e, n) && on(e, "request_failed", !1, n);
+        on(e, n) && !ps(e, n) && tn(e, "request_failed", !1, n);
       } finally {
         (i !== void 0 && clearTimeout(i),
           e.activeLoad === n && n.retryTimeout === void 0 && (e.activeLoad = void 0));
@@ -5016,92 +5021,92 @@
     let t = {
       abortController: typeof AbortController == "function" ? new AbortController() : void 0,
     };
-    ((e.activeLoad = t), hs(e, t));
+    ((e.activeLoad = t), _s(e, t));
   }
-  function _s(e) {
+  function ys(e) {
     var n, t, i;
     (((n = e.activeLoad) == null ? void 0 : n.retryTimeout) !== void 0 &&
       (clearTimeout(e.activeLoad.retryTimeout), (e.activeLoad.retryTimeout = void 0)),
       (i = (t = e.activeLoad) == null ? void 0 : t.abortController) == null || i.abort(),
       (e.activeLoad = void 0));
   }
-  function no(e) {
-    let n = je.get(e);
+  function to(e) {
+    let n = Ke.get(e);
     !(n != null && n.loaded) ||
       n.expiresAt === void 0 ||
       n.expiresAt > Date.now() ||
-      (Ut(n), (n.enabled = !1), (n.loaded = !1), Ze(!1, n.pixelId), In(n));
+      (Bt(n), (n.enabled = !1), (n.loaded = !1), Je(!1, n.pixelId), In(n));
   }
-  function io() {
+  function oo() {
     if (typeof document != "undefined" && document.visibilityState !== "hidden")
-      for (let e of je.values()) {
-        no(e.pixelId);
+      for (let e of Ke.values()) {
+        to(e.pixelId);
         let n = e.loaded && e.expiresAt !== void 0 && e.expiresAt - Date.now() <= 3e3;
         In(e, n);
       }
   }
-  function jd() {
+  function Gd() {
     typeof document == "undefined" ||
       we === document ||
-      (we == null || we.removeEventListener("visibilitychange", io),
-      document.addEventListener("visibilitychange", io),
+      (we == null || we.removeEventListener("visibilitychange", oo),
+      document.addEventListener("visibilitychange", oo),
       (we = document));
   }
-  function ys(e, n) {
-    to === void 0 && (to = e);
-    let t = je.get(e);
-    (t || ((t = { pixelId: e, enabled: !1, loaded: !1 }), je.set(e, t)),
+  function vs(e, n) {
+    io === void 0 && (io = e);
+    let t = Ke.get(e);
+    (t || ((t = { pixelId: e, enabled: !1, loaded: !1 }), Ke.set(e, t)),
       (Mn = n !== !1),
-      jd(),
+      Gd(),
       In(t));
   }
   function bn(e) {
     if (((Mn = e), !e)) {
-      for (let n of je.values()) (Ze(!1, n.pixelId), _s(n), Ut(n));
+      for (let n of Ke.values()) (Je(!1, n.pixelId), ys(n), Bt(n));
       return;
     }
-    for (let n of je.values())
+    for (let n of Ke.values())
       (n.loaded &&
         n.expiresAt !== void 0 &&
         n.expiresAt <= Date.now() &&
         ((n.enabled = !1), (n.loaded = !1)),
-        Ze(n.loaded && n.enabled, n.pixelId),
-        n.loaded ? ps(n) : In(n));
+        Je(n.loaded && n.enabled, n.pixelId),
+        n.loaded ? hs(n) : In(n));
   }
-  function vs() {
-    for (let e of je.values()) (_s(e), Ut(e), Ze(!1, e.pixelId));
-    (je.clear(),
-      we == null || we.removeEventListener("visibilitychange", io),
+  function Es() {
+    for (let e of Ke.values()) (ys(e), Bt(e), Je(!1, e.pixelId));
+    (Ke.clear(),
+      we == null || we.removeEventListener("visibilitychange", oo),
       (we = void 0),
-      (to = void 0),
+      (io = void 0),
       (Mn = !0));
   }
-  var bs = "oai::diagnostic";
-  function Gd(e) {
+  var Is = "oai::diagnostic";
+  function $d(e) {
     return !!e && typeof e == "object" && !Array.isArray(e);
   }
-  function $d(e) {
-    return Gd(e) && e.debug !== void 0
+  function Wd(e) {
+    return $d(e) && e.debug !== void 0
       ? typeof e.debug == "boolean"
         ? e.debug
         : !0
       : !!m.config.debug;
   }
-  function Bt(e, n, t, i) {
+  function qt(e, n, t, i) {
     n.length === 0 ||
       (e === "init" && !t) ||
-      Po({ command: e, issues: n, eventName: i }, { details: t });
+      ko({ command: e, issues: n, eventName: i }, { details: t });
   }
-  function Es(e, n, t) {
+  function Ss(e, n, t) {
     x(e, void 0, { command: "init", issues: n }, { debug: t });
   }
-  function so(e) {
+  function ao(e) {
     !m.initialized || !w() || te(e);
   }
-  function ro(e, n) {
+  function so(e, n) {
     n ? (e.config.user = n) : delete e.config.user;
   }
-  function Is() {
+  function Ms() {
     for (let e of j())
       ((e.userConfigUpdateRevision += 1),
         (e.userConfigHashingPending = !1),
@@ -5109,28 +5114,28 @@
         delete e.userHashingPendingPromises);
     m.userConfigHashingPending = !1;
   }
-  function Wd(e, n, t) {
+  function Yd(e, n, t) {
     var s;
     let i = ++e.userConfigUpdateRevision,
       o = at(n, (a, d) => {
         if (!(i !== e.userConfigUpdateRevision || q(e.pixelId) !== e)) {
           if ((delete e.userHashingPendingCounts[a], d.hash)) {
-            let c = fe(
+            let c = le(
               { [d.field]: d.hash },
               d.phoneNumberWithPlusHash
                 ? { phone_number_with_plus_sha256: d.phoneNumberWithPlusHash }
                 : {},
             );
-            ro(e, Object.assign({}, e.config.user, c));
+            so(e, Object.assign({}, e.config.user, c));
           }
-          Pr(e.pixelId, a);
+          kr(e.pixelId, a);
         }
       });
     if (
-      (ro(e, o.user),
+      (so(e, o.user),
       (e.userHashingPendingCounts = (s = o.pendingHashCounts) != null ? s : {}),
       (e.userHashingPendingPromises = o.pendingHashPromises),
-      kr(e.pixelId),
+      Ar(e.pixelId),
       !o.pending)
     ) {
       ((e.userConfigHashingPending = !1), e === q() && (m.userConfigHashingPending = !1));
@@ -5144,11 +5149,11 @@
         (e.userHashingPendingCounts = {}),
         delete e.userHashingPendingPromises,
         e === q() && (m.userConfigHashingPending = !1),
-        so(e.pixelId));
+        ao(e.pixelId));
     };
     o.pending
       .then((a) => {
-        i !== e.userConfigUpdateRevision || q(e.pixelId) !== e || ro(e, a);
+        i !== e.userConfigUpdateRevision || q(e.pixelId) !== e || so(e, a);
       })
       .catch((a) => {
         i !== e.userConfigUpdateRevision ||
@@ -5157,24 +5162,24 @@
       })
       .then(r, r);
   }
-  function Yd(e) {
+  function Qd(e) {
     var u, p, f, y, g, _;
-    let n = $d(e),
+    let n = Wd(e),
       t = j(),
       i =
         (f = (p = (u = t[0]) == null ? void 0 : u.pixelId) != null ? p : m.pixelId) != null
           ? f
           : m.config.pixelId,
-      o = es(e, i);
-    if ((n && Bt("init", o, n), !e || typeof e != "object" || Array.isArray(e))) {
-      Es("init_invalid_config", o, n);
+      o = ns(e, i);
+    if ((n && qt("init", o, n), !e || typeof e != "object" || Array.isArray(e))) {
+      Ss("init_invalid_config", o, n);
       return;
     }
     let r = e,
       s = r.pixelId,
       a = s === void 0 ? i : s;
     if (!a || typeof a != "string") {
-      Es("init_invalid_pixel_id", o, n);
+      Ss("init_invalid_pixel_id", o, n);
       return;
     }
     let d = q(a);
@@ -5183,33 +5188,31 @@
       m.config.pixelId !== void 0 &&
       m.config.pixelId !== a &&
       delete m.config.user;
-    let c = d != null ? d : So(a),
+    let c = d != null ? d : Co(a),
       l = Object.prototype.hasOwnProperty.call(r, "user");
     ((c.config.pixelId = a),
       (c.config.debug =
         typeof r.debug == "boolean"
           ? r.debug
           : !!((y = c.config.debug) != null ? y : m.config.debug)),
-      l && Wd(c, r.user, n),
+      l && Yd(c, r.user, n),
       (m.pixelId = (g = q()) == null ? void 0 : g.pixelId),
       (m.endpoint = (_ = m.endpoint) != null ? _ : ot),
       U() === !1 && G(),
       w() &&
-        (me(r.oppref) && ((m.explicitClickId = r.oppref), ge(ce, r.oppref, 720 * 60 * 60)),
-        (m.clickId = Re(m.clickId)),
-        ni()),
-      !((!m.initialized || En()) && Bi(() => Ss(c, !d))) && Ss(c, !d));
+        (ie(r.oppref) && ((m.explicitClickId = r.oppref), me(ue, r.oppref, 720 * 60 * 60)), ti()),
+      !((!m.initialized || En()) && qi(() => Cs(c, !d))) && Cs(c, !d));
   }
-  function Ss(e, n) {
+  function Cs(e, n) {
     var t, i;
     if ((U() === !1 && G(), (m.initialized = !0), w())) {
-      ((m.clickId = Re(m.clickId)), (m.browserRef = (t = m.browserRef) != null ? t : Vi()));
+      ((m.clickId = ct(m.clickId)), (m.browserRef = (t = m.browserRef) != null ? t : zi()));
       for (let o of e.pendingEvents)
         (i = o.clickContext) != null || (o.clickContext = { clickId: m.clickId });
-    } else ((m.clickId = void 0), (m.explicitClickId = void 0), (m.browserRef = void 0), Nt());
-    (ys(e.pixelId, m.consent), n && ks(e), As(e, !0), so(e.pixelId));
+    } else ((m.clickId = void 0), (m.explicitClickId = void 0), (m.browserRef = void 0), Ot());
+    (vs(e.pixelId, m.consent), n && As(e), Ts(e, !0), ao(e.pixelId));
   }
-  function Ms(e) {
+  function Ps(e) {
     if (!(typeof e != "string" || e.length === 0))
       try {
         let n = new URL(e);
@@ -5230,26 +5233,26 @@
         return;
       }
   }
-  function Qd() {
+  function Xd() {
     var e;
     return typeof window == "undefined"
       ? void 0
-      : Ms((e = window.location) == null ? void 0 : e.href);
+      : Ps((e = window.location) == null ? void 0 : e.href);
   }
-  function Xd() {
-    return typeof document == "undefined" ? void 0 : Ms(document.referrer);
+  function Jd() {
+    return typeof document == "undefined" ? void 0 : Ps(document.referrer);
   }
-  function Jd(e, n, t) {
-    Ps(e, n, t, j());
+  function Zd(e, n, t) {
+    ks(e, n, t, j());
   }
-  function Zd(e, n, t, i) {
+  function ec(e, n, t, i) {
     if (typeof e != "string" || e.length === 0) {
-      Bt("measure", ["measureSingle.pixelId should be a non-empty string."], !!m.config.debug, n);
+      qt("measure", ["measureSingle.pixelId should be a non-empty string."], !!m.config.debug, n);
       return;
     }
     let o = q(e);
     if (!o) {
-      Bt(
+      qt(
         "measure",
         ["measureSingle.pixelId must identify an initialized pixel."],
         !!m.config.debug,
@@ -5257,34 +5260,34 @@
       );
       return;
     }
-    Ps(n, t, i, [o]);
+    ks(n, t, i, [o]);
   }
-  function Ps(e, n, t, i) {
-    let o = ts(e, n),
-      { issues: r, diagnosticReason: s, diagnosticDetail: a } = ns(e, o, t);
+  function ks(e, n, t, i) {
+    let o = is(e, n),
+      { issues: r, diagnosticReason: s, diagnosticDetail: a } = ts(e, o, t);
     if (r.length > 0) {
-      (Bt("measure", r, !!m.config.debug, e), s && ec(s, e, i, a));
+      (qt("measure", r, !!m.config.debug, e), s && nc(s, e, i, a));
       return;
     }
     typeof e != "string" ||
       e.length === 0 ||
       (U() === !1 && G(),
       w() && Wn(i.length === 1 ? i[0].pixelId : void 0),
-      Ts(e, o != null && typeof o == "object" && !Array.isArray(o) ? o : void 0, t, i));
+      ws(e, o != null && typeof o == "object" && !Array.isArray(o) ? o : void 0, t, i));
   }
-  function ks(e) {
+  function As(e) {
     e.sdkInitQueued ||
       !w() ||
-      ((e.sdkInitQueued = !0), Ts("openai::sdk_init", { type: "sdk_lifecycle" }, void 0, [e]));
+      ((e.sdkInitQueued = !0), ws("openai::sdk_init", { type: "sdk_lifecycle" }, void 0, [e]));
   }
-  function As(e, n) {
+  function Ts(e, n) {
     if (!m.initialized) return;
     let t = w(),
-      i = zr(e.pixelId, t, n);
+      i = Kr(e.pixelId, t, n);
     i &&
       (it(
         {
-          eventName: bs,
+          eventName: Is,
           testSessionId: null,
           metadata: Object.assign(
             {
@@ -5310,18 +5313,18 @@
         },
         e,
       ),
-      (!t || !n) && Ke(void 0, e.pixelId));
+      (!t || !n) && ze(void 0, e.pixelId));
   }
-  function ec(e, n, t, i) {
+  function nc(e, n, t, i) {
     if (!w()) return;
-    let o = Ot(n),
+    let o = Rt(n),
       r = m.initialized ? "after_init" : "before_init",
       s = X(),
       a = Date.now(),
       d = Xn(a),
       c = (l) => ({
         testSessionContext: d,
-        eventName: bs,
+        eventName: Is,
         metadata: Object.assign(
           {
             type: "diagnostic",
@@ -5344,7 +5347,7 @@
     }
     for (let l of t) it(c(l === t[0] ? s : X()), l);
   }
-  function Ts(e, n, t, i = j()) {
+  function ws(e, n, t, i = j()) {
     var c;
     if (!w()) {
       V(m, "event dropped because consent is not granted", {
@@ -5362,8 +5365,8 @@
         testSessionContext: Xn(a),
         eventName: e,
         metadata: n,
-        sourceUrl: Qd(),
-        referrerUrl: Xd(),
+        sourceUrl: Xd(),
+        referrerUrl: Jd(),
         eventId: typeof o == "string" && o.length > 0 ? o : X(),
         customEventName: e === "custom" && typeof r == "string" && r.length > 0 ? r : void 0,
         optOut: typeof s == "boolean" ? s : void 0,
@@ -5381,10 +5384,10 @@
       m.initialized &&
         w() &&
         !En() &&
-        ((m.clickId = (o = m.clickId) != null ? o : Re()),
+        ((m.clickId = (o = m.clickId) != null ? o : ct()),
         (r = e.clickContext) != null || (e.clickContext = { clickId: m.clickId })));
-    let t = (s = n == null ? void 0 : n.pendingEvents) != null ? s : le,
-      i = (a = fs(e, n == null ? void 0 : n.pixelId)) != null ? a : e;
+    let t = (s = n == null ? void 0 : n.pendingEvents) != null ? s : ge,
+      i = (a = ls(e, n == null ? void 0 : n.pixelId)) != null ? a : e;
     (i === e && t.push(e),
       V(m, "event queued", {
         eventName: i.eventName,
@@ -5394,74 +5397,74 @@
       }),
       !(!m.initialized || !n) && te(n.pixelId));
   }
-  function nc(e) {
+  function tc(e) {
     if (typeof e != "boolean") return;
     let n = !w() || U() === !1;
     if (
-      (n && w() && G(), No(e), (m.consent = e), bn(e), V(m, "consent updated", { consent: e }), !e)
+      (n && w() && G(), Oo(e), (m.consent = e), bn(e), V(m, "consent updated", { consent: e }), !e)
     ) {
-      (G(), Ke({ preferBeacon: !0, reason: "consent_denied" }));
+      (G(), ze({ preferBeacon: !0, reason: "consent_denied" }));
       return;
     }
-    if ((m.initialized && ni(), (m.clickId = Re(m.clickId)), En())) {
-      m.clickId && Ue();
+    if ((m.initialized && ti(), En())) {
+      un() && xe();
       return;
     }
-    (n && m.initialized && Bi(Cs)) || Cs();
+    (n && m.initialized && qi(bs)) || bs();
   }
-  function Cs() {
+  function bs() {
     var e, n, t;
     if ((U() === !1 && G(), !!w())) {
-      m.clickId = Re(m.clickId);
+      m.clickId = ct(m.clickId);
       for (let i of j()) {
         for (let o of i.pendingEvents)
           ((e = o.clickContext) != null || (o.clickContext = { clickId: m.clickId }),
             (n = o.consentSessionMarker) != null &&
               n.revocableGrant &&
               (o.consentSessionMarker.revocableGrant = !1));
-        As(i, !1);
+        Ts(i, !1);
       }
       if (m.initialized) {
-        m.browserRef = (t = m.browserRef) != null ? t : Vi();
-        for (let i of j()) ks(i);
+        m.browserRef = (t = m.browserRef) != null ? t : zi();
+        for (let i of j()) As(i);
       }
-      so();
+      ao();
     }
   }
-  function sn(e, ...n) {
+  function rn(e, ...n) {
     if (typeof e == "string")
       switch (e) {
         case "init":
         case "initialize":
-          Yd(n[0]);
+          Qd(n[0]);
           break;
         case "consent":
-          nc(n[0]);
+          tc(n[0]);
           break;
         case "measure":
-          Jd(n[0], n[1], n[2]);
+          Zd(n[0], n[1], n[2]);
           break;
         case "measureSingle":
-          Zd(n[0], n[1], n[2], n[3]);
+          ec(n[0], n[1], n[2], n[3]);
           break;
         default:
           break;
       }
   }
-  var qt = "oaiq",
-    ws = !1,
-    Ns = !1;
-  function tc(e) {
-    if (ws) return;
+  var Vt = "oaiq",
+    Ns = !1,
+    Os = !1;
+  function ic(e) {
+    if (Ns) return;
     let n = e.window,
       t = e.document,
       i = (s) => {
-        (Ue(),
+        (xe(),
           V(m, "lifecycle flush requested", {
             reason: s,
             pendingEventCount: j().reduce((a, d) => a + d.pendingEvents.length, 0),
           }),
-          Ke({ preferBeacon: !0, reason: s }));
+          ze({ preferBeacon: !0, reason: s }));
       },
       o = new Map(),
       r = !1;
@@ -5476,7 +5479,7 @@
       }),
       n.addEventListener("pageshow", (s) => {
         if ((s == null ? void 0 : s.persisted) === !0) {
-          $r();
+          Wr();
           for (let a of j()) {
             let d = o.get(a.pixelId);
             d &&
@@ -5494,10 +5497,10 @@
           t.visibilityState === "hidden" && i("visibilitychange_hidden");
         }),
         (r = !0)),
-      (ws = r));
+      (Ns = r));
   }
-  function ic(e) {
-    if (Ns) return;
+  function oc(e) {
+    if (Os) return;
     let n = e.window;
     !n ||
       typeof n.addEventListener != "function" ||
@@ -5508,20 +5511,20 @@
           (bn(!1),
           G(),
           V(m, "consent revoked from persisted storage"),
-          Ke({ preferBeacon: !0, reason: "consent_storage_denied" }));
+          ze({ preferBeacon: !0, reason: "consent_storage_denied" }));
       }),
-      (Ns = !0));
+      (Os = !0));
   }
   (function (n) {
     var c, l, u, p;
     if (!n) return;
-    tc(n);
+    ic(n);
     let t = n.window && typeof n.window == "object" ? n.window : null,
-      i = n[qt],
-      o = t ? t[qt] : void 0,
+      i = n[Vt],
+      o = t ? t[Vt] : void 0,
       r = i != null ? i : o;
     if ((i != null && i.__oaiqInitialized) || (o != null && o.__oaiqInitialized)) return;
-    Gr();
+    $r();
     let s = [i, o].filter((f) => !!f),
       a = [];
     for (let f of s) {
@@ -5539,11 +5542,11 @@
       }
     }
     ((m.consent = U()),
-      Ur(),
-      vs(),
-      us(),
-      Is(),
-      Co(),
+      Br(),
+      Es(),
+      fs(),
+      Ms(),
+      bo(),
       (m.initialized = !1),
       (m.pixelId =
         typeof ((c = r == null ? void 0 : r.config) == null ? void 0 : c.pixelId) == "string"
@@ -5560,14 +5563,15 @@
       }),
       (m.clickId = void 0),
       (m.explicitClickId = void 0),
+      (m.nativeClickId = void 0),
       (m.browserRef = void 0),
-      le.splice(0, le.length),
+      ge.splice(0, ge.length),
       m.consent === !1 && Jn(),
-      ic(n),
-      typeof window != "undefined" && typeof window.addEventListener == "function" && Do(G));
+      oc(n),
+      typeof window != "undefined" && typeof window.addEventListener == "function" && Fo(G));
     let d = (...f) => {
       let [y, ...g] = f;
-      typeof y == "string" && sn(y, ...g);
+      typeof y == "string" && rn(y, ...g);
     };
     ((d.q = []),
       (d.queue = d.q),
@@ -5575,18 +5579,18 @@
       (d.loaded = !0),
       (d.version = Ie),
       (d.__oaiqInitialized = !0),
-      (d.measure = (f, y, g) => sn("measure", f, y, g)),
-      (d.measureSingle = (f, y, g, _) => sn("measureSingle", f, y, g, _)),
-      (d.init = (f) => sn("init", f)),
-      (d.consent = (f) => sn("consent", f)),
-      (n[qt] = d),
-      t && t !== n && (t[qt] = d));
+      (d.measure = (f, y, g) => rn("measure", f, y, g)),
+      (d.measureSingle = (f, y, g, _) => rn("measureSingle", f, y, g, _)),
+      (d.init = (f) => rn("init", f)),
+      (d.consent = (f) => rn("consent", f)),
+      (n[Vt] = d),
+      t && t !== n && (t[Vt] = d));
     for (let f = 0; f < a.length; f += 1) {
       let y = a[f],
         g = Array.isArray(y) ? y : Array.from(y || []);
       if (g.length === 0) continue;
       let [_, ...E] = g;
-      typeof _ == "string" && sn(_, ...E);
+      typeof _ == "string" && rn(_, ...E);
     }
-  })(Mo());
+  })(Po());
 })();
