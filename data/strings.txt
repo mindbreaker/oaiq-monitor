@@ -19,7 +19,7 @@ $1 $2
 .quantity
 /gtm.js
 /pixel-config/v1/
-0.1.104
+0.1.105
 00
 :denied
 :disabled
@@ -83,6 +83,7 @@ amount
 analytics
 android
 android-app://chatgpt.com
+android-app://com.openai.chatgpt/
 appointment_scheduled
 aria-disabled
 aria-label
@@ -343,6 +344,7 @@ openai::sdk_init
 oppref
 opt_out
 order_created
+page_viewed
 pagehide
 pager
 pageshow
