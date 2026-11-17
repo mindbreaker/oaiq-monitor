@@ -15,6 +15,7 @@ und committet jede Änderung. So lässt sich die Entwicklung über die Git-Histo
 
 ## Änderungen ansehen
 
+- **[CHANGELOG.md](CHANGELOG.md)**: Was sich in jeder Version inhaltlich geändert hat, mit Erklärung.
 - Verlauf von `strings.txt`: Datei öffnen, oben auf "History" klicken.
 - Jeder Commit listet in der Beschreibung die neuen und entfernten Strings.
 - Lokal: `git log -p data/strings.txt`
